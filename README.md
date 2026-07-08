@@ -261,15 +261,19 @@ python -m unittest discover -s tests
 ```
 
 ### Ejecutar Informe Técnico Web
-Genera los datos del informe y lánzalo en un servidor HTTP local:
+Genera los datos del informe y visualízalo en tu navegador:
 ```bash
-# 1. Ejecutar el análisis y guardar resultados en JSON
+# 1. Ejecutar el análisis y guardar resultados
 python web_verification/generate_report.py
-
-# 2. Iniciar el servidor local
-python -m http.server 8080 --directory web_verification
 ```
-Luego abre en tu navegador: **http://localhost:8080** donde podrás ver los gráficos y **descargar el manual en formato PDF**.
+Una vez generados los datos, tienes dos opciones para abrir el informe:
+* **Opción A (Abrir directamente):** Haz doble clic en el archivo [index.html](file:///c:/Users/gemcrak/Desktop/PyC45/web_verification/index.html) dentro de la carpeta `web_verification/` para abrirlo directamente en tu navegador. Esto es posible y no produce errores de CORS porque los datos están empaquetados en un archivo de script [report_data.js](file:///c:/Users/gemcrak/Desktop/PyC45/web_verification/report_data.js) cargado mediante una etiqueta `<script>`.
+* **Opción B (Servidor Local):** Inicia un servidor web local mediante HTTP si deseas simular un entorno de producción o si tu navegador bloquea por defecto la ejecución de scripts locales:
+  ```bash
+  python -m http.server 8080 --directory web_verification
+  ```
+  Luego abre en tu navegador: [http://localhost:8080](http://localhost:8080).
+
 
 ---
 
@@ -333,12 +337,13 @@ Si deseas visualizar el informe dinámico en tu navegador local con gráficos in
    ```bash
    python web_verification/generate_report.py
    ```
-2. **Inicia el servidor web local:**
-   ```bash
-   python -m http.server 8080 --directory web_verification
-   ```
-3. **Accede al informe:**
-   Abre tu navegador e ingresa a [http://localhost:8080](http://localhost:8080).
+2. **Visualiza el informe:** Puedes elegir uno de los siguientes métodos para visualizarlo:
+   * **Opción A (Abrir directamente sin servidor - Recomendado por simplicidad):** Abre el archivo [index.html](file:///c:/Users/gemcrak/Desktop/PyC45/web_verification/index.html) directamente en tu navegador (haciendo doble clic). Esto es totalmente funcional y no produce errores de CORS porque los datos del reporte se exportan dinámicamente como código JS ejecutable en [report_data.js](file:///c:/Users/gemcrak/Desktop/PyC45/web_verification/report_data.js).
+   * **Opción B (Lanzar servidor local):** Si prefieres simular un entorno web real o tu navegador restringe la ejecución de scripts en archivos locales:
+     ```bash
+     python -m http.server 8080 --directory web_verification
+     ```
+     E ingresa a [http://localhost:8080](http://localhost:8080).
 
 ### Paso 7: Generar el Manual de Usuario en PDF (Opcional)
 Si realizaste modificaciones a la documentación en markdown y necesitas reconstruir el manual en PDF:
