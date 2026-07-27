@@ -1,6 +1,6 @@
-"""
+﻿"""
 =========================================================
-PyC45 Examples
+MetaCog-C45 Examples
 Customer Churn Prediction (Fuga de Clientes)
 =========================================================
 

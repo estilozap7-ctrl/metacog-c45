@@ -1,11 +1,11 @@
-"""
+﻿"""
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 Metacognitive Decision Trace (Enriched)
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo / Antigravity
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 Descripción:
 Clase/Dataclass que registra el historial cognitivo completo y reproducible
 de una decisión del árbol de decisión.

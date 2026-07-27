@@ -1,14 +1,14 @@
 """
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 Tree Plot
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 
 Descripción:
-Visualiza el árbol de decisión generado por PyC45.
+Visualiza el árbol de decisión generado por MetaCog-C45.
 =========================================================
 """
 

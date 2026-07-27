@@ -1,9 +1,9 @@
 /**
  * =========================================================
- * PyC45 Interactive Slides — presentacion.js
+ * MetaCog-C45 Interactive Slides — presentacion.js
  * =========================================================
  * Maneja la navegación, barra de progreso, atajos de teclado
- * y la interfaz interactiva de las diapositivas.
+ * y la carga dinámica de datos del experimento (reportData).
  * =========================================================
  */
 
@@ -21,6 +21,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentIdx = 0;
   const totalSlides = slides.length;
+
+  // Carga dinámica de metadatos del experimento activo desde window.reportData
+  function loadDynamicReportData() {
+    const data = window.reportData;
+    const heroBadge = document.getElementById('hero-dataset-badge');
+    const expSummary = document.getElementById('presentation-experiment-summary');
+    const xaiStatus = document.getElementById('presentation-xai-status');
+
+    if (!data) {
+      if (heroBadge) heroBadge.textContent = "Dataset: Demostración Sintética";
+      if (expSummary) {
+        expSummary.innerHTML = `<strong>Experimento Activo:</strong> Modo genérico preparado. Para visualizar resultados específicos en vivo, ejecuta <code>python ejecutar_con_dataset.py</code>.`;
+      }
+      return;
+    }
+
+    // 1. Badge de la portada
+    if (heroBadge && data.dataset) {
+      const target = data.dataset.target_column || "Clase Target";
+      const sample = data.dataset.sample_size || data.dataset.total_rows || 0;
+      heroBadge.textContent = `Dataset: ${target} (n=${sample})`;
+    }
+
+    // 2. Resumen del experimento en vivo (Slide 8)
+    if (expSummary && data.metrics) {
+      const acc = data.metrics.Accuracy ? (data.metrics.Accuracy * 100).toFixed(2) + '%' : 'N/A';
+      const mcc = data.metrics.MCC !== undefined ? data.metrics.MCC.toFixed(4) : 'N/A';
+      const auc = data.roc_auc !== undefined ? data.roc_auc.toFixed(4) : 'N/A';
+      
+      let metacogInfo = '';
+      if (data.metacognition) {
+        const mfi = data.metacognition.mfi !== undefined ? data.metacognition.mfi.toFixed(4) : 'N/A';
+        const traces = data.metacognition.total_traces || 0;
+        metacogInfo = ` | MFI: <strong style="color:var(--success)">${mfi}</strong> (trazas: ${traces})`;
+      }
+
+      expSummary.innerHTML = `<strong>Resultados del Experimento Activo:</strong> Exactitud: <strong>${acc}</strong> | MCC: <strong>${mcc}</strong> | ROC-AUC: <strong>${auc}</strong>${metacogInfo}`;
+    }
+
+    // 3. Estado de auditoría XAI (Slide 10)
+    if (xaiStatus) {
+      if (data.metacognition && data.metacognition.verdict_counts) {
+        const vc = data.metacognition.verdict_counts;
+        const accept = vc.ACCEPT_SYSTEM_1 || vc.ACCEPT || 0;
+        const override = vc.METACOGNITIVE_OVERRIDE || vc.OVERRIDE || 0;
+        const fallback = vc.REJECT_FALLBACK || vc.FALLBACK || 0;
+
+        xaiStatus.innerHTML = `<strong>Auditoría Metacognitiva Activa:</strong> Veredictos del Sistema 2 — Sistema 1 Acepatado: <strong style="color:var(--success)">${accept}</strong> | Intervenciones Metacognitivas: <strong style="color:var(--warning)">${override}</strong> | Fallbacks: <strong style="color:var(--danger)">${fallback}</strong>`;
+      } else {
+        xaiStatus.innerHTML = `<strong>Auditoría Metacognitiva Activa:</strong> Trazas de inferencia <code>DecisionTrace</code> disponibles en <code>report_data.json</code>.`;
+      }
+    }
+  }
 
   // Initialize slides state
   function initSlides() {
@@ -66,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     goToSlide(currentIdx);
+    loadDynamicReportData();
   }
 
   // Update layout and active classes based on index

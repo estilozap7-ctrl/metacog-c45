@@ -1,11 +1,11 @@
-"""
+﻿"""
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 Classification Metrics
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 
 Descripción:
 Implementa las principales métricas de evaluación para

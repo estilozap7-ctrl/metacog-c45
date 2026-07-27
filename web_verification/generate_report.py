@@ -1,12 +1,12 @@
 """
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 Web Report Generator (Generador de Informe Web)
 =========================================================
 
-Ejecuta el pipeline completo de análisis sobre el dataset de tarjetas de crédito,
+Ejecuta el pipeline completo de análisis sobre el dataset configurado,
 genera gráficos de evaluación y exporta los resultados en formato JSON
-para ser consumidos por la página web de informe técnico.
+para ser consumidos por el dashboard técnico científico del framework.
 =========================================================
 """
 
@@ -251,7 +251,7 @@ def generate_entropy_diagram():
 def run_pipeline():
     """Ejecuta el pipeline C4.5 y retorna todos los datos para el informe."""
     print("=" * 60)
-    print(" GENERANDO INFORME TÉCNICO WEB - PyC45")
+    print(" GENERANDO INFORME TÉCNICO WEB - MetaCog-C45")
     print("=" * 60)
 
     # --- 1. Carga de datos ---

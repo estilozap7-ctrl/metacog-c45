@@ -1,11 +1,11 @@
-"""
+﻿"""
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 Information Gain Calculator
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 
 Descripción:
 Implementa el cálculo de la Ganancia de Información y

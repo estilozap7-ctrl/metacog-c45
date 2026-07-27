@@ -205,17 +205,33 @@ def tree_to_dict(node):
         d["right"] = tree_to_dict(node.right)
     return d
 
-def tree_to_text(node, indent=""):
-    """Genera la representación en texto del árbol de decisión."""
+def tree_to_text(node, indent="", memory=None):
+    """Genera la representación en texto del árbol de decisión (con Sistema 2 si está disponible)."""
     if node is None:
         return ""
     lines = []
     if node.is_leaf:
         lines.append(f"{indent}🍃 Hoja → Clase={node.prediction}  (n={node.samples}, prob={node.probability:.2%})")
     else:
-        lines.append(f"{indent}📊 {node.feature} ≤ {node.threshold:.4f}  [GainRatio={node.gain_ratio:.4f}]")
-        lines.append(tree_to_text(node.left, indent + "│   "))
-        lines.append(tree_to_text(node.right, indent + "│   "))
+        trace = None
+        if memory is not None and getattr(node, "trace_id", None):
+            trace = next((t for t in memory.get_all_traces() if t.node_id == node.trace_id), None)
+
+        if trace is not None:
+            lines.append(
+                f"{indent}📊 {node.feature} ≤ {node.threshold:.4f}\n"
+                f"{indent}   GainRatio = {node.gain_ratio:.4f}\n"
+                f"{indent}   SCS = {trace.scs:.3f}\n"
+                f"{indent}   NS = {trace.ns:.3f}\n"
+                f"{indent}   TS = {trace.ts:.3f}\n"
+                f"{indent}   CI = {trace.competitiveness_index:.3f}\n"
+                f"{indent}   Decision = {trace.verdict}"
+            )
+        else:
+            lines.append(f"{indent}📊 {node.feature} ≤ {node.threshold:.4f}  [GainRatio={node.gain_ratio:.4f}]")
+
+        lines.append(tree_to_text(node.left, indent + "│   ", memory))
+        lines.append(tree_to_text(node.right, indent + "│   ", memory))
     return "\n".join(lines)
 
 def get_rule_lengths(node, current_len=0):
@@ -276,9 +292,9 @@ def generate_python_rules(node, indent="    "):
 def get_python_code(root):
     """Genera el código de predicción en Python nativo."""
     lines = [
-        "def predict_c45(client):",
+        "def predict_metacog(client):",
         '    """',
-        '    Predicción generada automáticamente por PyC45.',
+        '    Predicción generada automáticamente por MetaCog-C45.',
         '    client: diccionario con los valores de las variables.',
         '    """'
     ]
@@ -296,7 +312,7 @@ def get_fastapi_code(root, features):
         "from pydantic import BaseModel",
         "import uvicorn",
         "",
-        "app = FastAPI(title='PyC45 Model API', version='1.0')",
+        "app = FastAPI(title='MetaCog-C45 Model API', version='1.0')",
         "",
         "class ClientData(BaseModel):",
         schema_attrs_str,
@@ -306,7 +322,7 @@ def get_fastapi_code(root, features):
         "@app.post('/predict')",
         "def predict(data: ClientData):",
         "    client_dict = data.dict()",
-        "    pred = predict_c45(client_dict)",
+        "    pred = predict_metacog(client_dict)",
         "    return {'prediction': pred}",
         "",
         "if __name__ == '__main__':",
@@ -315,44 +331,144 @@ def get_fastapi_code(root, features):
     return "\n".join(code)
 
 
+def _build_metacog_report(clf) -> dict:
+    """
+    Extrae todos los datos del Sistema 2 (metacognitivo) del clasificador
+    entrenado y los serializa para el reporte HTML/JSON.
+    Retorna un dict vacío si el clasificador está en modo 'classic'.
+    """
+    if clf.mode != "metacog":
+        return {"mode": "classic", "enabled": False}
+
+    stats = clf.experience_stats_ or {}
+    memory = clf.memory_
+
+    # ── Trazas individuales de DecisionTrace ──────────────────────────────
+    traces_list = []
+    if memory is not None:
+        for t in memory.get_all_traces():
+            traces_list.append({
+                "node_id":             t.node_id,
+                "depth":               t.depth,
+                "n_samples":           t.n_samples,
+                "feature_selected":    t.feature_selected,
+                "threshold_selected":  round(float(t.threshold_selected), 6) if t.threshold_selected is not None else None,
+                "gain_ratio":          round(float(t.gain_ratio), 6),
+                "ns":                  round(float(t.ns), 6),
+                "ts":                  round(float(t.ts), 6),
+                "p_star":              round(float(t.p_star), 6),
+                "competitiveness_index": round(float(t.competitiveness_index), 6),
+                "is_competitive":      bool(t.is_competitive),
+                "alternate_feature":   t.alternate_feature,
+                "scs":                 round(float(t.scs), 6),
+                "verdict":             t.verdict,
+                "justification":       t.justification,
+                "uncertainty":         round(float(t.uncertainty), 6),
+                "algorithm_version":   t.algorithm_version,
+            })
+
+    # ── Distribución de veredictos ────────────────────────────────────────
+    verdict_counts: dict = {}
+    scs_values: list = []
+    ns_values:  list = []
+    ts_values:  list = []
+    ci_values:  list = []
+    for t_dict in traces_list:
+        v = t_dict["verdict"]
+        verdict_counts[v] = verdict_counts.get(v, 0) + 1
+        scs_values.append(t_dict["scs"])
+        ns_values.append(t_dict["ns"])
+        ts_values.append(t_dict["ts"])
+        ci_values.append(t_dict["competitiveness_index"])
+
+    def _safe_stats(vals):
+        if not vals:
+            return {"min": 0.0, "max": 0.0, "mean": 0.0, "std": 0.0}
+        import statistics as _st
+        return {
+            "min":  round(min(vals), 6),
+            "max":  round(max(vals), 6),
+            "mean": round(sum(vals) / len(vals), 6),
+            "std":  round(_st.stdev(vals) if len(vals) > 1 else 0.0, 6),
+        }
+
+    return {
+        "mode":            "metacog",
+        "enabled":         True,
+        "total_decisions": stats.get("total_decisions", len(traces_list)),
+        "avg_ns":          round(float(stats.get("avg_ns", 0.0)), 6),
+        "avg_ts":          round(float(stats.get("avg_ts", 0.0)), 6),
+        "mfi_normalized":  {k: round(v, 6) for k, v in stats.get("mfi_normalized", {}).items()},
+        "verdict_counts":  verdict_counts,
+        "scs_stats":       _safe_stats(scs_values),
+        "ns_stats":        _safe_stats(ns_values),
+        "ts_stats":        _safe_stats(ts_values),
+        "ci_stats":        _safe_stats(ci_values),
+        "scs_values":      [round(v, 6) for v in scs_values],
+        "ns_values":       [round(v, 6) for v in ns_values],
+        "ts_values":       [round(v, 6) for v in ts_values],
+        "ci_values":       [round(v, 6) for v in ci_values],
+        "decision_traces": traces_list,
+    }
+
+
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def main():
+    # ── Leer modo y parámetros del Sistema 2 desde la CLI (o usar defaults) ──
+    _mode         = globals().get("_CLI_MODE",         "metacog")
+    _B            = globals().get("_CLI_B",             50)
+    _theta_accept = globals().get("_CLI_THETA_ACCEPT",  0.5)
+    _theta_reject = globals().get("_CLI_THETA_REJECT",  0.05)
+    _gamma        = globals().get("_CLI_GAMMA",         0.1)
+
     clear_screen()
     print("=" * 80)
-    print("           PYC45 FRAMEWORK - EJECUTOR DE DATASETS REALES")
+    if _mode == "metacog":
+        print("       MetaCog-C45 FRAMEWORK - EJECUTOR CON SISTEMA 2 (METACOGNITIVO)")
+    else:
+        print("       MetaCog-C45 FRAMEWORK - EJECUTOR EN MODO CLÁSICO C4.5")
     print("=" * 80)
     
     # 1. Escanear y listar datasets
     datasets_dir = "datasets"
-    if not os.path.exists(datasets_dir):
-        print(f"Error: La carpeta '{datasets_dir}' no existe.")
-        return
-        
-    files = [f for f in os.listdir(datasets_dir) if f.endswith(('.csv', '.xls', '.xlsx'))]
-    if not files:
-        print("No se encontraron archivos de datos (.csv, .xls, .xlsx) en la carpeta 'datasets'.")
-        return
-        
-    print("\nDatasets disponibles en la carpeta 'datasets':")
-    for idx, file in enumerate(files, 1):
-        print(f"  [{idx}] {file}")
-        
-    # Selección del dataset
-    while True:
-        try:
-            choice = input(f"\nSelecciona el dataset con el que deseas trabajar (1-{len(files)}): ").strip()
-            choice_idx = int(choice) - 1
-            if 0 <= choice_idx < len(files):
-                selected_file = files[choice_idx]
-                break
-            else:
-                print(f"Por favor ingresa un número entre 1 y {len(files)}.")
-        except ValueError:
-            print("Entrada inválida. Debe ser un número.")
-            
-    file_path = os.path.join(datasets_dir, selected_file)
+    _cli_dataset = globals().get("_CLI_DATASET", None)
+    _cli_target  = globals().get("_CLI_TARGET",  None)
+
+    if _cli_dataset:
+        file_path = _cli_dataset
+        selected_file = os.path.basename(_cli_dataset)
+        print(f"\nUsando dataset especificado por CLI: '{file_path}'")
+    else:
+        if not os.path.exists(datasets_dir):
+            print(f"Error: La carpeta '{datasets_dir}' no existe.")
+            return
+
+        files = [f for f in os.listdir(datasets_dir) if f.endswith(('.csv', '.xls', '.xlsx'))]
+        if not files:
+            print("No se encontraron archivos de datos (.csv, .xls, .xlsx) en la carpeta 'datasets'.")
+            return
+
+        print("\nDatasets disponibles en la carpeta 'datasets':")
+        for idx, file in enumerate(files, 1):
+            print(f"  [{idx}] {file}")
+
+        # Selección del dataset
+        while True:
+            try:
+                choice = input(f"\nSelecciona el dataset con el que deseas trabajar (1-{len(files)}): ").strip()
+                choice_idx = int(choice) - 1
+                if 0 <= choice_idx < len(files):
+                    selected_file = files[choice_idx]
+                    break
+                else:
+                    print(f"Por favor ingresa un número entre 1 y {len(files)}.")
+            except ValueError:
+                print("Entrada inválida. Debe ser un número.")
+
+        file_path = os.path.join(datasets_dir, selected_file)
+
     print(f"\nCargando '{selected_file}'...")
     
     # 2. Cargar el dataset
@@ -369,39 +485,56 @@ def main():
     print(f"Dataset cargado con éxito. Dimensiones: {df.shape[0]} filas, {df.shape[1]} columnas.")
     
     # 3. Detectar o elegir columna objetivo (Target)
-    print("\nColumnas del dataset:")
-    for i, col in enumerate(df.columns, 1):
-        print(f"  {i:2d}. {col}")
-        
-    # Auto-detección de columnas objetivo comunes
-    known_targets = ['churn', 'default payment next month', 'target', 'class', 'clase', 'aprobado', 'label']
-    detected_target = None
-    for col in df.columns:
-        if col.lower() in known_targets:
-            detected_target = col
-            break
-            
     target_col = None
-    if detected_target:
-        use_detected = input(f"\n¿Deseas usar la columna objetivo detectada automáticamente '{detected_target}'? (S/n): ").strip().lower()
-        if use_detected in ['', 's', 'si', 'yes', 'y']:
-            target_col = detected_target
-            
+    if _cli_target:
+        if _cli_target in df.columns:
+            target_col = _cli_target
+            print(f"Columna objetivo especificada por CLI: '{target_col}'")
+        else:
+            print(f"[ADVERTENCIA] Columna '{_cli_target}' no encontrada en el dataset.")
+
     if not target_col:
-        while True:
-            try:
-                target_choice = input("\nIngresa el número o nombre exacto de la columna objetivo (target): ").strip()
-                if target_choice in df.columns:
-                    target_col = target_choice
-                    break
-                elif target_choice.isdigit():
-                    col_idx = int(target_choice) - 1
-                    if 0 <= col_idx < len(df.columns):
-                        target_col = df.columns[col_idx]
-                        break
-                print("Nombre de columna o número no válido. Intenta de nuevo.")
-            except ValueError:
-                print("Entrada inválida.")
+        print("\nColumnas del dataset:")
+        for i, col in enumerate(df.columns, 1):
+            print(f"  {i:2d}. {col}")
+
+        # Auto-detección de columnas objetivo comunes
+        known_targets = ['churn', 'default payment next month', 'target', 'class', 'clase', 'aprobado', 'label']
+        detected_target = None
+        for col in df.columns:
+            if col.lower() in known_targets:
+                detected_target = col
+                break
+
+        if detected_target:
+            if _cli_dataset:
+                # Modo no interactivo: usar target detectado automáticamente
+                target_col = detected_target
+                print(f"Columna objetivo detectada automáticamente (modo CLI): '{target_col}'")
+            else:
+                use_detected = input(f"\n¿Deseas usar la columna objetivo detectada automáticamente '{detected_target}'? (S/n): ").strip().lower()
+                if use_detected in ['', 's', 'si', 'yes', 'y']:
+                    target_col = detected_target
+
+        if not target_col:
+            if _cli_dataset:
+                target_col = df.columns[-1]
+                print(f"Seleccionando última columna por defecto (modo CLI): '{target_col}'")
+            else:
+                while True:
+                    try:
+                        target_choice = input("\nIngresa el número o nombre exacto de la columna objetivo (target): ").strip()
+                        if target_choice in df.columns:
+                            target_col = target_choice
+                            break
+                        elif target_choice.isdigit():
+                            col_idx = int(target_choice) - 1
+                            if 0 <= col_idx < len(df.columns):
+                                target_col = df.columns[col_idx]
+                                break
+                        print("Nombre de columna o número no válido. Intenta de nuevo.")
+                    except ValueError:
+                        print("Entrada inválida.")
                 
     print(f"Columna objetivo seleccionada: '{target_col}'")
     
@@ -443,13 +576,17 @@ def main():
     # 5. Submuestreo si es un dataset grande
     max_safe_samples = 1500
     if len(df) > max_safe_samples:
-        print(f"\n[NOTA] El dataset contiene {len(df)} registros.")
-        print("Dado que C4.5 calcula los puntos de corte óptimos de variables continuas en Python puro,")
-        print(f"se recomienda realizar un submuestreo de {max_safe_samples} registros para optimizar el tiempo de ejecución.")
-        subsample = input(f"¿Deseas submuestrear a {max_safe_samples} registros? (S/n): ").strip().lower()
-        if subsample in ['', 's', 'si', 'yes', 'y']:
+        if _cli_dataset:
             df = df.sample(n=max_safe_samples, random_state=42).reset_index(drop=True)
-            print(f"Dataset reducido a {df.shape[0]} registros para entrenamiento.")
+            print(f"Dataset reducido a {df.shape[0]} registros para entrenamiento (modo CLI).")
+        else:
+            print(f"\n[NOTA] El dataset contiene {len(df)} registros.")
+            print("Dado que C4.5 calcula los puntos de corte óptimos de variables continuas en Python puro,")
+            print(f"se recomienda realizar un submuestreo de {max_safe_samples} registros para optimizar el tiempo de ejecución.")
+            subsample = input(f"¿Deseas submuestrear a {max_safe_samples} registros? (S/n): ").strip().lower()
+            if subsample in ['', 's', 'si', 'yes', 'y']:
+                df = df.sample(n=max_safe_samples, random_state=42).reset_index(drop=True)
+                print(f"Dataset reducido a {df.shape[0]} registros para entrenamiento.")
             
     sample_size = len(df)
     class_dist_sample = {
@@ -485,16 +622,41 @@ def main():
     # 7. Ejecutar Pipeline del Framework
     import time
     print("\n" + "=" * 50)
-    print("   ETAPA 1: ENTRENAMIENTO DEL CLASIFICADOR C4.5")
+    if _mode == "metacog":
+        print("   ETAPA 1: ENTRENAMIENTO - MetaCog-C45 (Sistema 1 + Sistema 2)")
+    else:
+        print("   ETAPA 1: ENTRENAMIENTO DEL CLASIFICADOR C4.5 (modo clásico)")
     print("=" * 50)
-    clf = C45Classifier(max_depth=5, min_samples_split=10, min_gain_ratio=0.01)
-    print("Construyendo árbol C4.5 (esto puede tomar unos segundos)...")
+
+    # ── Resolución de hiperparámetros (CLI > defaults) ──────────────────
+    _max_depth_val   = globals().get("_CLI_MAX_DEPTH",  None) or 5
+    _min_samples_val = globals().get("_CLI_MIN_SAMPLES", None) or 10
+
+    clf = C45Classifier(
+        mode=_mode,
+        max_depth=_max_depth_val,
+        min_samples_split=_min_samples_val,
+        min_gain_ratio=0.01,
+        B=_B,
+        theta_accept=_theta_accept,
+        theta_reject=_theta_reject,
+        gamma=_gamma,
+        random_state=42,
+    )
+
+    if _mode == "metacog":
+        print("Iniciando MetaCog-C45 (Reflection Engine + Decision Core + MetaMemory)...")
+        print(f"  B={_B} | theta_accept={_theta_accept} | theta_reject={_theta_reject} | gamma={_gamma}")
+    else:
+        print("Construyendo árbol C4.5 clásico (esto puede tomar unos segundos)...")
+
     t0 = time.time()
     clf.fit(X_train, y_train)
     training_time_s = time.time() - t0
     print(f"Tiempo de entrenamiento: {training_time_s:.4f} s")
+    clf.summary()
 
-    tree_before_text = tree_to_text(clf.root)
+    tree_before_text = tree_to_text(clf.root, memory=clf.memory_)
     tree_before_dict = tree_to_dict(clf.root)
     tree_before_stats = {
         "nodes": TreeUtils.count_nodes(clf.root),
@@ -518,7 +680,7 @@ def main():
     pruning_time_s = time.time() - t1
     print(f"Tiempo de poda: {pruning_time_s:.4f} s")
 
-    tree_after_text = tree_to_text(clf.root)
+    tree_after_text = tree_to_text(clf.root, memory=clf.memory_)
     tree_after_dict = tree_to_dict(clf.root)
     nodes_after  = TreeUtils.count_nodes(clf.root)
     leaves_after = TreeUtils.count_leaves(clf.root)
@@ -800,10 +962,16 @@ def main():
                 "class_distribution_sample": class_dist_sample,
             },
             "hyperparameters": {
+                "mode": clf.mode,
                 "max_depth": int(clf.max_depth),
                 "min_samples_split": int(clf.min_samples_split),
                 "min_gain_ratio": float(clf.min_gain_ratio),
+                "B": int(clf.B),
+                "theta_accept": float(clf.theta_accept),
+                "theta_reject": float(clf.theta_reject),
+                "gamma": float(clf.gamma),
             },
+            "metacognitive_data": _build_metacog_report(clf),
             "tree_before_pruning": {
                 "text": tree_before_text,
                 "stats": tree_before_stats,
@@ -912,6 +1080,21 @@ if __name__ == "__main__":
     _cli_parser.add_argument("--min_samples_split", metavar="N",    type=int, default=None)
     _cli_parser.add_argument("--no_browser",     action="store_true", default=False)
     _cli_parser.add_argument("--help", "-h",     action="store_true", default=False)
+    # ── System 2 arguments ────────────────────────────────────────────────
+    _cli_parser.add_argument(
+        "--mode",
+        choices=["classic", "metacog"],
+        default="metacog",
+        help="Modo de inducción: 'classic' (C4.5 estándar) o 'metacog' (MetaCog-C45 con Sistema 2). Por defecto: metacog.",
+    )
+    _cli_parser.add_argument("--B",             metavar="N",   type=int,   default=50,
+        help="Réplicas bootstrap para el Reflection Engine (solo modo metacog, por defecto: 50).")
+    _cli_parser.add_argument("--theta_accept",  metavar="F",   type=float, default=0.5,
+        help="Umbral de aceptación del SCS (por defecto: 0.5).")
+    _cli_parser.add_argument("--theta_reject",  metavar="F",   type=float, default=0.05,
+        help="Umbral de colapso del SCS (por defecto: 0.05).")
+    _cli_parser.add_argument("--gamma",         metavar="F",   type=float, default=0.1,
+        help="Exponente de penalización de competencia CI (por defecto: 0.1).")
 
     _cli_args, _unknown = _cli_parser.parse_known_args()
 
@@ -925,4 +1108,9 @@ if __name__ == "__main__":
         _CLI_MAX_DEPTH      = _cli_args.max_depth
         _CLI_MIN_SAMPLES    = _cli_args.min_samples_split
         _CLI_NO_BROWSER     = _cli_args.no_browser
+        _CLI_MODE           = _cli_args.mode
+        _CLI_B              = _cli_args.B
+        _CLI_THETA_ACCEPT   = _cli_args.theta_accept
+        _CLI_THETA_REJECT   = _cli_args.theta_reject
+        _CLI_GAMMA          = _cli_args.gamma
         main()

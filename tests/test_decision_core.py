@@ -1,6 +1,6 @@
-"""
+﻿"""
 =========================================================
-PyC45 Tests
+MetaCog-C45 Tests
 Unit & Integration Testing Suite for Decision Core
 =========================================================
 

@@ -1,11 +1,11 @@
-"""
+﻿"""
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 Best Split Finder
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 
 Descripción:
 Busca automáticamente el mejor atributo y el mejor

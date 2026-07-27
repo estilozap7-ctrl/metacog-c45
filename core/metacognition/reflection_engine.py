@@ -1,11 +1,11 @@
-"""
+﻿"""
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 Reflection Engine and Metacognitive Modules (Stabilized)
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo / Antigravity
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 Descripción:
 Implementa el ReflectionEngine y las estrategias de evaluación
 de estabilidad (NodeStability y ThresholdSurvival) con soporte

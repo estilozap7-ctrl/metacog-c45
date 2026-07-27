@@ -1,11 +1,11 @@
-"""
+﻿"""
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 C45Classifier — Dual Mode (Classic | MetaCog-C45)
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 
 Descripción:
 Clase pública principal del framework PyC45 / MetaCog-C45.

@@ -105,6 +105,49 @@ def _build_parser() -> argparse.ArgumentParser:
     )
 
     parser.add_argument(
+        "--mode",
+        choices=["classic", "metacog"],
+        default="metacog",
+        help=(
+            "Modo de inducción: 'classic' para C4.5 estándar "
+            "o 'metacog' para MetaCog-C45 con el Decision Core completo. "
+            "Por defecto: metacog."
+        ),
+    )
+
+    parser.add_argument(
+        "--B",
+        metavar="N",
+        type=int,
+        default=50,
+        help="Réplicas bootstrap del Reflection Engine (solo modo metacog, por defecto: 50).",
+    )
+
+    parser.add_argument(
+        "--theta_accept",
+        metavar="F",
+        type=float,
+        default=0.5,
+        help="Umbral de aceptación del SCS (por defecto: 0.5).",
+    )
+
+    parser.add_argument(
+        "--theta_reject",
+        metavar="F",
+        type=float,
+        default=0.05,
+        help="Umbral de colapso del SCS (por defecto: 0.05).",
+    )
+
+    parser.add_argument(
+        "--gamma",
+        metavar="F",
+        type=float,
+        default=0.1,
+        help="Exponente de penalización de competencia CI (por defecto: 0.1).",
+    )
+
+    parser.add_argument(
         "--version",
         action="version",
         version=f"MetaCog-C45 {__version__}",
@@ -155,6 +198,12 @@ def main() -> None:
         cmd += ["--min_samples_split", str(args.min_samples_split)]
     if args.no_browser:
         cmd += ["--no_browser"]
+    # ── Propagar argumentos del Sistema 2 ──────────────────────────────────
+    cmd += ["--mode", args.mode]
+    cmd += ["--B", str(args.B)]
+    cmd += ["--theta_accept", str(args.theta_accept)]
+    cmd += ["--theta_reject", str(args.theta_reject)]
+    cmd += ["--gamma", str(args.gamma)]
 
     # Delegar ejecución al script principal
     try:

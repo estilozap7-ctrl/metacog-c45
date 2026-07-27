@@ -1,11 +1,11 @@
-"""
+﻿"""
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 ROC and AUC Evaluation
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 
 Descripción:
 Implementa el cálculo y visualización de la curva ROC y el área bajo la curva (AUC).
@@ -98,7 +98,7 @@ class ROCAUCCalculator:
         }
 
     @staticmethod
-    def plot(roc_data, title="Curva ROC - PyC45", figsize=(8, 6)):
+    def plot(roc_data, title="Curva ROC - MetaCog-C45", figsize=(8, 6)):
         """
         Grafica la curva ROC a partir de los datos de evaluación calculados.
 

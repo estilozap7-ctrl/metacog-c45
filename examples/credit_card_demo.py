@@ -1,6 +1,6 @@
-"""
+﻿"""
 =========================================================
-PyC45 Examples
+MetaCog-C45 Examples
 Credit Card Default Prediction (Predicción de Impago)
 =========================================================
 

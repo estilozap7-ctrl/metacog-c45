@@ -1,11 +1,11 @@
-"""
+﻿"""
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 Main Demonstration Script (Script Principal)
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 
 Descripción:
 Punto de entrada principal para ejecutar una simulación del pipeline completo
@@ -34,7 +34,7 @@ from visualization.feature_importance import FeatureImportance
 
 def main():
     print("=" * 70)
-    print("                 BIENVENIDO A PYC45 FRAMEWORK")
+    print("                 BIENVENIDO A MetaCog-C45 Framework")
     print("=" * 70)
 
     # 1. Generación de un conjunto de datos sintético realista

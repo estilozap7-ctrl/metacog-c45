@@ -1,5 +1,5 @@
 /* =========================================================
-   PyC45 Interactive Slides — CSS Design System
+   MetaCog-C45 Interactive Slides — CSS Design System
    ========================================================= */
 
 @import url('styles.css');
@@ -568,3 +568,227 @@ body {
     display: none;
   }
 }
+
+/* =========================================================
+   Scientific Presentation Extensions (System 2 & Defense)
+   ========================================================= */
+
+.math-grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.math-metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.math-metric-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-light);
+}
+
+.math-metric-card .card-header-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.math-metric-card .metric-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--accent-light);
+}
+
+.math-metric-card .metric-range {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background: rgba(108, 99, 255, 0.15);
+  color: #a5b4fc;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  border: 1px solid rgba(108, 99, 255, 0.3);
+}
+
+.math-metric-card .formula-box {
+  background: rgba(10, 11, 16, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.8rem;
+  margin: 0.4rem 0;
+  font-family: 'STIX Two Math', 'Cambria Math', 'Times New Roman', serif;
+  font-size: 1rem;
+  color: var(--warning);
+  text-align: center;
+}
+
+.math-metric-card .concept-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin: 0.4rem 0;
+}
+
+.math-metric-card .decision-effect {
+  font-size: 0.78rem;
+  background: rgba(0, 212, 170, 0.08);
+  border-left: 3px solid var(--success);
+  padding: 0.4rem 0.6rem;
+  border-radius: 0 4px 4px 0;
+  color: var(--text-primary);
+  margin-top: 0.4rem;
+}
+
+/* 2-Level Dual Pipeline Diagram */
+.dual-pipeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.pipeline-level-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.2rem;
+}
+
+.pipeline-level-card.level-1 {
+  border-left: 4px solid var(--accent);
+}
+
+.pipeline-level-card.level-2 {
+  border-left: 4px solid var(--success);
+  background: linear-gradient(135deg, rgba(26, 29, 39, 0.9) 0%, rgba(0, 212, 170, 0.05) 100%);
+}
+
+.pipeline-level-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.pipeline-level-header .level-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.level-1 .level-badge {
+  background: rgba(108, 99, 255, 0.2);
+  color: var(--accent-light);
+}
+
+.level-2 .level-badge {
+  background: rgba(0, 212, 170, 0.2);
+  color: var(--success);
+}
+
+.pipeline-level-header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Scientific Comparison Matrix Table */
+.comparison-table-scientific {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  font-size: 0.88rem;
+}
+
+.comparison-table-scientific th {
+  background: rgba(108, 99, 255, 0.15);
+  color: var(--accent-light);
+  font-weight: 700;
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.comparison-table-scientific td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  line-height: 1.45;
+}
+
+.comparison-table-scientific tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.mode-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.mode-badge.classic {
+  background: rgba(255, 107, 107, 0.15);
+  color: var(--danger);
+}
+
+.mode-badge.metacog {
+  background: rgba(0, 212, 170, 0.15);
+  color: var(--success);
+}
+
+/* Scientific Contribution Cards */
+.contribution-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.contribution-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+
+.contribution-card.limitations {
+  border-top: 3px solid var(--danger);
+}
+
+.contribution-card.advances {
+  border-top: 3px solid var(--success);
+}
+
+.contribution-card h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contribution-card ul {
+  padding-left: 1.2rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+

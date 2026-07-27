@@ -1,11 +1,11 @@
-"""
+﻿"""
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 ExperienceStatistics
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo / Antigravity
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 Descripción:
 Módulo encargado de computar estadísticas consolidadas y métricas
 de aprendizaje del árbol, incluyendo la importancia metacognitiva

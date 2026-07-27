@@ -1,5 +1,5 @@
 /* =========================================================
-   PyC45 Technical Report – Design System
+   MetaCog-C45 Technical Report – Design System
    ========================================================= */
 
 /* ---------- Google Fonts ---------- */
@@ -492,3 +492,59 @@ tbody tr:last-child td { border-bottom: none; }
   .hero { padding: 3rem 0 2rem; }
   .card { padding: 1.5rem; }
 }
+
+/* ---------- System 2 (Metacognitive) Styles ---------- */
+.card-system2 {
+  background: var(--bg-card);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.08);
+}
+
+.verdict-badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.verdict-badge.accept   { background: rgba(0, 212, 170, 0.15); color: #00d4aa; border: 1px solid rgba(0, 212, 170, 0.35); }
+.verdict-badge.review   { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.35); }
+.verdict-badge.defer    { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); }
+.verdict-badge.collapse { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.35); }
+
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: #a78bfa;
+  font-weight: 600;
+}
+.status-indicator .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #a78bfa;
+  box-shadow: 0 0 8px #a78bfa;
+}
+
+.scs-bar-bg {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.scs-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8b5cf6, #00d4aa);
+  border-radius: 3px;
+}
+

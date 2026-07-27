@@ -1,6 +1,6 @@
 """
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 Markdown to PDF Converter (Generador de PDF)
 =========================================================
 
@@ -62,7 +62,7 @@ class PDFManual(FPDF):
         if self.page_no() > 1:
             self.set_font("Arial", "I", 8)
             self.set_text_color(113, 113, 122) # Gris oscuro
-            self.cell(0, 10, "Manual de Usuario - PyC45 Framework", border=0, align="R", new_x="LMARGIN", new_y="NEXT")
+            self.cell(0, 10, "Manual de Usuario - MetaCog-C45 Framework", border=0, align="R", new_x="LMARGIN", new_y="NEXT")
             # Línea sutil
             self.set_draw_color(108, 99, 255)
             self.set_line_width(0.2)
@@ -114,7 +114,7 @@ def generate_pdf():
     # Subtítulo de la portada
     pdf.set_font("Arial", "B", 18)
     pdf.set_text_color(16, 18, 26) # Color oscuro
-    pdf.cell(0, 12, "Implementación de PyC45 con Nuevos Datasets", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 12, "Implementación de MetaCog-C45 con Nuevos Datasets", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.ln(10)
     
     # Separador visual
@@ -134,7 +134,7 @@ def generate_pdf():
     pdf.cell(0, 6, "Autor: Luis Alberto Buelvas Cogollo", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.set_font("Arial", "", 9)
     pdf.set_text_color(113, 113, 122)
-    pdf.cell(0, 6, "Framework: PyC45 (v1.0.0)", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 6, "Framework: MetaCog-C45 (v1.0.0)", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.cell(0, 6, "Fecha: Julio 2026", align="C", new_x="LMARGIN", new_y="NEXT")
 
     # Iniciar Contenido

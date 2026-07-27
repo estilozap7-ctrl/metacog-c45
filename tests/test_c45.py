@@ -1,10 +1,10 @@
-"""
+﻿"""
 =========================================================
-PyC45 Tests
+MetaCog-C45 Tests
 Unit Testing Suite
 =========================================================
 
-Verifica la exactitud matemática y lógica de todo el framework PyC45.
+Verifica la exactitud matemática y lógica de todo el framework MetaCog-C45.
 =========================================================
 """
 

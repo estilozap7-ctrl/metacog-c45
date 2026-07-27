@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PyC45 — Informe Técnico de Clasificación C4.5</title>
-  <meta name="description" content="Informe técnico empresarial del análisis de predicción de impago de tarjetas de crédito usando el algoritmo de árbol de decisión C4.5 implementado en PyC45."/>
+  <title>MetaCog-C45 — Reporte Técnico Científico del Framework</title>
+  <meta name="description" content="Reporte técnico científico del framework metacognitivo MetaCog-C45 (Sistema 1 + Sistema 2) — evaluación experimental, trazabilidad y validación."/>
   <link rel="stylesheet" href="styles.css"/>
   <style>
     /* Timeline decision path */
@@ -172,34 +172,25 @@
 <!-- Loading Overlay -->
 <div class="loading-overlay" id="loadingOverlay">
   <div class="spinner"></div>
-  <p style="color:var(--text-muted);font-size:0.9rem;">Cargando informe técnico...</p>
+  <p style="color:var(--text-muted);font-size:0.9rem;">Cargando Dashboard Científico de MetaCog-C45...</p>
 </div>
 
 <!-- Header / Hero -->
 <header class="hero">
   <div class="container">
-    <div class="hero-badge">
-      <span class="icon">🤖</span>
-      Informe Técnico — Machine Learning
+    <div class="hero-badge" style="background: rgba(139, 92, 246, 0.15); border-color: rgba(139, 92, 246, 0.4); color: #a78bfa;">
+      <span class="icon">🧠</span>
+      MetaCog-C45 Framework · Release 1.0 — Investigación Científica
     </div>
-    <h1 id="hero-title">Predicción de Impago de Tarjetas de Crédito</h1>
+    <h1 id="hero-title">MetaCog-C45: Framework Metacognitivo de Clasificación</h1>
     <p class="hero-subtitle">
-      Análisis completo con el algoritmo <strong>C4.5</strong> implementado en PyC45 —
-      metodología, resultados y evaluación para presentación empresarial.
+      Arquitectura dual de razonamiento (Sistema 1 + Sistema 2) — evaluación experimental, trazabilidad cognitiva y validación de hipótesis para tesis de maestría.
     </p>
     <div class="hero-meta">
-      <span class="hero-meta-item" id="hero-dataset"><span class="icon">📊</span> Dataset: UCI Credit Card</span>
-      <span class="hero-meta-item"><span class="icon">🌳</span> Algoritmo: C4.5 (Decision Tree)</span>
-      <span class="hero-meta-item"><span class="icon">🏢</span> Autor: Luis Alberto Buelvas Cogollo</span>
-      <span class="hero-meta-item"><span class="icon">📅</span> Framework: PyC45</span>
-    </div>
-    <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-      <a href="presentacion.html" class="hero-badge" style="background:var(--accent-dim); border-color:var(--accent); color:var(--accent-light); font-weight:600; text-decoration:none; cursor:pointer;">
-        🖥️ Ver Presentación Interactiva (Slides)
-      </a>
-      <a href="manual_de_usuario.pdf" download="manual_de_usuario.pdf" class="hero-badge" style="background:var(--success-dim); border-color:var(--success); color:var(--success); font-weight:600; text-decoration:none; cursor:pointer;">
-        📥 Descargar Manual de Usuario (PDF)
-      </a>
+      <span class="hero-meta-item" id="hero-dataset"><span class="icon">📊</span> Dataset: customer_churn.csv</span>
+      <span class="hero-meta-item"><span class="icon">🌳</span> Modelo: Dual System (C4.5 + Decision Core)</span>
+      <span class="hero-meta-item"><span class="icon">🎓</span> Investigación: Maestría en IA e Ing. del Conocimiento</span>
+      <span class="hero-meta-item"><span class="icon">🚀</span> Framework: MetaCog-C45</span>
     </div>
   </div>
 </header>
@@ -209,19 +200,19 @@
   <div class="container">
     <div class="toc-inner">
       <a href="#seccion-dataset"        class="toc-link">1. Dataset</a>
-      <a href="#seccion-algoritmo"       class="toc-link">2. Algoritmo C4.5</a>
-      <a href="#seccion-metodologia"     class="toc-link">3. Metodología</a>
-      <a href="#seccion-arbol"           class="toc-link">4. Árbol</a>
-      <a href="#seccion-poda"            class="toc-link">5. Poda</a>
-      <a href="#seccion-metricas"        class="toc-link">6. Métricas</a>
-      <a href="#seccion-roc"             class="toc-link">7. ROC</a>
-      <a href="#seccion-importancia"     class="toc-link">8. Importancia</a>
-      <a href="#seccion-conclusiones"    class="toc-link">9. Conclusiones</a>
-      <a href="#seccion-sistema"         class="toc-link">10. Sistema</a>
-      <a href="#seccion-comparacion"     class="toc-link">11. Comparación</a>
-      <a href="#seccion-explicabilidad"  class="toc-link">12. Explicabilidad</a>
-      <a href="#seccion-negocio"         class="toc-link">13. Negocio</a>
-      <a href="#seccion-exportacion"     class="toc-link">14. Exportar</a>
+      <a href="#seccion-algoritmo"       class="toc-link">2. Arquitectura Dual</a>
+      <a href="#seccion-sistema-2"       class="toc-link">3. Sistema 2 (Metacognición)</a>
+      <a href="#seccion-metodologia"     class="toc-link">4. Metodología</a>
+      <a href="#seccion-arbol"           class="toc-link">5. Árbol</a>
+      <a href="#seccion-poda"            class="toc-link">6. Poda (REP)</a>
+      <a href="#seccion-metricas"        class="toc-link">7. Métricas</a>
+      <a href="#seccion-roc"             class="toc-link">8. ROC</a>
+      <a href="#seccion-importancia"     class="toc-link">9. Importancia (MFI)</a>
+      <a href="#seccion-comparacion-modos" class="toc-link">10. Classic vs MetaCog</a>
+      <a href="#seccion-sistema"         class="toc-link">11. Rendimiento</a>
+      <a href="#seccion-explicabilidad"  class="toc-link">12. Explicabilidad (XAI)</a>
+      <a href="#seccion-negocio"         class="toc-link">13. Impacto</a>
+      <a href="#seccion-exportacion"     class="toc-link">14. Exportar Código</a>
       <a href="#seccion-resumen"         class="toc-link">15. Resumen</a>
     </div>
   </div>
@@ -232,13 +223,9 @@
   <!-- ========== 1. DATASET ========== -->
   <section class="section fade-in" id="seccion-dataset">
     <span class="section-number">Sección 01</span>
-    <h2 id="desc-dataset-title">📁 Descripción del Dataset</h2>
+    <h2 id="desc-dataset-title">📁 Descripción del Dataset Evaluado</h2>
     <p style="margin-bottom:1.5rem;" id="desc-dataset-text">
-      El dataset empleado es el <strong>Default of Credit Card Clients</strong> del repositorio UCI Machine Learning.
-      Contiene información de comportamiento de pago de <strong id="totalRows">30,000</strong> clientes
-      de una institución bancaria de Taiwán durante el período de abril a septiembre de 2005.
-      La variable objetivo es <code>default payment next month</code> —
-      si el cliente incurrirá en impago en el siguiente mes.
+      Cargando información del dataset...
     </p>
 
     <div class="stats-grid" id="datasetKpis"></div>
@@ -248,23 +235,13 @@
         <div class="card-icon accent">📋</div>
         <div>
           <h3>Variables Predictoras</h3>
-          <p style="font-size:0.85rem; color:var(--text-muted);" id="variables-subtitle">23 atributos después de eliminar el identificador <code>ID</code></p>
+          <p style="font-size:0.85rem; color:var(--text-muted);" id="variables-subtitle">Estructura del conjunto de datos</p>
         </div>
       </div>
       <div class="table-wrap">
         <table id="variables-table">
-          <thead><tr><th>Variable</th><th>Descripción</th><th>Tipo</th></tr></thead>
-          <tbody>
-            <tr><td><code>LIMIT_BAL</code></td><td>Límite de crédito (NT dólares)</td><td>Numérica</td></tr>
-            <tr><td><code>SEX</code></td><td>Género (1=Masculino, 2=Femenino)</td><td>Categórica</td></tr>
-            <tr><td><code>EDUCATION</code></td><td>Nivel educativo (1=Posgrado, 2=Universidad, 3=Secundaria, 4=Otros)</td><td>Categórica</td></tr>
-            <tr><td><code>MARRIAGE</code></td><td>Estado civil (1=Casado, 2=Soltero, 3=Otros)</td><td>Categórica</td></tr>
-            <tr><td><code>AGE</code></td><td>Edad del cliente</td><td>Numérica</td></tr>
-            <tr><td><code>PAY_0 – PAY_6</code></td><td>Estado de pago mensual (sep–abr 2005). −1=A tiempo, 1–9=Meses de retraso</td><td>Ordinal</td></tr>
-            <tr><td><code>BILL_AMT1 – BILL_AMT6</code></td><td>Monto facturado mensual (NT dólares)</td><td>Numérica</td></tr>
-            <tr><td><code>PAY_AMT1 – PAY_AMT6</code></td><td>Monto pagado mensual (NT dólares)</td><td>Numérica</td></tr>
-            <tr><td><code>default payment next month</code></td><td><strong>Variable objetivo</strong> (1=Impago, 0=Sin impago)</td><td>Binaria</td></tr>
-          </tbody>
+          <thead><tr><th>Variable</th><th>Función</th><th>Tipo de Dato</th></tr></thead>
+          <tbody></tbody>
         </table>
       </div>
     </div>
@@ -272,12 +249,7 @@
     <div class="card fade-in">
       <div class="card-header">
         <div class="card-icon warning">⚖️</div>
-        <h3>Distribución de Clases (Muestra de 1000 registros)</h3>
-      </div>
-      <div class="info-box warning">
-        <strong>⚠️ Desbalance de clases:</strong> El dataset presenta desbalance de clases —
-        aproximadamente el 22% de los clientes incurre en impago.
-        Este factor influye directamente en la interpretación de las métricas de evaluación.
+        <h3>Distribución de Clases</h3>
       </div>
       <div class="chart-container">
         <img id="chartClassDist" src="" alt="Distribución de clases"/>
@@ -285,90 +257,203 @@
     </div>
   </section>
 
-  <!-- ========== 2. ALGORITMO ========== -->
+  <!-- ========== 2. ARQUITECTURA DUAL ========== -->
   <section class="section fade-in" id="seccion-algoritmo">
     <span class="section-number">Sección 02</span>
-    <h2>🧬 El Algoritmo C4.5</h2>
+    <h2>🧬 MetaCog-C45: Arquitectura Dual (Sistema 1 + Sistema 2)</h2>
     <p style="margin-bottom:1.5rem;">
-      C4.5 es una extensión del algoritmo ID3, desarrollado por <strong>Ross Quinlan</strong> en 1993.
-      Es uno de los algoritmos de aprendizaje automático más influyentes, siendo
-      el primero en utilizar el <strong>Gain Ratio</strong> como criterio de selección de atributos
-      para corregir el sesgo del Gain de Información hacia variables de alta cardinalidad.
+      MetaCog-C45 extiende el algoritmo clásico <strong>C4.5 (Quinlan, 1993)</strong> incorporando un <strong>Motor Metacognitivo de Sistema 2</strong> inspirado en las teorías de doble proceso de la ciencia cognitiva.
     </p>
 
     <div class="comparison-grid">
+      <!-- Sistema 1 -->
       <div class="card">
         <div class="card-header">
-          <div class="card-icon accent">🔬</div>
-          <h3>Entropía de Shannon</h3>
+          <div class="card-icon accent">⚡</div>
+          <h3>Sistema 1 — C4.5 Inductivo Base</h3>
         </div>
-        <p>Mide la impureza o incertidumbre de un nodo. A mayor entropía, mayor mezcla de clases.</p>
-        <span class="formula">H(S) = −Σ pᵢ · log₂(pᵢ)</span>
-        <p>Donde <code>pᵢ</code> es la proporción de la clase <em>i</em> en el conjunto <em>S</em>.
-           Alcanza su máximo (1.0 bit) cuando las clases están equipartidas y es 0 cuando el nodo es puro.</p>
-        <div class="chart-container" style="margin-top:1rem;">
-          <img id="chartEntropy" src="" alt="Función de Entropía"/>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon success">📈</div>
-          <h3>Gain Ratio (Criterio C4.5)</h3>
-        </div>
-        <p>Normaliza la Ganancia de Información dividiéndola por la información inherente de la partición (<em>Split Information</em>), evitando el sesgo hacia atributos con muchos valores:</p>
-        <span class="formula">IG(S, A) = H(S) − Σ (|Sᵥ|/|S|) · H(Sᵥ)</span>
-        <span class="formula">SI(S, A) = −Σ (|Sᵥ|/|S|) · log₂(|Sᵥ|/|S|)</span>
+        <p>Generación rápida y heurística de candidatos de división mediante criterio de <strong>Gain Ratio</strong> y entropía de Shannon.</p>
         <span class="formula">GR(S, A) = IG(S, A) / SI(S, A)</span>
         <div class="info-box method" style="margin-top:1rem;">
-          <strong>Ventaja clave:</strong> C4.5 maneja variables numéricas buscando el umbral óptimo de corte —
-          el punto que maximiza el Gain Ratio entre todos los candidatos.
+          <strong>Función:</strong> Selecciona el umbral numérico que maximiza la ganancia de información normalizada, reduciendo el sesgo hacia atributos continuos.
+        </div>
+      </div>
+
+      <!-- Sistema 2 -->
+      <div class="card card-system2">
+        <div class="card-header">
+          <div class="card-icon" style="color:#a78bfa;">🧠</div>
+          <h3>Sistema 2 — Decision Core Metacognitivo</h3>
+        </div>
+        <p>Evaluación deliberativa del candidato mediante perturbed bootstrap sampling y cálculo de utilidad Cobb-Douglas:</p>
+        <span class="formula" style="color:#a78bfa;">SCS = GR · NS^(α) · TS^(β) · (1 − CI)^(γ)</span>
+        <div class="info-box method" style="margin-top:1rem; border-color: rgba(139,92,246,0.3); background: rgba(139,92,246,0.06);">
+          <strong>Componentes claves:</strong> Node Stability (NS), Threshold Survival (TS), Competitiveness Index (CI), MetaMemory e indexación de DecisionTrace.
+        </div>
+      </div>
+    </div>
+
+    <!-- Diagrama de Flujo del Framework -->
+    <div class="card fade-in" style="margin-top:1.5rem;">
+      <h3 style="margin-bottom:1rem;">🔄 Diagrama de Flujo del Framework MetaCog-C45</h3>
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; text-align:center; padding:1rem 0;">
+        <div style="flex:1; min-width:120px; background:var(--bg-primary); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+          <div style="font-size:1.5rem;">📊</div>
+          <strong style="font-size:0.85rem; color:var(--accent-light);">Datos de Entrada</strong>
+        </div>
+        <div style="color:var(--text-muted); font-weight:bold;">➔</div>
+        <div style="flex:1; min-width:120px; background:var(--bg-primary); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-color);">
+          <div style="font-size:1.5rem;">⚡</div>
+          <strong style="font-size:0.85rem; color:var(--text-primary);">Sistema 1 (C4.5)</strong>
+          <div style="font-size:0.75rem; color:var(--text-muted);">Top-K Candidates</div>
+        </div>
+        <div style="color:var(--text-muted); font-weight:bold;">➔</div>
+        <div style="flex:1; min-width:120px; background:var(--bg-primary); padding:1rem; border-radius:var(--radius-md); border:1px solid rgba(139,92,246,0.3);">
+          <div style="font-size:1.5rem;">🔬</div>
+          <strong style="font-size:0.85rem; color:#a78bfa;">Reflection Engine</strong>
+          <div style="font-size:0.75rem; color:var(--text-muted);">Perturbed Bootstrap</div>
+        </div>
+        <div style="color:var(--text-muted); font-weight:bold;">➔</div>
+        <div style="flex:1; min-width:120px; background:var(--bg-primary); padding:1rem; border-radius:var(--radius-md); border:1px solid rgba(139,92,246,0.3);">
+          <div style="font-size:1.5rem;">⚖️</div>
+          <strong style="font-size:0.85rem; color:#a78bfa;">Decision Core</strong>
+          <div style="font-size:0.75rem; color:var(--text-muted);">SCS & Policy</div>
+        </div>
+        <div style="color:var(--text-muted); font-weight:bold;">➔</div>
+        <div style="flex:1; min-width:120px; background:var(--bg-primary); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--success-dim);">
+          <div style="font-size:1.5rem;">💾</div>
+          <strong style="font-size:0.85rem; color:var(--success);">MetaMemory</strong>
+          <div style="font-size:0.75rem; color:var(--text-muted);">DecisionTraces</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 3. METODOLOGÍA ========== -->
-  <section class="section fade-in" id="seccion-metodologia">
+  <!-- ========== 3. SISTEMA 2 (NUEVA SECCIÓN) ========== -->
+  <section class="section fade-in" id="seccion-sistema-2">
     <span class="section-number">Sección 03</span>
-    <h2>⚙️ Metodología Aplicada</h2>
+    <h2>🧠 Sistema 2 – Análisis Metacognitivo</h2>
+    <p style="margin-bottom:1.5rem;">
+      Resultados generados por el <strong>Decision Core</strong>, <strong>Reflection Engine</strong> y <strong>MetaMemory</strong> durante la inducción del árbol de decisión.
+    </p>
+
+    <!-- Indicadores de Estado del Sistema -->
+    <div class="card card-system2 fade-in" style="margin-bottom:1.5rem;">
+      <div class="card-header">
+        <div class="card-icon" style="color:#a78bfa;">🛡️</div>
+        <h3>Estado Operativo de los Módulos Metacognitivos</h3>
+      </div>
+      <div id="system2StatusBadges" style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.5rem;"></div>
+    </div>
+
+    <!-- KPIs Globales de Metacognición -->
+    <div class="stats-grid" id="system2GlobalKpis"></div>
+
+    <!-- Veredictos del Decision Core -->
+    <div class="comparison-grid" style="margin-top:1.5rem;">
+      <div class="card card-system2">
+        <div class="card-header">
+          <div class="card-icon" style="color:#a78bfa;">⚖️</div>
+          <h3>Distribución de Veredictos de División</h3>
+        </div>
+        <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:1rem;">
+          Frecuencia de decisiones tomadas por el Decision Core al evaluar candidatos de corte.
+        </p>
+        <div id="verdictBreakdown" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+      </div>
+
+      <!-- Resumen Estadístico de SCS -->
+      <div class="card card-system2">
+        <div class="card-header">
+          <div class="card-icon" style="color:#a78bfa;">📊</div>
+          <h3>Estadísticas del Split Confidence Score (SCS)</h3>
+        </div>
+        <div id="scsStatsTable"></div>
+      </div>
+    </div>
+
+    <!-- Importancia Metacognitiva de Características (MFI) -->
+    <div class="card card-system2 fade-in" style="margin-top:1.5rem;">
+      <div class="card-header">
+        <div class="card-icon" style="color:#a78bfa;">🏆</div>
+        <div>
+          <h3>Importancia Metacognitiva de Características (MFI)</h3>
+          <p style="font-size:0.85rem; color:var(--text-muted);">MFI(X_j) = Σ_{u ∈ splits(X_j)} n_u · NS(u) · TS(u)</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="mfiTable">
+          <thead><tr><th>#</th><th>Variable</th><th>MFI Normalizado</th><th>Estabilidad Ponderada</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tabla de Auditoría DecisionTrace -->
+    <div class="card card-system2 fade-in" style="margin-top:1.5rem;">
+      <div class="card-header">
+        <div class="card-icon" style="color:#a78bfa;">📜</div>
+        <div>
+          <h3>MetaMemory — Registro Histórico de DecisionTrace</h3>
+          <p style="font-size:0.85rem; color:var(--text-muted);">Trazabilidad cognitiva nodo por nodo (auditable e indexada)</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Nodo</th>
+              <th>Prof.</th>
+              <th>Variable</th>
+              <th>Umbral</th>
+              <th>GR</th>
+              <th>SCS</th>
+              <th>NS</th>
+              <th>TS</th>
+              <th>CI</th>
+              <th>Veredicto</th>
+              <th>Justificación XAI</th>
+            </tr>
+          </thead>
+          <tbody id="decisionTraceTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4. METODOLOGÍA ========== -->
+  <section class="section fade-in" id="seccion-metodologia">
+    <span class="section-number">Sección 04</span>
+    <h2>⚙️ Metodología del Experimento</h2>
 
     <div class="card">
       <div class="card-header">
         <div class="card-icon accent">🔄</div>
-        <h3>Pipeline de Análisis</h3>
+        <h3>Pipeline de Procesamiento</h3>
       </div>
       <div class="table-wrap">
         <table>
           <thead><tr><th>#</th><th>Etapa</th><th>Descripción</th><th>Parámetros</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>📥 <strong>Carga de Datos</strong></td><td>Lectura del archivo Excel (.xls) con 30,000 registros</td><td>—</td></tr>
-            <tr><td>2</td><td>🧹 <strong>Preprocesamiento</strong></td><td>Eliminación de la columna <code>ID</code> (sin valor predictivo)</td><td>—</td></tr>
-            <tr><td>3</td><td>🎲 <strong>Submuestreo</strong></td><td>Muestra aleatoria estratificada de 1,000 registros para reducir tiempo computacional de C4.5 puro</td><td><code>n=1000, seed=42</code></td></tr>
-            <tr><td>4</td><td>✂️ <strong>División</strong></td><td>Partición entrenamiento/validación sin librería externa</td><td><code>70% / 30%</code></td></tr>
-            <tr><td>5</td><td>🌳 <strong>Entrenamiento C4.5</strong></td><td>Construcción recursiva del árbol con criterio Gain Ratio</td><td id="hyperparamsTd">max_depth=4, min_samples=10</td></tr>
-            <tr><td>6</td><td>✂️ <strong>Poda (REP)</strong></td><td>Reduced Error Pruning — colapsa nodos que no mejoran exactitud en validación</td><td>Conjunto de validación</td></tr>
-            <tr><td>7</td><td>📊 <strong>Evaluación</strong></td><td>Matriz de Confusión, métricas completas y curva ROC-AUC</td><td>—</td></tr>
+            <tr><td>1</td><td>📥 <strong>Carga de Datos</strong></td><td>Lectura del dataset estructurado</td><td id="metaDatasetInfo">—</td></tr>
+            <tr><td>2</td><td>🧹 <strong>Preprocesamiento</strong></td><td>Limpieza e imputación simple de nulos</td><td>Automático</td></tr>
+            <tr><td>3</td><td>🎲 <strong>Submuestreo</strong></td><td>Submuestreo controlado para optimización de tiempo de ejecución C4.5</td><td><code>n=1500, seed=42</code></td></tr>
+            <tr><td>4</td><td>✂️ <strong>Partición</strong></td><td>División estratificada para validación cruzada interna</td><td><code>70% train / 30% val</code></td></tr>
+            <tr><td>5</td><td>🧠 <strong>MetaCog-C45</strong></td><td>Inducción con Sistema 1 + evaluación metacognitiva de Sistema 2</td><td id="hyperparamsTd">max_depth=5, B=50</td></tr>
+            <tr><td>6</td><td>✂️ <strong>Poda (REP)</strong></td><td>Reduced Error Pruning sobre el árbol de decisión resultante</td><td>Validation set</td></tr>
+            <tr><td>7</td><td>📊 <strong>Evaluación</strong></td><td>Métricas de desempeño, ROC-AUC, MFI y exportación a JSON</td><td>—</td></tr>
           </tbody>
         </table>
       </div>
     </div>
-
-    <div class="info-box insight">
-      <strong>ℹ️ Nota sobre Submuestreo:</strong>
-      C4.5 evalúa todos los puntos de corte posibles para cada variable numérica en cada nodo.
-      Con 30,000 registros y 23 variables, el tiempo de entrenamiento puede ser muy elevado en una implementación en Python puro.
-      El submuestreo de 1,000 registros mantiene representatividad estadística y reduce el tiempo de ejecución a segundos.
-    </div>
   </section>
 
-  <!-- ========== 4. ÁRBOL ========== -->
+  <!-- ========== 5. ÁRBOL ========== -->
   <section class="section fade-in" id="seccion-arbol">
-    <span class="section-number">Sección 04</span>
+    <span class="section-number">Sección 05</span>
     <h2>🌳 Árbol de Decisión Entrenado</h2>
     <p>
-      El árbol se construye de forma <strong>recursiva top-down</strong>. En cada nodo interno,
-      el algoritmo selecciona la variable y el umbral que maximizan el Gain Ratio.
-      La recursión termina al alcanzar los criterios de parada configurados.
+      Estructura jerárquica del árbol de decisión con anotación metacognitiva por nodo.
     </p>
 
     <div class="stats-grid" id="treeBeforeKpis"></div>
@@ -380,9 +465,7 @@
       </div>
       <div class="tree-display" id="treeBeforeText"></div>
       <div class="info-box method" style="margin-top:1rem;">
-        <strong>Lectura del árbol:</strong> Cada nodo interno muestra <code>Variable ≤ Umbral [GainRatio]</code>.
-        Las hojas (<em>🍃</em>) indican la clase predicha y el número de muestras de entrenamiento que llegaron a ese nodo.
-        El árbol se recorre de arriba a abajo: si la condición del nodo es verdadera, se va a la rama izquierda (<code>│</code>); si es falsa, a la rama derecha.
+        <strong>Lectura del árbol metacognitivo:</strong> Cada nodo muestra su variable y umbral de corte seleccionados, junto con sus métricas de reflexión (Gain Ratio, SCS, NS, TS, CI) y el veredicto del Decision Core.
       </div>
     </div>
 
@@ -397,23 +480,13 @@
     </div>
   </section>
 
-  <!-- ========== 5. PODA ========== -->
+  <!-- ========== 6. PODA ========== -->
   <section class="section fade-in" id="seccion-poda">
-    <span class="section-number">Sección 05</span>
+    <span class="section-number">Sección 06</span>
     <h2>✂️ Poda del Árbol (Reduced Error Pruning)</h2>
     <p>
-      La poda (<em>pruning</em>) es una técnica para reducir la complejidad del árbol y
-      combatir el sobreajuste. Se emplea la estrategia <strong>Poda por Error Reducido (REP)</strong>,
-      que opera de abajo hacia arriba (<em>bottom-up</em>) sobre el árbol ya construido.
+      Estrategia <strong>Reduced Error Pruning (REP)</strong> para controlar la complejidad y mitigar el sobreajuste.
     </p>
-
-    <div class="info-box method">
-      <strong>¿Cómo funciona REP?</strong><br/>
-      Para cada nodo interno cuyos dos hijos son hojas, se evalúa si
-      <em>colapsar</em> ese nodo a una hoja (prediciendo la clase mayoritaria)
-      mantiene o mejora la exactitud sobre el conjunto de validación.
-      Si la exactitud no disminuye, el nodo se poda. El proceso se repite de forma ascendente.
-    </div>
 
     <div class="comparison-grid">
       <div class="card">
@@ -443,44 +516,29 @@
     </div>
   </section>
 
-  <!-- ========== 6. MÉTRICAS ========== -->
+  <!-- ========== 7. MÉTRICAS ========== -->
   <section class="section fade-in" id="seccion-metricas">
-    <span class="section-number">Sección 06</span>
+    <span class="section-number">Sección 07</span>
     <h2>📊 Evaluación del Modelo — Métricas de Clasificación</h2>
-    <p style="margin-bottom:1.5rem;">
-      La evaluación se realizó sobre el <strong>conjunto de validación (30%)</strong>,
-      el cual no fue utilizado durante el entrenamiento, garantizando una estimación no sesgada del rendimiento real del modelo.
-    </p>
 
-    <div class="comparison-grid">
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon accent">🎯</div>
-          <h3>Matriz de Confusión</h3>
-        </div>
-        <div class="chart-container">
-          <img id="chartCM" src="" alt="Matriz de Confusión"/>
-        </div>
-        <div class="table-wrap" style="margin-top:1rem;">
-          <table>
-            <thead><tr><th>Tipo</th><th>Descripción</th><th>Cantidad</th></tr></thead>
-            <tbody id="cmTable"></tbody>
-          </table>
-        </div>
+    <div class="card fade-in">
+      <div class="card-header">
+        <div class="card-icon accent">🔳</div>
+        <h3>Matriz de Confusión</h3>
       </div>
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon success">📈</div>
-          <h3>Gráfico de Métricas</h3>
-        </div>
-        <div class="chart-container">
-          <img id="chartMetrics" src="" alt="Métricas de Clasificación"/>
-        </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tipo</th><th>Descripción</th><th>Conteo</th></tr></thead>
+          <tbody id="cmTable"></tbody>
+        </table>
       </div>
     </div>
 
     <div class="card fade-in">
-      <h3 style="margin-bottom:1.2rem;">📋 Tabla Completa de Métricas</h3>
+      <div class="card-header">
+        <div class="card-icon success">🎯</div>
+        <h3>Métricas Globales de Desempeño</h3>
+      </div>
       <div class="table-wrap">
         <table>
           <thead><tr><th>Métrica</th><th>Valor</th><th>Fórmula</th><th>Interpretación</th></tr></thead>
@@ -488,484 +546,165 @@
         </table>
       </div>
     </div>
-
-    <div class="info-box insight">
-      <strong>🔍 Análisis del Recall bajo:</strong>
-      El Recall de 27% indica que el modelo solo identifica correctamente 1 de cada 4 clientes que realmente incurrirán en impago.
-      Esto es consecuencia directa del <strong>desbalance de clases</strong> y de que el árbol C4.5 optimiza la exactitud global, no la detección de la clase minoritaria.
-      Para mejorar esto, se recomendaría aplicar técnicas como <em>SMOTE</em>, ajuste de pesos de clase, o un umbral de clasificación más bajo sobre las probabilidades predichas.
-    </div>
   </section>
 
-  <!-- ========== 7. ROC ========== -->
+  <!-- ========== 8. ROC ========== -->
   <section class="section fade-in" id="seccion-roc">
-    <span class="section-number">Sección 07</span>
-    <h2>📉 Curva ROC y Área Bajo la Curva (AUC)</h2>
-    <p style="margin-bottom:1.5rem;">
-      La curva ROC (<em>Receiver Operating Characteristic</em>) evalúa la capacidad discriminatoria del modelo
-      en todos los umbrales de clasificación posibles. El AUC resume esta capacidad en un único número.
-    </p>
-
-    <div class="comparison-grid">
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon accent">📉</div>
-          <h3>Curva ROC — Modelo PyC45</h3>
-        </div>
-        <div class="chart-container">
-          <img id="chartROC" src="" alt="Curva ROC"/>
-        </div>
-        <div style="text-align:center;margin-top:1rem;">
-          <span style="font-size:0.82rem;color:var(--text-muted)">AUC obtenido</span>
-          <div class="stat-value accent" id="aucValue" style="font-size:2.5rem;margin-top:4px;">—</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon warning">📖</div>
-          <h3>Interpretación del AUC</h3>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Rango AUC</th><th>Nivel</th><th>Significado</th></tr></thead>
-            <tbody>
-              <tr><td>1.00</td><td><span class="tag good">Perfecto</span></td><td>Clasificación sin errores</td></tr>
-              <tr><td>0.90 – 0.99</td><td><span class="tag good">Excelente</span></td><td>Alta discriminación</td></tr>
-              <tr><td>0.80 – 0.90</td><td><span class="tag good">Bueno</span></td><td>Buen poder predictivo</td></tr>
-              <tr><td>0.70 – 0.80</td><td><span class="tag ok">Aceptable</span></td><td>Discriminación moderada</td></tr>
-              <tr><td>0.60 – 0.70</td><td><span class="tag ok">Pobre</span></td><td>Discriminación débil</td></tr>
-              <tr><td>0.50 – 0.60</td><td><span class="tag bad">Muy Pobre</span></td><td>Cercano al azar</td></tr>
-              <tr><td>0.50</td><td><span class="tag bad">Sin valor</span></td><td>Equivalente a lanzar moneda</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="info-box result" style="margin-top:1rem;">
-          <strong id="aucInterpretation">Cargando interpretación...</strong>
-        </div>
-        <div class="info-box method" style="margin-top:1rem;">
-          <strong>¿Qué representa la curva?</strong><br/>
-          El <em>eje X</em> (FPR) muestra el porcentaje de clientes que <em>no</em> van a incumplir pero son clasificados como incumplidores (falsas alarmas).
-          El <em>eje Y</em> (TPR / Recall) muestra el porcentaje de incumplidores detectados correctamente.
-          La diagonal punteada representa un clasificador aleatorio.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 8. IMPORTANCIA ========== -->
-  <section class="section fade-in" id="seccion-importancia">
     <span class="section-number">Sección 08</span>
-    <h2>🔑 Importancia de Variables</h2>
-    <p style="margin-bottom:1.5rem;">
-      La importancia de variables en PyC45 se calcula como el <strong>Gain Ratio acumulado</strong>
-      de cada variable en todos los nodos del árbol, normalizado para sumar 1.0.
-      Variables que aparecen en nodos más cercanos a la raíz y con mayor Gain Ratio reciben mayor peso.
-    </p>
-
-    <div class="card fade-in">
+    <h2>📈 Análisis de Curva ROC y Área Bajo la Curva (AUC)</h2>
+    <div class="card">
       <div class="card-header">
-        <div class="card-icon accent">🔑</div>
-        <h3>Ranking de Variables Predictoras</h3>
+        <div class="card-icon success">📐</div>
+        <div>
+          <h3>Curva ROC — Modelo MetaCog-C45</h3>
+          <p style="font-size:0.85rem; color:var(--text-muted);">Capacidad de discriminación probabilística entre clases</p>
+        </div>
       </div>
       <div class="chart-container">
-        <img id="chartFI" src="" alt="Importancia de Variables"/>
+        <img id="chartROC" src="" alt="Curva ROC"/>
       </div>
-      <div class="table-wrap" style="margin-top:1rem;">
+      <div class="info-box insight" style="margin-top:1rem;">
+        <strong>Área Bajo la Curva ROC (AUC):</strong> <span id="aucValue" class="stat-value">0.0000</span>
+        <p id="aucInterpretation" style="margin-top:0.5rem; font-size:0.9rem;"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 9. IMPORTANCIA (MFI) ========== -->
+  <section class="section fade-in" id="seccion-importancia">
+    <span class="section-number">Sección 09</span>
+    <h2>🏆 Importancia de Variables en el Modelo</h2>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon accent">📊</div>
+        <h3>Ranking de Importancia de Atributos</h3>
+      </div>
+      <div class="table-wrap">
         <table>
-          <thead><tr><th>Posición</th><th>Variable</th><th>Importancia</th><th>Interpretación</th></tr></thead>
+          <thead><tr><th>Ranking</th><th>Variable</th><th>Importancia</th><th>Descripción / Función</th></tr></thead>
           <tbody id="fiTable"></tbody>
         </table>
       </div>
     </div>
-
-    <div class="info-box insight">
-      <strong>💡 Hallazgo clave:</strong>
-      La variable <code>PAY_0</code> (estado de pago de septiembre) domina la selección de atributos.
-      Un historial de retrasos recientes es el indicador más fuerte de impago futuro —
-      lo que concuerda con la literatura financiera sobre morosidad.
-    </div>
   </section>
 
-  <!-- ========== 9. CONCLUSIONES ========== -->
-  <section class="section fade-in" id="seccion-conclusiones">
-    <span class="section-number">Sección 09</span>
-    <h2>🏁 Conclusiones y Recomendaciones</h2>
-
-    <div class="stats-grid" id="finalKpis"></div>
-
-    <div class="card fade-in" style="margin-top:1.5rem;">
-      <div class="card-header">
-        <div class="card-icon success">✅</div>
-        <h3>Conclusiones del Análisis</h3>
-      </div>
-      <div class="info-box result">
-        <strong>1. El modelo es viable para scoring crediticio básico.</strong>
-        Con una exactitud del ~80% y un AUC de ~0.61, el árbol C4.5 proporciona una línea base interpretable.
-        Su mayor fortaleza es la <strong>transparencia</strong>: las reglas de decisión son auditables y explicables ante reguladores.
-      </div>
-      <div class="info-box warning">
-        <strong>2. Recall bajo requiere atención.</strong>
-        El modelo solo detecta el 27% de los clientes que realmente incumplirán.
-        En contextos de riesgo crediticio, los <strong>falsos negativos son costosos</strong>.
-        Se recomienda ajustar el umbral de probabilidad o aplicar técnicas de balanceo de clases.
-      </div>
-      <div class="info-box method">
-        <strong>3. La variable PAY_0 es crítica.</strong>
-        El estado de pago del mes más reciente concentra la mayor capacidad predictiva.
-        Estratégicamente, un sistema de alertas tempranas basado en pagos tardíos tendría alto impacto.
-      </div>
-      <div class="info-box insight">
-        <strong>4. La poda mejoró la generalización.</strong>
-        La poda REP redujo el árbol de <span id="nodesBeforeConc">—</span> a <span id="nodesAfterConc">—</span> nodos
-        manteniendo la misma exactitud en validación, lo que indica que las ramas eliminadas eran ruido de entrenamiento.
-      </div>
-    </div>
-
-    <div class="card fade-in">
-      <div class="card-header">
-        <div class="card-icon accent">🚀</div>
-        <h3>Recomendaciones para Producción</h3>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>#</th><th>Recomendación</th><th>Impacto Esperado</th><th>Prioridad</th></tr></thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Aplicar <strong>SMOTE</strong> o <em>class_weight</em> para el desbalance de clases</td>
-              <td>Aumento del Recall en 15–25%</td>
-              <td><span class="tag bad">Alta</span></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Entrenar con el dataset completo (30,000 registros) usando implementación optimizada</td>
-              <td>Mejor generalización y AUC ≥ 0.75</td>
-              <td><span class="tag bad">Alta</span></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Comparar con <strong>Random Forest</strong> o <strong>Gradient Boosting</strong></td>
-              <td>AUC esperado 0.80–0.85</td>
-              <td><span class="tag ok">Media</span></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Ajustar umbral de clasificación de 0.5 a 0.3 para maximizar Recall</td>
-              <td>Mejora Recall a ~55% con precisión aceptable</td>
-              <td><span class="tag ok">Media</span></td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>Implementar validación cruzada <em>k-fold</em> para estimaciones más robustas</td>
-              <td>Reducción de varianza en métricas</td>
-              <td><span class="tag good">Baja</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 10. SISTEMA & COMPLEJIDAD ========== -->
-  <section class="section fade-in" id="seccion-sistema">
+  <!-- ========== 10. COMPARACIÓN CLASSIC VS METACOG (NUEVA SECCIÓN) ========== -->
+  <section class="section fade-in" id="seccion-comparacion-modos">
     <span class="section-number">Sección 10</span>
-    <h2>⚙️ Sistema & Complejidad del Modelo</h2>
+    <h2>⚖️ Comparación de Capacidades: Classic vs. MetaCog-C45</h2>
     <p style="margin-bottom:1.5rem;">
-      Panel de rendimiento del framework PyC45: tiempos de ejecución, estimación de memoria
-      y complejidad algorítmica teórica del modelo entrenado.
+      Matriz comparativa de capacidades funcionales entre el modo inductivo clásico C4.5 y el framework MetaCog-C45.
     </p>
-    <div class="stats-grid" id="systemKpis"></div>
 
-    <div class="card fade-in" style="margin-top:1.5rem;">
-      <div class="card-header">
-        <div class="card-icon accent">📐</div>
-        <h3>Complejidad Algorítmica</h3>
-      </div>
+    <div class="card card-system2 fade-in">
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Fase</th><th>Complejidad</th><th>Descripción</th></tr></thead>
-          <tbody>
-            <tr>
-              <td><strong>Entrenamiento</strong></td>
-              <td><span class="formula" style="font-size:0.9rem;">O(n · d · log n)</span></td>
-              <td>n = muestras, d = dimensiones, log n = profundidad esperada</td>
-            </tr>
-            <tr>
-              <td><strong>Predicción</strong></td>
-              <td><span class="formula" style="font-size:0.9rem;">O(depth)</span></td>
-              <td>Traversal del árbol desde la raíz hasta una hoja</td>
-            </tr>
-            <tr>
-              <td><strong>Espacio</strong></td>
-              <td><span class="formula" style="font-size:0.9rem;">O(nodes)</span></td>
-              <td>Un nodo por cada split o hoja en el árbol final</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="stats-grid" id="treeStructureKpis" style="margin-top:1rem;"></div>
-  </section>
-
-  <!-- ========== 11. COMPARACIÓN SKLEARN ========== -->
-  <section class="section fade-in" id="seccion-comparacion">
-    <span class="section-number">Sección 11</span>
-    <h2>⚖️ Comparación PyC45 vs scikit-learn</h2>
-    <p style="margin-bottom:1.5rem;">
-      Comparación directa del framework PyC45 frente a la implementación de
-      <strong>Decision Tree Classifier</strong> de scikit-learn en las mismas condiciones
-      de datos y parámetros.
-    </p>
-    <div class="card fade-in">
-      <div class="card-header">
-        <div class="card-icon success">🏆</div>
-        <h3>Tabla Comparativa de Métricas</h3>
-      </div>
-      <div class="table-wrap">
-        <table id="sklearn-table">
           <thead>
             <tr>
-              <th>Métrica</th>
-              <th style="color:var(--accent)">PyC45</th>
-              <th style="color:var(--success)">scikit-learn DT</th>
-              <th>Diferencia</th>
+              <th>Capacidad / Métrica</th>
+              <th style="text-align:center;">Classic (`mode='classic'`)</th>
+              <th style="text-align:center; color:#a78bfa;">MetaCog-C45 (`mode='metacog'`)</th>
             </tr>
           </thead>
-          <tbody id="sklearn-table-body">
-            <tr><td colspan="4" style="text-align:center;color:var(--text-muted);">Cargando datos...</td></tr>
+          <tbody>
+            <tr><td>Gain Ratio (Quinlan, 1993)</td><td style="text-align:center;color:var(--success);">✓ Disponible</td><td style="text-align:center;color:var(--success);">✓ Disponible</td></tr>
+            <tr><td>Reflection Engine (Bootstrap Perturbation)</td><td style="text-align:center;color:var(--danger);">✗ No disponible</td><td style="text-align:center;color:var(--success);">✓ Activo (B=50)</td></tr>
+            <tr><td>Decision Core (SCS Cobb-Douglas)</td><td style="text-align:center;color:var(--danger);">✗ No disponible</td><td style="text-align:center;color:var(--success);">✓ Activo</td></tr>
+            <tr><td>Node Stability (NS)</td><td style="text-align:center;color:var(--danger);">✗ No disponible</td><td style="text-align:center;color:var(--success);">✓ Calculado</td></tr>
+            <tr><td>Threshold Survival (TS)</td><td style="text-align:center;color:var(--danger);">✗ No disponible</td><td style="text-align:center;color:var(--success);">✓ Calculado</td></tr>
+            <tr><td>Competitiveness Index (CI)</td><td style="text-align:center;color:var(--danger);">✗ No disponible</td><td style="text-align:center;color:var(--success);">✓ Calculado</td></tr>
+            <tr><td>MetaMemory Repository</td><td style="text-align:center;color:var(--danger);">✗ No disponible</td><td style="text-align:center;color:var(--success);">✓ Indexado</td></tr>
+            <tr><td>DecisionTrace Audit & Justifications</td><td style="text-align:center;color:var(--danger);">✗ No disponible</td><td style="text-align:center;color:var(--success);">✓ Registrado</td></tr>
+            <tr><td>Metacognitive Feature Importance (MFI)</td><td style="text-align:center;color:var(--danger);">✗ No disponible</td><td style="text-align:center;color:var(--success);">✓ Generado</td></tr>
           </tbody>
         </table>
       </div>
     </div>
   </section>
 
-  <!-- ========== 12. EXPLICABILIDAD INTERACTIVA ========== -->
+  <!-- ========== 11. SISTEMA & PERF ========== -->
+  <section class="section fade-in" id="seccion-sistema">
+    <span class="section-number">Sección 11</span>
+    <h2>💻 Rendimiento y Métricas del Sistema</h2>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon info">⚡</div>
+        <h3>Tiempos de Ejecución y Consumo</h3>
+      </div>
+      <div class="stats-grid" id="systemMetricsKpis"></div>
+    </div>
+  </section>
+
+  <!-- ========== 12. EXPLICABILIDAD ========== -->
   <section class="section fade-in" id="seccion-explicabilidad">
     <span class="section-number">Sección 12</span>
-    <h2>🔍 Explicabilidad Interactiva — Decision Path</h2>
-    <p style="margin-bottom:1.5rem;">
-      Selecciona una muestra de validación para visualizar el camino de decisión que el árbol
-      tomó para llegar a su predicción. Cada nodo muestra el criterio evaluado,
-      la dirección tomada, y la confianza acumulada.
-    </p>
-
-    <div class="card fade-in">
+    <h2>🔍 Explicabilidad de Muestras (Decision Paths)</h2>
+    <div class="card">
       <div class="card-header">
-        <div class="card-icon warning">🎯</div>
-        <h3>Selector de Muestra</h3>
+        <div class="card-icon accent">🧭</div>
+        <h3>Trazado de Caminos de Decisión para Muestras de Validación</h3>
       </div>
-      <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap; margin-bottom:1.5rem;">
-        <select id="sample-selector" style="
-          background: var(--bg-card);
-          border: 1px solid var(--border-color);
-          color: var(--text-primary);
-          padding: 0.6rem 1rem;
-          border-radius: var(--radius-sm);
-          font-family: inherit;
-          font-size: 0.95rem;
-          cursor: pointer;
-          min-width: 260px;
-        ">
-          <option value="">— Selecciona una muestra de validación —</option>
-        </select>
-        <div id="sample-badge" style="display:none;"></div>
-      </div>
-
-      <div id="path-timeline-container" style="display:none;">
-        <div style="display:flex; gap:1.5rem; margin-bottom:1rem; flex-wrap:wrap;">
-          <div class="stat-card" style="flex:1; min-width:160px;" id="path-result-card"></div>
-          <div class="stat-card" style="flex:1; min-width:160px;" id="path-confidence-card"></div>
-          <div class="stat-card" style="flex:1; min-width:160px;" id="path-depth-card"></div>
-        </div>
-        <div class="timeline" id="decision-path-timeline"></div>
-      </div>
-      <div id="path-placeholder" style="text-align:center; padding:3rem; color:var(--text-muted);">
-        <div style="font-size:3rem; margin-bottom:1rem;">🌳</div>
-        <p>Selecciona una muestra para ver el recorrido de decisión</p>
-      </div>
+      <div id="explainabilityTimeline"></div>
     </div>
   </section>
 
-  <!-- ========== 13. SIMULADOR FINANCIERO ========== -->
+  <!-- ========== 13. IMPACTO ========== -->
   <section class="section fade-in" id="seccion-negocio">
     <span class="section-number">Sección 13</span>
-    <h2>💼 Simulador de Impacto de Negocio</h2>
-    <p style="margin-bottom:1.5rem;">
-      Cuantificación financiera del valor real que el modelo aporta a la organización.
-      Estima el ahorro potencial al interceptar clientes en riesgo vs. el costo de los falsos positivos.
-    </p>
-    <div class="stats-grid" id="businessKpis"></div>
-
-    <div class="card fade-in" style="margin-top:1.5rem;">
+    <h2>💰 Estimación de Impacto y Valor Operativo</h2>
+    <div class="card">
       <div class="card-header">
-        <div class="card-icon success">💰</div>
-        <h3>Análisis Costo-Beneficio</h3>
+        <div class="card-icon success">💵</div>
+        <h3>Análisis de Eficiencia Operativa</h3>
       </div>
-      <div class="table-wrap">
-        <table id="business-table">
-          <thead>
-            <tr><th>Escenario</th><th>Descripción</th><th>Valor Estimado</th><th>Impacto</th></tr>
-          </thead>
-          <tbody id="business-table-body">
-            <tr><td colspan="4" style="text-align:center;color:var(--text-muted);">Cargando datos...</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="info-box insight" id="business-summary" style="margin-top:1rem;">
-        <strong>💡 Resumen financiero</strong> — Los datos se cargan dinámicamente del análisis.
-      </div>
+      <div id="businessImpactContent"></div>
     </div>
   </section>
 
-  <!-- ========== 14. EXPORTACIÓN DE CÓDIGO ========== -->
+  <!-- ========== 14. EXPORTACIÓN ========== -->
   <section class="section fade-in" id="seccion-exportacion">
     <span class="section-number">Sección 14</span>
-    <h2>📦 Exportación Inteligente de Reglas</h2>
-    <p style="margin-bottom:1.5rem;">
-      El árbol de decisión entrenado se traduce automáticamente a código deployable.
-      Copia las reglas en el lenguaje que necesites para producción.
-    </p>
-
-    <div class="card fade-in">
-      <div class="card-header">
-        <div class="card-icon accent">⚡</div>
-        <h3>Generador de Código</h3>
-      </div>
+    <h2>📦 Exportación de Código del Modelo</h2>
+    <div class="card">
       <div class="tabs-container">
         <div class="tabs-header">
-          <button class="tab-btn active" onclick="switchTab(event,'tab-sql')" id="btn-sql">🗄️ SQL CASE WHEN</button>
-          <button class="tab-btn" onclick="switchTab(event,'tab-python')" id="btn-python">🐍 Python Nativo</button>
-          <button class="tab-btn" onclick="switchTab(event,'tab-fastapi')" id="btn-fastapi">🚀 FastAPI Endpoint</button>
+          <button class="tab-btn active" onclick="switchTab(event, 'tab-sql')">SQL</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-python')">Python</button>
+          <button class="tab-btn" onclick="switchTab(event, 'tab-fastapi')">FastAPI</button>
         </div>
-
-        <div class="tab-pane active" id="tab-sql">
-          <div class="code-header-bar">
-            <span>📄 rules.sql</span>
-            <button class="copy-btn" onclick="copyCode('code-sql')">📋 Copiar</button>
-          </div>
-          <pre class="code-display"><code id="code-sql">-- Cargando reglas SQL...</code></pre>
+        <div id="tab-sql" class="tab-pane active">
+          <div class="code-header-bar"><span>SQL Query</span><button class="copy-btn" onclick="copyCode('code-sql')">Copiar</button></div>
+          <pre class="code-display"><code id="code-sql">-- Código SQL --</code></pre>
         </div>
-
-        <div class="tab-pane" id="tab-python">
-          <div class="code-header-bar">
-            <span>🐍 predict_c45.py</span>
-            <button class="copy-btn" onclick="copyCode('code-python')">📋 Copiar</button>
-          </div>
-          <pre class="code-display"><code id="code-python"># Cargando código Python...</code></pre>
+        <div id="tab-python" class="tab-pane">
+          <div class="code-header-bar"><span>Python Script</span><button class="copy-btn" onclick="copyCode('code-python')">Copiar</button></div>
+          <pre class="code-display"><code id="code-python"># Código Python --</code></pre>
         </div>
-
-        <div class="tab-pane" id="tab-fastapi">
-          <div class="code-header-bar">
-            <span>🚀 api_server.py</span>
-            <button class="copy-btn" onclick="copyCode('code-fastapi')">📋 Copiar</button>
-          </div>
-          <pre class="code-display"><code id="code-fastapi"># Cargando código FastAPI...</code></pre>
+        <div id="tab-fastapi" class="tab-pane">
+          <div class="code-header-bar"><span>FastAPI Service</span><button class="copy-btn" onclick="copyCode('code-fastapi')">Copiar</button></div>
+          <pre class="code-display"><code id="code-fastapi"># Código FastAPI --</code></pre>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 15. PÁGINA RESUMEN ========== -->
+  <!-- ========== 15. RESUMEN ========== -->
   <section class="section fade-in" id="seccion-resumen">
     <span class="section-number">Sección 15</span>
-    <h2>📋 Resumen de Evaluación del Modelo</h2>
-    <p style="margin-bottom:1.5rem;">
-      Esta sección reúne de manera consolidada las métricas de rendimiento más importantes, 
-      los gráficos clave de validación y las explicaciones teóricas correspondientes.
-    </p>
-
-    <!-- Table and Explanations -->
-    <div class="comparison-grid">
-      <!-- Tabla Resumen -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon accent">📋</div>
-          <h3>Tabla Resumen de Métricas</h3>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Métrica</th>
-                <th>Valor</th>
-                <th>Fórmula</th>
-                <th>Interpretación resumida</th>
-              </tr>
-            </thead>
-            <tbody id="summaryMetricsTableBody">
-              <!-- Se llenará dinámicamente con JS -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Explicaciones Teóricas -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon warning">💡</div>
-          <h3>Definiciones y Explicaciones</h3>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
-          <div>
-            <strong>Accuracy (Exactitud):</strong> Proporción de predicciones correctas sobre el total de predicciones.
-          </div>
-          <div>
-            <strong>Precision (Precisión):</strong> Proporción de predicciones de la clase positiva que son realmente correctas (mide la fiabilidad del modelo ante falsos positivos).
-          </div>
-          <div>
-            <strong>Recall (Sensibilidad):</strong> Proporción de casos positivos reales que fueron identificados correctamente (mide la capacidad de cobertura del modelo ante falsos negativos).
-          </div>
-          <div>
-            <strong>F1-Score:</strong> Media armónica entre la Precisión y el Recall, que proporciona una medida equilibrada de rendimiento en conjuntos de datos desbalanceados.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Graphics and Explanations -->
-    <div class="comparison-grid">
-      <!-- Confusion Matrix Card -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon danger">🔲</div>
-          <h3>Matriz de Confusión (Resumen)</h3>
-        </div>
-        <div class="chart-container">
-          <img id="chartCMSummary" src="" alt="Matriz de Confusión (Resumen)"/>
-        </div>
-        <div class="info-box insight" style="margin-top:1rem; font-size:0.88rem;">
-          <strong>Matriz de Confusión:</strong> Permite visualizar el número de Verdaderos Positivos (TP), Verdaderos Negativos (TN), Falsos Positivos (FP) y Falsos Negativos (FN) obtenidos al evaluar el modelo.
-        </div>
-      </div>
-
-      <!-- ROC Curve Card -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-icon success">📈</div>
-          <h3>Curva ROC (Resumen)</h3>
-        </div>
-        <div class="chart-container">
-          <img id="chartROCSummary" src="" alt="Curva ROC (Resumen)"/>
-        </div>
-        <div class="info-box insight" style="margin-top:1rem; font-size:0.88rem;">
-          <strong>Curva ROC & AUC:</strong> Muestra el rendimiento del clasificador en términos de tasa de verdaderos positivos (Sensibilidad) vs. tasa de falsos positivos en diferentes umbrales de decisión. El valor AUC (Área bajo la curva) resume este comportamiento globalmente.
-        </div>
-      </div>
-    </div>
+    <h2>📋 Resumen Final del Experimento</h2>
+    <div class="stats-grid" id="finalKpis"></div>
   </section>
 
 </main>
-
 
 <!-- Footer -->
 <footer class="footer">
   <div class="container">
     <p>
-      Generado con <strong>PyC45 Framework</strong> · Implementación propia del algoritmo C4.5
+      Generado con <strong>MetaCog-C45 Framework</strong> · Sistema Metacognitivo de Clasificación C4.5
     </p>
     <p style="margin-top:0.3rem;">
-      Autor: <strong>Luis Alberto Buelvas Cogollo</strong> · <span id="footer-dataset-name">Dataset: UCI Credit Card Default</span>
+      Autor: <strong>Luis Alberto Buelvas Cogollo</strong> · Tesis de Maestría en IA e Ingeniería del Conocimiento · <span id="footer-dataset-name">Dataset: customer_churn.csv</span>
     </p>
   </div>
 </footer>

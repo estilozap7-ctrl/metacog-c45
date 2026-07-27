@@ -1,6 +1,6 @@
-"""
+﻿"""
 =========================================================
-PyC45 Examples
+MetaCog-C45 Examples
 Demonstration of MetaCog-C45 end-to-end (mode='metacog')
 =========================================================
 
@@ -23,7 +23,7 @@ from core.classifier import C45Classifier
 
 def run_metacog_classifier_demo():
     print("=" * 70)
-    print("PyC45 → MetaCog-C45 DEMO  (mode='metacog')")
+    print("MetaCog-C45 DEMO  (mode='metacog')")
     print("=" * 70)
 
     # 1. Dataset sintético

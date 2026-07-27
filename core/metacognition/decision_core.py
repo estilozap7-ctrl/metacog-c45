@@ -1,11 +1,11 @@
-"""
+﻿"""
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 Decision Core Subsystem (Production Ready)
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo / Antigravity
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 Descripción:
 Implementa el motor de decisión del paradigma MetaCog-C45,
 incluyendo el Split Confidence Score (SCS) dinámico,

@@ -1,11 +1,11 @@
-"""
+﻿"""
 =========================================================
-PyC45 Framework
+MetaCog-C45 Framework
 MetaMemory and MemoryIndex
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo / Antigravity
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 Descripción:
 Repositorio inteligente encargado de almacenar y recuperar
 DecisionTraces de manera estructurada e indexada.

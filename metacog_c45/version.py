@@ -11,4 +11,4 @@ __description__ = (
     "built on the C4.5 algorithm."
 )
 __license__ = "MIT"
-__url__ = "https://github.com/estilozap7-ctrl/PyC45"
+__url__ = "https://github.com/estilozap7-ctrl/metacog-c45"

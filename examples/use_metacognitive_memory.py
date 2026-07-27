@@ -1,11 +1,11 @@
-"""
+﻿"""
 =========================================================
-PyC45 Examples
+MetaCog-C45 Examples
 Demonstration of the Metacognitive Memory Subsystem
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo / Antigravity
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 Descripción:
 Este script ilustra de forma didáctica el funcionamiento del
 Subsistema de Memoria Metacognitiva del paradigma MetaCog-C45.
@@ -34,7 +34,7 @@ from core.metacognition import (
 
 def run_metacognitive_demo():
     print("=" * 70)
-    print("PyC45 - DEMOSTRACIÓN DEL SUBSISTEMA DE MEMORIA METACOGNITIVA")
+    print("MetaCog-C45 - DEMOSTRACIÓN DEL SUBSISTEMA DE MEMORIA METACOGNITIVA")
     print("=" * 70)
 
     # 1. Simulación de datos locales en un nodo

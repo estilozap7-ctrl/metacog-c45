@@ -1,6 +1,6 @@
-"""
+﻿"""
 =========================================================
-PyC45 Tests
+MetaCog-C45 Tests
 Unit Testing Suite for ReflectionEngine (Stabilized)
 Gate Review 1 - Pruebas Q1-compliant
 =========================================================

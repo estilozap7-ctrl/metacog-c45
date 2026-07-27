@@ -1,21 +1,20 @@
 /**
  * =========================================================
- * PyC45 Technical Report — report.js
+ * MetaCog-C45 Technical Report — report.js
  * =========================================================
- * Carga el JSON generado por generate_report.py y construye
- * dinámicamente todos los elementos del informe técnico.
+ * Carga los datos exportados por MetaCog-C45 y construye
+ * dinámicamente el Dashboard Científico (Sistema 1 + Sistema 2).
  * =========================================================
  */
 
 /* =========================================================
    Utilidades
    ========================================================= */
-
 const fmt = {
   pct:  v => `${(v * 100).toFixed(2)}%`,
-  num:  v => v.toLocaleString('es-CO'),
-  dec4: v => v.toFixed(4),
-  dec2: v => v.toFixed(2),
+  num:  v => typeof v === 'number' ? v.toLocaleString('es-CO') : v,
+  dec4: v => typeof v === 'number' ? v.toFixed(4) : v,
+  dec2: v => typeof v === 'number' ? v.toFixed(2) : v,
 };
 
 function tag(value, thresholds = { good: 0.75, ok: 0.55 }) {
@@ -97,63 +96,223 @@ function setupTOC() {
    Builders de secciones
    ========================================================= */
 
-function buildDataset(d) {
-  // KPI superiores
-  const pctImpago = (((d.class_distribution_sample['1'] || 0) / d.sample_size) * 100).toFixed(1);
-  const labelPct = d.target_column && d.target_column.toLowerCase().includes('default') 
-    ? '% Impago (muestra)' 
-    : (d.target_column && d.target_column.toLowerCase().includes('churn') ? '% Churn (muestra)' : '% Positivo (1) (muestra)');
-
+function buildDataset(d, fullData) {
   setHTML('datasetKpis', [
     statBox('Registros Totales', fmt.num(d.total_rows), 'accent'),
-    statBox('Variables', d.total_cols, 'info'),
-    statBox('Muestra Analizada', fmt.num(d.sample_size), 'warning'),
-    statBox(labelPct, `${pctImpago}%`, 'danger'),
-    statBox('Entrenamiento', fmt.num(d.train_size), 'success'),
-    statBox('Validación',   fmt.num(d.val_size), 'success'),
+    statBox('Variables',         d.total_cols, 'info'),
+    statBox('Muestra Entrenada', fmt.num(d.sample_size), 'warning'),
+    statBox('Partición Train/Val', `${d.train_size} / ${d.val_size}`, 'success'),
   ].join(''));
+
+  const datasetName = fullData.dataset_name || 'dataset.csv';
+  setText('desc-dataset-title', `📁 Descripción del Dataset Evaluado: ${datasetName}`);
+
+  const targetCol = d.target_column || 'target';
+  setHTML('desc-dataset-text', `El experimento fue ejecutado sobre el dataset <strong>${datasetName}</strong>. El conjunto contiene <strong id="totalRows">${fmt.num(d.total_rows)}</strong> registros y <strong>${d.total_cols}</strong> variables. La columna objetivo seleccionada es <code>${targetCol}</code>.`);
+
+  const varsSubtitle = document.getElementById('variables-subtitle');
+  if (varsSubtitle) varsSubtitle.textContent = `${(d.columns || []).length - 1} variables predictoras`;
+
+  const tableBody = document.querySelector('#variables-table tbody');
+  if (tableBody && d.columns) {
+    tableBody.innerHTML = d.columns.map(col => {
+      const isTarget = col === targetCol;
+      return `<tr>
+        <td><code>${col}</code></td>
+        <td>${isTarget ? '<strong style="color:var(--accent-light);">Variable objetivo (Target)</strong>' : 'Variable predictora'}</td>
+        <td>${isTarget ? 'Objetivo (Target)' : 'Numérica / Codificada'}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  const footerDataset = document.getElementById('footer-dataset-name');
+  if (footerDataset) footerDataset.textContent = `Dataset: ${datasetName}`;
+
+  const metaDatasetInfo = document.getElementById('metaDatasetInfo');
+  if (metaDatasetInfo) metaDatasetInfo.textContent = `${datasetName} (${fmt.num(d.total_rows)} filas, target='${targetCol}')`;
 }
 
-function buildTreeBefore(tb) {
-  // Stats superiores
+/* =========================================================
+   SECCIÓN 03 — Sistema 2 (Análisis Metacognitivo)
+   ========================================================= */
+function buildMetacognitiveSection(data) {
+  const meta = data.metacognitive_data || {};
+  const enabled = meta.enabled && meta.mode === 'metacog';
+
+  // Badges de estado operativo
+  const statusContainer = document.getElementById('system2StatusBadges');
+  if (statusContainer) {
+    if (enabled) {
+      statusContainer.innerHTML = `
+        <div class="status-indicator"><span class="dot"></span> Modo: MetaCog-C45 (Sistema 1 + Sistema 2)</div>
+        <div class="status-indicator"><span class="dot"></span> Reflection Engine: Activo (B=${data.hyperparameters.B || 50} réplicas)</div>
+        <div class="status-indicator"><span class="dot"></span> Decision Core: Activo (θ_accept=${data.hyperparameters.theta_accept || 0.5})</div>
+        <div class="status-indicator"><span class="dot"></span> MetaMemory: Indexación activa (${meta.total_decisions || 0} trazas)</div>
+      `;
+    } else {
+      statusContainer.innerHTML = `
+        <div class="status-indicator" style="border-color:var(--danger-dim);color:var(--danger);"><span class="dot" style="background:var(--danger);box-shadow:none;"></span> Modo: Classic C4.5 (Sistema 2 Inactivo)</div>
+      `;
+    }
+  }
+
+  // KPIs Globales
+  const kpisContainer = document.getElementById('system2GlobalKpis');
+  if (kpisContainer) {
+    if (enabled) {
+      kpisContainer.innerHTML = [
+        statBox('Average SCS', fmt.dec4(meta.scs_stats?.mean || 0.0), 'accent'),
+        statBox('Average NS',  fmt.dec4(meta.avg_ns || 0.0), 'success'),
+        statBox('Average TS',  fmt.dec4(meta.avg_ts || 0.0), 'info'),
+        statBox('Average CI',  fmt.dec4(meta.ci_stats?.mean || 0.0), 'warning'),
+      ].join('');
+    } else {
+      kpisContainer.innerHTML = [
+        statBox('Average SCS', 'N/A (Modo Classic)', 'muted'),
+        statBox('Average NS',  'N/A (Modo Classic)', 'muted'),
+        statBox('Average TS',  'N/A (Modo Classic)', 'muted'),
+        statBox('Average CI',  'N/A (Modo Classic)', 'muted'),
+      ].join('');
+    }
+  }
+
+  // Veredictos del Decision Core
+  const verdictContainer = document.getElementById('verdictBreakdown');
+  if (verdictContainer) {
+    if (enabled && meta.verdict_counts) {
+      const total = meta.total_decisions || 1;
+      const vMap = meta.verdict_counts;
+      const verdicts = ['ACCEPT', 'REVIEW', 'DEFER', 'COLLAPSE'];
+      verdictContainer.innerHTML = verdicts.map(v => {
+        const count = vMap[v] || 0;
+        const pct = ((count / total) * 100).toFixed(1);
+        const cls = v.toLowerCase();
+        return `
+          <div>
+            <div style="display:flex; justify-size:space-between; justify-content:space-between; align-items:center; margin-bottom:0.25rem;">
+              <span class="verdict-badge ${cls}">${v}</span>
+              <span style="font-family:var(--font-mono); font-size:0.85rem;">${count} divisiones (${pct}%)</span>
+            </div>
+            <div class="scs-bar-bg">
+              <div class="scs-bar-fill" style="width:${pct}%; background:${v === 'ACCEPT' ? '#00d4aa' : v === 'REVIEW' ? '#60a5fa' : v === 'DEFER' ? '#fbbf24' : '#f87171'};"></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    } else {
+      verdictContainer.innerHTML = '<p style="color:var(--text-muted);font-size:0.9rem;">No hay trazas metacognitivas en modo clásico.</p>';
+    }
+  }
+
+  // Tabla estadísticas SCS
+  const scsTable = document.getElementById('scsStatsTable');
+  if (scsTable) {
+    if (enabled) {
+      const stats = [
+        { metric: 'Split Confidence Score (SCS)', min: meta.scs_stats?.min, max: meta.scs_stats?.max, mean: meta.scs_stats?.mean, std: meta.scs_stats?.std },
+        { metric: 'Node Stability (NS)',         min: meta.ns_stats?.min,  max: meta.ns_stats?.max,  mean: meta.ns_stats?.mean,  std: meta.ns_stats?.std },
+        { metric: 'Threshold Survival (TS)',     min: meta.ts_stats?.min,  max: meta.ts_stats?.max,  mean: meta.ts_stats?.mean,  std: meta.ts_stats?.std },
+        { metric: 'Competitiveness Index (CI)',  min: meta.ci_stats?.min,  max: meta.ci_stats?.max,  mean: meta.ci_stats?.mean,  std: meta.ci_stats?.std },
+      ];
+      scsTable.innerHTML = `
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Métrica</th><th>Mín</th><th>Máx</th><th>Promedio</th><th>Desv. Est.</th></tr></thead>
+            <tbody>
+              ${stats.map(s => `
+                <tr>
+                  <td><strong>${s.metric}</strong></td>
+                  <td><code>${fmt.dec4(s.min)}</code></td>
+                  <td><code>${fmt.dec4(s.max)}</code></td>
+                  <td><strong style="color:#a78bfa;">${fmt.dec4(s.mean)}</strong></td>
+                  <td><code>${fmt.dec4(s.std)}</code></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+    } else {
+      scsTable.innerHTML = '<p style="color:var(--text-muted);font-size:0.9rem;">El modo clásico no calcula estadísticos de SCS.</p>';
+    }
+  }
+
+  // Tabla MFI
+  const mfiBody = document.querySelector('#mfiTable tbody');
+  if (mfiBody) {
+    if (enabled && meta.mfi_normalized && Object.keys(meta.mfi_normalized).length > 0) {
+      const sorted = Object.entries(meta.mfi_normalized).sort((a, b) => b[1] - a[1]);
+      mfiBody.innerHTML = sorted.map(([feat, val], idx) => {
+        const pct = (val * 100).toFixed(2);
+        const bar = `<div style="width:${pct}%;height:6px;background:linear-gradient(90deg, #8b5cf6, #00d4aa);border-radius:3px;display:inline-block;min-width:4px;"></div>`;
+        return `<tr>
+          <td><strong>#${idx + 1}</strong></td>
+          <td><code>${feat}</code></td>
+          <td>${bar} <strong style="color:#a78bfa; margin-left:6px;">${pct}%</strong></td>
+          <td><span class="tag good">Meta-Reflectivo</span></td>
+        </tr>`;
+      }).join('');
+    } else {
+      mfiBody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);">MFI no disponible (modo clásico o sin trazas).</td></tr>';
+    }
+  }
+
+  // Tabla DecisionTrace
+  const traceTbody = document.getElementById('decisionTraceTbody');
+  if (traceTbody) {
+    if (enabled && meta.decision_traces && meta.decision_traces.length > 0) {
+      traceTbody.innerHTML = meta.decision_traces.map(t => {
+        const vCls = (t.verdict || 'ACCEPT').toLowerCase();
+        return `<tr>
+          <td><code>${t.node_id}</code></td>
+          <td>${t.depth}</td>
+          <td><code>${t.feature_selected}</code></td>
+          <td><code>${t.threshold_selected != null ? t.threshold_selected.toFixed(4) : '—'}</code></td>
+          <td><code>${t.gain_ratio.toFixed(4)}</code></td>
+          <td><strong style="color:#a78bfa;">${t.scs.toFixed(4)}</strong></td>
+          <td><code>${t.ns.toFixed(4)}</code></td>
+          <td><code>${t.ts.toFixed(4)}</code></td>
+          <td><code>${t.competitiveness_index.toFixed(4)}</code></td>
+          <td><span class="verdict-badge ${vCls}">${t.verdict}</span></td>
+          <td style="font-size:0.8rem; color:var(--text-secondary); max-width:240px;">${t.justification || '—'}</td>
+        </tr>`;
+      }).join('');
+    } else {
+      traceTbody.innerHTML = '<tr><td colspan="11" style="text-align:center;color:var(--text-muted);">No existen trazas DecisionTrace registradas.</td></tr>';
+    }
+  }
+}
+
+function buildTreeBefore(before) {
   setHTML('treeBeforeKpis', [
-    statBox('Nodos Totales', tb.stats.nodes, 'accent'),
-    statBox('Nodos Hoja',   tb.stats.leaves, 'success'),
-    statBox('Profundidad',  tb.stats.depth,  'warning'),
-    statBox('Accuracy (Train)', fmt.pct(tb.accuracy_train), 'info'),
-    statBox('Accuracy (Val)',   fmt.pct(tb.accuracy_val),   colorClass(tb.accuracy_val)),
+    statBox('Nodos Totales',   before.stats.nodes, 'accent'),
+    statBox('Hojas',           before.stats.leaves, 'success'),
+    statBox('Profundidad Máx', before.stats.depth, 'warning'),
+    statBox('Accuracy Train',  fmt.pct(before.accuracy_train), 'info'),
   ].join(''));
 
-  // Árbol texto
-  setText('treeBeforeText', tb.text || '(sin árbol)');
+  setText('treeBeforeText', before.text || '(árbol no generado)');
 
-  // Tabla interpretación — extrae variables únicas del árbol
-  const varInterpretations = {
-    'PAY_0':     { desc: 'Estado de pago más reciente (septiembre)', insight: 'Variable con mayor poder discriminatorio. Retrasos recientes predicen fuertemente el impago.' },
-    'BILL_AMT1': { desc: 'Monto facturado en septiembre (NT$)',      insight: 'Clientes con facturas muy altas tienen perfiles de riesgo distintos.' },
-    'PAY_2':     { desc: 'Estado de pago en agosto',                 insight: 'Retraso en dos meses consecutivos es señal fuerte de impago.' },
-    'LIMIT_BAL': { desc: 'Límite de crédito asignado (NT$)',         insight: 'Clientes con mayor límite tienden a tener mejor historial crediticio.' },
-    'PAY_AMT1':  { desc: 'Pago realizado en septiembre (NT$)',       insight: 'Pagos mínimos frecuentes son indicadores de estrés financiero.' },
-  };
-
-  // Extraer variables del texto del árbol
-  const matches = [...(tb.text || '').matchAll(/📊 (\w+) ≤ ([\d.]+)/g)];
-  const rows = matches.map(m => {
-    const varName = m[1];
-    const threshold = parseFloat(m[2]);
-    const info = varInterpretations[varName] || { desc: varName, insight: 'Variable numérica continua evaluada por su Gain Ratio.' };
-    return `<tr>
-      <td><code>${varName}</code></td>
-      <td><code>${threshold}</code></td>
-      <td>${info.desc}. ${info.insight}</td>
-    </tr>`;
+  const rows = [];
+  const lines = (before.text || '').split('\n');
+  lines.forEach(line => {
+    if (line.includes('<=') && line.includes('Gain=')) {
+      const parts = line.split('<=');
+      const varName = parts[0].trim().replace(/^[│\s├└─]+/, '');
+      const rest = parts[1] ? parts[1].split('[') : [];
+      const threshold = rest[0] ? rest[0].trim() : '';
+      rows.push(`<tr>
+        <td><code>${varName}</code></td>
+        <td><code>≤ ${threshold}</code></td>
+        <td>Nodo de decisión en el árbol. Evaluado por el framework MetaCog-C45.</td>
+      </tr>`);
+    }
   });
 
   setHTML('treeInterpretationTable', rows.length > 0 ? rows.join('') : '<tr><td colspan="3">Sin nodos internos detectados.</td></tr>');
 }
 
 function buildPruning(before, after) {
-  // Comparación antes/después
   setHTML('treeBefore3Kpis', [
     statBox('Nodos', before.stats.nodes, 'accent'),
     statBox('Hojas', before.stats.leaves, 'success'),
@@ -171,35 +330,29 @@ function buildPruning(before, after) {
   if (el2) el2.textContent = fmt.pct(after.accuracy_val);
 
   setText('treeAfterText', after.text || '(árbol vacío tras poda)');
-
-  // Referencias en conclusiones
-  setText('nodesBeforeConc', before.stats.nodes);
-  setText('nodesAfterConc', after.stats.nodes);
 }
 
 function buildMetrics(cm, metrics) {
-  // Tabla CM
   const cmRows = [
-    { type: 'TP (Verdadero Positivo)', desc: 'Impago predicho correctamente', val: cm.tp },
-    { type: 'TN (Verdadero Negativo)', desc: 'No-impago predicho correctamente', val: cm.tn },
-    { type: 'FP (Falso Positivo)',     desc: 'No-impago clasificado erróneamente como impago', val: cm.fp },
-    { type: 'FN (Falso Negativo)',     desc: 'Impago NO detectado (error crítico en crédito)', val: cm.fn },
+    { type: 'TP (Verdadero Positivo)', desc: 'Clase positiva predicha correctamente', val: cm.tp },
+    { type: 'TN (Verdadero Negativo)', desc: 'Clase negativa predicha correctamente', val: cm.tn },
+    { type: 'FP (Falso Positivo)',     desc: 'Clase negativa clasificada erróneamente como positiva', val: cm.fp },
+    { type: 'FN (Falso Negativo)',     desc: 'Clase positiva NO detectada (error crítico)', val: cm.fn },
     { type: 'Total',                   desc: 'Registros de validación evaluados', val: cm.total },
   ];
   setHTML('cmTable', cmRows.map(r =>
     `<tr><td><strong>${r.type}</strong></td><td>${r.desc}</td><td><strong>${r.val}</strong></td></tr>`
   ).join(''));
 
-  // Definiciones y fórmulas para la tabla de métricas
   const metaDefs = {
-    'Accuracy':          { formula: '(TP + TN) / Total',        interp: 'Proporción de predicciones correctas sobre el total.' },
-    'Precision':         { formula: 'TP / (TP + FP)',            interp: 'De los clasificados como impago, ¿cuántos realmente lo son? Mide falsas alarmas.' },
-    'Recall':            { formula: 'TP / (TP + FN)',            interp: 'De los clientes que incumplirán, ¿cuántos detectamos? Crítico para riesgo crediticio.' },
-    'Specificity':       { formula: 'TN / (TN + FP)',            interp: 'De los que no incumplirán, ¿cuántos identificamos correctamente?' },
-    'F1-Score':          { formula: '2 · P · R / (P + R)',       interp: 'Media armónica de Precisión y Recall. Equilibrio entre ambas métricas.' },
-    'Balanced Accuracy': { formula: '(Recall + Specificity) / 2',interp: 'Exactitud ponderada por clase. Más justa que Accuracy con datos desbalanceados.' },
+    'Accuracy':          { formula: '(TP + TN) / Total',        interp: 'Proporción de predicciones correctas globales.' },
+    'Precision':         { formula: 'TP / (TP + FP)',            interp: 'Fiabilidad de las predicciones positivas.' },
+    'Recall':            { formula: 'TP / (TP + FN)',            interp: 'Capacidad de detección de casos positivos reales.' },
+    'Specificity':       { formula: 'TN / (TN + FP)',            interp: 'Identificación correcta de la clase negativa.' },
+    'F1-Score':          { formula: '2 · P · R / (P + R)',       interp: 'Media armónica entre Precisión y Recall.' },
+    'Balanced Accuracy': { formula: '(Recall + Specificity) / 2',interp: 'Exactitud ponderada equilibrada por clase.' },
     'Error Rate':        { formula: '1 − Accuracy',              interp: 'Proporción de predicciones incorrectas.' },
-    'MCC':               { formula: '(TP·TN − FP·FN) / √(…)',   interp: 'Coeficiente de correlación de Matthews. Métrica robusta ante desbalance de clases.' },
+    'MCC':               { formula: '(TP·TN − FP·FN) / √(…)',   interp: 'Coeficiente de correlación de Matthews (robusto ante desbalance).' },
   };
 
   setHTML('metricsTable', Object.entries(metrics).map(([name, val]) => {
@@ -219,11 +372,11 @@ function buildROC(auc) {
   if (el) el.textContent = auc.toFixed(4);
 
   let cls = 'danger', interpText = '';
-  if (auc >= 0.90) { cls = 'success'; interpText = `AUC de ${auc.toFixed(4)} → Clasificación excelente. El modelo discrimina muy bien entre clientes con y sin riesgo de impago.`; }
-  else if (auc >= 0.80) { cls = 'success'; interpText = `AUC de ${auc.toFixed(4)} → Clasificación buena. El modelo tiene buen poder predictivo.`; }
-  else if (auc >= 0.70) { cls = 'warning'; interpText = `AUC de ${auc.toFixed(4)} → Clasificación aceptable. El modelo discrimina de manera moderada entre las clases.`; }
-  else if (auc >= 0.60) { cls = 'warning'; interpText = `AUC de ${auc.toFixed(4)} → Discriminación débil pero superior al azar. El árbol C4.5 captura patrones reales pero limitados por el submuestreo.`; }
-  else { interpText = `AUC de ${auc.toFixed(4)} → Cercano al azar. Se recomienda revisar el preprocesamiento y ampliar la muestra.`; }
+  if (auc >= 0.90) { cls = 'success'; interpText = `AUC de ${auc.toFixed(4)} → Clasificación excelente. Discriminación probabilística óptima.`; }
+  else if (auc >= 0.80) { cls = 'success'; interpText = `AUC de ${auc.toFixed(4)} → Clasificación buena. Poder predictivo elevado.`; }
+  else if (auc >= 0.70) { cls = 'warning'; interpText = `AUC de ${auc.toFixed(4)} → Clasificación aceptable. Discriminación moderada.`; }
+  else if (auc >= 0.60) { cls = 'warning'; interpText = `AUC de ${auc.toFixed(4)} → Discriminación moderada-débil superior al azar.`; }
+  else { interpText = `AUC de ${auc.toFixed(4)} → Discriminación limitada.`; }
 
   if (el) el.className = `stat-value ${cls}`;
   setHTML('aucInterpretation', interpText);
@@ -233,19 +386,11 @@ function buildFeatureImportance(fi) {
   setHTML('fiTable', fi.map((item, i) => {
     const pct = (item.importance * 100).toFixed(2);
     const bar = `<div style="width:${pct}%;height:6px;background:var(--accent);border-radius:3px;display:inline-block;min-width:4px;"></div>`;
-    const varDescriptions = {
-      'PAY_0':     'Estado de pago del mes más reciente. Indicador primario de comportamiento crediticio.',
-      'BILL_AMT1': 'Monto de deuda facturada más reciente. Refleja nivel de endeudamiento actual.',
-      'PAY_2':     'Estado de pago de hace dos meses. Complementa PAY_0 para tendencia histórica.',
-      'LIMIT_BAL': 'Límite de crédito asignado. Proxy de historial y solvencia del cliente.',
-      'PAY_AMT1':  'Pago más reciente realizado. Clientes que pagan montos bajos tienen más riesgo.',
-    };
-    const desc = varDescriptions[item.feature] || 'Variable predictora seleccionada por el algoritmo C4.5.';
     return `<tr>
       <td><strong>#${i + 1}</strong></td>
       <td><code>${item.feature}</code></td>
       <td>${bar} <strong>${pct}%</strong></td>
-      <td style="font-size:0.85rem;">${desc}</td>
+      <td style="font-size:0.85rem;">Variable predictora seleccionada por el framework MetaCog-C45.</td>
     </tr>`;
   }).join(''));
 }
@@ -272,12 +417,12 @@ async function init() {
       data = window.reportData;
     } else {
       const response = await fetch('report_data.json');
-      if (!response.ok) throw new Error(`No se pudo cargar report_data.json o report_data.js (${response.status})`);
+      if (!response.ok) throw new Error(`No se pudo cargar report_data.json (${response.status})`);
       data = await response.json();
     }
 
     // ---- Imágenes de gráficos ----
-    const ch = data.charts;
+    const ch = data.charts || {};
     setImg('chartClassDist', ch.class_distribution);
     setImg('chartEntropy',   ch.entropy_diagram);
     setImg('chartCM',        ch.confusion_matrix);
@@ -286,52 +431,8 @@ async function init() {
     setImg('chartFI',        ch.feature_importance);
 
     // ---- Secciones ----
-    buildDataset(data.dataset);
-
-    // Adaptaciones dinámicas para datasets genéricos
-    const isDefaultCreditCard = !data.dataset_name || data.dataset_name.includes('default_of_credit_card_clients');
-    if (!isDefaultCreditCard) {
-      const heroTitle = document.getElementById('hero-title');
-      if (heroTitle) {
-        if (data.dataset_name.includes('churn')) {
-          heroTitle.textContent = 'Predicción de Churn (Fuga de Clientes)';
-        } else {
-          heroTitle.textContent = `Análisis de Clasificación C4.5 - ${data.dataset_name}`;
-        }
-      }
-      const heroDataset = document.getElementById('hero-dataset');
-      if (heroDataset) {
-        heroDataset.innerHTML = `<span class="icon">📊</span> Dataset: ${data.dataset_name}`;
-      }
-      const descTitle = document.getElementById('desc-dataset-title');
-      if (descTitle) {
-        descTitle.textContent = `📁 Descripción del Dataset: ${data.dataset_name}`;
-      }
-      const descText = document.getElementById('desc-dataset-text');
-      if (descText) {
-        descText.innerHTML = `El dataset analizado es <strong>${data.dataset_name}</strong>. Contiene un total de <strong id="totalRows">${fmt.num(data.dataset.total_rows)}</strong> registros y <strong>${data.dataset.total_cols}</strong> columnas. La variable objetivo seleccionada es <code>${data.dataset.target_column}</code>.`;
-      }
-      const varsSubtitle = document.getElementById('variables-subtitle');
-      if (varsSubtitle) {
-        varsSubtitle.textContent = `${data.dataset.columns.length - 1} variables predictoras`;
-      }
-      const tableBody = document.querySelector('#variables-table tbody');
-      if (tableBody) {
-        tableBody.innerHTML = data.dataset.columns.map(col => {
-          const isTarget = col === data.dataset.target_column;
-          return `<tr>
-            <td><code>${col}</code></td>
-            <td>${isTarget ? '<strong>Variable objetivo (Target)</strong>' : 'Variable predictora'}</td>
-            <td>${isTarget ? 'Objetivo' : 'Numérica / Codificada'}</td>
-          </tr>`;
-        }).join('');
-      }
-      const footerDataset = document.getElementById('footer-dataset-name');
-      if (footerDataset) {
-        footerDataset.textContent = `Dataset: ${data.dataset_name}`;
-      }
-    }
-
+    buildDataset(data.dataset, data);
+    buildMetacognitiveSection(data);
     buildTreeBefore(data.tree_before_pruning);
     buildPruning(data.tree_before_pruning, data.tree_after_pruning);
     buildMetrics(data.confusion_matrix, data.metrics);
@@ -340,8 +441,8 @@ async function init() {
     buildFinalKpis(data.metrics, data.roc_auc, data.tree_after_pruning);
 
     // Hiperparámetros
-    const hp = data.hyperparameters;
-    setText('hyperparamsTd', `max_depth=${hp.max_depth}, min_samples=${hp.min_samples_split}, min_gain_ratio=${hp.min_gain_ratio}`);
+    const hp = data.hyperparameters || {};
+    setText('hyperparamsTd', `mode=${hp.mode || 'metacog'}, max_depth=${hp.max_depth}, min_samples=${hp.min_samples_split}, B=${hp.B || 50}`);
 
     // ── Nuevas secciones ──
     renderSystemMetrics(data);
@@ -352,24 +453,27 @@ async function init() {
     renderSummaryPage(data);
 
   } catch (err) {
-    overlay.innerHTML = `
-      <div style="text-align:center;padding:2rem;">
-        <div style="font-size:3rem;margin-bottom:1rem;">⚠️</div>
-        <h2 style="color:var(--danger);margin-bottom:1rem;">No se pudo cargar el informe</h2>
-        <p style="color:var(--text-muted);max-width:500px;">
-          Asegúrate de haber ejecutado primero el generador de datos:
-        </p>
-        <pre style="margin:1.5rem auto;max-width:500px;background:var(--bg-card);padding:1rem;border-radius:8px;font-family:var(--font-mono);font-size:0.85rem;color:var(--accent-light);text-align:left;">
-cd PyC45
-python web_verification/generate_report.py</pre>
-        <p style="color:var(--text-muted);font-size:0.85rem;">Error técnico: ${err.message}</p>
-      </div>`;
+    if (overlay) {
+      overlay.innerHTML = `
+        <div style="text-align:center;padding:2rem;">
+          <div style="font-size:3rem;margin-bottom:1rem;">⚠️</div>
+          <h2 style="color:var(--danger);margin-bottom:1rem;">No se pudo cargar el informe</h2>
+          <p style="color:var(--text-muted);max-width:500px;">
+            Asegúrate de ejecutar el script con un dataset válido:
+          </p>
+          <pre style="margin:1.5rem auto;max-width:500px;background:var(--bg-card);padding:1rem;border-radius:8px;font-family:var(--font-mono);font-size:0.85rem;color:var(--accent-light);text-align:left;">
+python ejecutar_con_dataset.py --dataset datasets/customer_churn.csv</pre>
+          <p style="color:var(--text-muted);font-size:0.85rem;">Error técnico: ${err.message}</p>
+        </div>`;
+    }
     return;
   }
 
   // Ocultar loading overlay
-  overlay.classList.add('hidden');
-  setTimeout(() => overlay.remove(), 600);
+  if (overlay) {
+    overlay.classList.add('hidden');
+    setTimeout(() => overlay.remove(), 600);
+  }
 
   // Iniciar observadores
   setupScrollObserver();
@@ -377,39 +481,28 @@ python web_verification/generate_report.py</pre>
 }
 
 /* =========================================================
-   SECCIÓN 10 — Sistema & Complejidad
+   SECCIÓN 11 — Sistema & Complejidad
    ========================================================= */
 function renderSystemMetrics(data) {
   const sys = data.system_metrics || {};
-  const tree = data.tree_after_pruning || {};
 
-  const kpiEl = document.getElementById('systemKpis');
+  const kpiEl = document.getElementById('systemMetricsKpis');
   if (kpiEl) {
     kpiEl.innerHTML = [
       statBox('⏱ Tiempo de Entrenamiento',
         sys.training_time_s != null ? `${sys.training_time_s.toFixed(4)} s` : 'N/A', 'accent'),
       statBox('✂️ Tiempo de Poda REP',
         sys.pruning_time_s != null ? `${sys.pruning_time_s.toFixed(4)} s` : 'N/A', 'warning'),
-      statBox('⚡ Tiempo de Inferencia',
+      statBox('⚡ Inferencia Promedio',
         sys.inference_time_ms != null ? `${sys.inference_time_ms.toFixed(4)} ms/muestra` : 'N/A', 'success'),
-      statBox('💾 Mem. Estimada (nodos)',
+      statBox('💾 Memoria Estimada',
         sys.memory_nodes_kb != null ? `${sys.memory_nodes_kb.toFixed(1)} KB` : 'N/A', 'info'),
-    ].join('');
-  }
-
-  const structEl = document.getElementById('treeStructureKpis');
-  if (structEl) {
-    structEl.innerHTML = [
-      statBox('🌳 Nodos Totales',   tree.total_nodes    != null ? tree.total_nodes    : 'N/A', 'accent'),
-      statBox('🍃 Hojas',           tree.leaf_nodes     != null ? tree.leaf_nodes     : 'N/A', 'success'),
-      statBox('📏 Profundidad Máx', tree.max_depth_real != null ? tree.max_depth_real : 'N/A', 'warning'),
-      statBox('📋 Nº de Reglas',    tree.leaf_nodes     != null ? tree.leaf_nodes     : 'N/A', 'info'),
     ].join('');
   }
 }
 
 /* =========================================================
-   SECCIÓN 11 — Comparación scikit-learn
+   Comparación scikit-learn
    ========================================================= */
 function renderSklearnComparison(data) {
   const cmp = data.sklearn_comparison;
@@ -418,7 +511,7 @@ function renderSklearnComparison(data) {
 
   if (!cmp) {
     tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:var(--text-muted);">
-      scikit-learn no disponible en este entorno — instala con <code>pip install scikit-learn</code>
+      scikit-learn no comparado en esta corrida.
     </td></tr>`;
     return;
   }
@@ -435,8 +528,7 @@ function renderSklearnComparison(data) {
 
   tbody.innerHTML = metrics.map(m => {
     if (m.pyc == null || m.skl == null) return '';
-    const diff = (typeof m.pyc === 'number' && typeof m.skl === 'number')
-      ? (m.pyc - m.skl) : null;
+    const diff = (typeof m.pyc === 'number' && typeof m.skl === 'number') ? (m.pyc - m.skl) : null;
     let diffHTML = '—';
     if (diff !== null) {
       const sign = diff >= 0 ? '+' : '';
@@ -453,12 +545,37 @@ function renderSklearnComparison(data) {
 }
 
 /* =========================================================
-   SECCIÓN 12 — Explicabilidad Interactiva
+   SECCIÓN 12 — Explicabilidad
    ========================================================= */
 function renderExplainability(data) {
   const samples = data.explainability_samples;
+  const container = document.getElementById('explainabilityTimeline');
+  if (!container || !samples || !samples.length) return;
+
+  container.innerHTML = `
+    <div style="margin-bottom:1rem;">
+      <label style="font-size:0.85rem; color:var(--text-secondary); margin-right:0.5rem;">Seleccionar muestra de validación:</label>
+      <select id="sample-selector" style="background:var(--bg-primary); color:var(--text-primary); border:1px solid var(--border-color); padding:0.4rem 0.8rem; border-radius:6px; font-family:inherit;">
+      </select>
+    </div>
+    <div id="path-timeline-container" style="display:none;">
+      <div style="display:flex; gap:1rem; margin-bottom:1rem;" id="path-kpis">
+        <div class="stat-box" id="path-result-card"></div>
+        <div class="stat-box" id="path-confidence-card"></div>
+        <div class="stat-box" id="path-depth-card"></div>
+      </div>
+      <div class="timeline" id="decision-path-timeline"></div>
+    </div>
+    <div id="path-placeholder" style="color:var(--text-muted); font-size:0.9rem;">
+      Selecciona una muestra en la lista desplegable para inspeccionar su camino de decisión explícito.
+    </div>
+  `;
+
   const selector = document.getElementById('sample-selector');
-  if (!selector || !samples || !samples.length) return;
+  const defaultOpt = document.createElement('option');
+  defaultOpt.value = '';
+  defaultOpt.textContent = '-- Seleccionar Muestra --';
+  selector.appendChild(defaultOpt);
 
   samples.forEach((s, i) => {
     const opt = document.createElement('option');
@@ -491,7 +608,6 @@ function renderDecisionPath(sample) {
   const correct = sample.actual_label === sample.predicted_label;
   const lastStep = path[path.length - 1] || {};
 
-  // Mini KPI cards
   document.getElementById('path-result-card').innerHTML = `
     <div class="stat-value ${correct ? 'success' : 'danger'}">${correct ? '✅ Correcto' : '❌ Error'}</div>
     <div class="stat-label">Predicción: ${sample.predicted_label} | Real: ${sample.actual_label}</div>`;
@@ -504,9 +620,7 @@ function renderDecisionPath(sample) {
     <div class="stat-value warning">${path.length}</div>
     <div class="stat-label">Profundidad del Camino</div>`;
 
-  // Construir timeline
   timeline.innerHTML = path.map((step, i) => {
-    const isLast     = i === path.length - 1;
     const isLeaf     = step.is_leaf;
     const leafClass  = isLeaf ? (correct ? 'leaf' : 'failed') : '';
     const icon       = isLeaf ? (correct ? '🍃' : '⚠️') : '📊';
@@ -517,7 +631,7 @@ function renderDecisionPath(sample) {
 
     let desc = isLeaf
       ? `Distribución: ${JSON.stringify(step.class_counts || {})}`
-      : `Valor del cliente: <strong>${step.feature_value != null ? step.feature_value : 'N/A'}</strong> → va hacia la ${step.direction === 'left' ? 'rama IZQUIERDA (≤)' : 'rama DERECHA (>)'}`;
+      : `Valor observado: <strong>${step.feature_value != null ? step.feature_value : 'N/A'}</strong> → rama ${step.direction === 'left' ? 'IZQUIERDA (≤)' : 'DERECHA (>)'}`;
 
     let meta = step.node_probability != null
       ? `Confianza del nodo: ${(step.node_probability * 100).toFixed(1)}%  |  Muestras: ${step.samples != null ? step.samples : '—'}`
@@ -535,46 +649,22 @@ function renderDecisionPath(sample) {
 }
 
 /* =========================================================
-   SECCIÓN 13 — Simulador de Negocio
+   SECCIÓN 13 — Valor Operativo
    ========================================================= */
 function renderBusiness(data) {
-  const bi   = data.business_impact || {};
-  const kpis = document.getElementById('businessKpis');
-  const tbody = document.getElementById('business-table-body');
-  const sumEl = document.getElementById('business-summary');
+  const bi = data.business_impact || {};
+  const container = document.getElementById('businessImpactContent');
+  if (!container) return;
 
-  if (kpis) {
-    kpis.innerHTML = [
-      statBox('💰 Ahorro Estimado',
-        bi.estimated_savings_usd != null ? `$${bi.estimated_savings_usd.toLocaleString('es-CO')}` : 'N/A', 'success'),
-      statBox('⚠️ Costo Falsos Neg.',
-        bi.fn_exposure_usd != null ? `$${bi.fn_exposure_usd.toLocaleString('es-CO')}` : 'N/A', 'danger'),
-      statBox('📊 Cobertura de Riesgo',
-        bi.risk_coverage_pct != null ? `${bi.risk_coverage_pct.toFixed(1)}%` : 'N/A', 'accent'),
-      statBox('🏦 ROI del Modelo',
-        bi.model_roi_pct != null ? `${bi.model_roi_pct.toFixed(1)}%` : 'N/A', 'warning'),
-    ].join('');
-  }
-
-  if (tbody) {
-    const rows = bi.scenario_table || [];
-    if (rows.length) {
-      tbody.innerHTML = rows.map(r => `
-        <tr>
-          <td><strong>${r.scenario}</strong></td>
-          <td>${r.description}</td>
-          <td>${r.value}</td>
-          <td><span class="tag ${r.impact_class || 'ok'}">${r.impact_label || '—'}</span></td>
-        </tr>`).join('');
-    } else {
-      tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:var(--text-muted);">
-        Agrega datos de <code>business_impact</code> en el script de ejecución.</td></tr>`;
-    }
-  }
-
-  if (sumEl && bi.summary_text) {
-    sumEl.innerHTML = `<strong>💡 Resumen financiero</strong> — ${bi.summary_text}`;
-  }
+  container.innerHTML = `
+    <div class="stats-grid">
+      ${statBox('💰 Beneficio Estimado', bi.net_benefit_usd != null ? `$${fmt.num(bi.net_benefit_usd)}` : 'N/A', 'success')}
+      ${statBox('⚠️ Exposición a Error', bi.fn_exposure_usd != null ? `$${fmt.num(bi.fn_exposure_usd)}` : 'N/A', 'danger')}
+      ${statBox('📊 Cobertura de Coincidencia', bi.risk_coverage_pct != null ? `${bi.risk_coverage_pct.toFixed(1)}%` : 'N/A', 'accent')}
+      ${statBox('🏦 ROI del Modelo', bi.model_roi_pct != null ? `${bi.model_roi_pct.toFixed(1)}%` : 'N/A', 'warning')}
+    </div>
+    ${bi.summary_text ? `<div class="info-box insight" style="margin-top:1rem;"><strong>💡 Resumen de Valor:</strong> ${bi.summary_text}</div>` : ''}
+  `;
 }
 
 /* =========================================================
@@ -595,37 +685,14 @@ function renderCodeExport(data) {
 }
 
 /* =========================================================
-   SECCIÓN 15 — Página Resumen
+   SECCIÓN 15 — Resumen
    ========================================================= */
 function renderSummaryPage(data) {
   const metrics = data.metrics || {};
   const charts = data.charts || {};
-  
-  // Set images for summary
+
   setImg('chartCMSummary', charts.confusion_matrix);
   setImg('chartROCSummary', charts.roc);
-
-  // Populate summary table
-  const tbody = document.getElementById('summaryMetricsTableBody');
-  if (tbody) {
-    const summaryMetrics = [
-      { name: 'Accuracy', val: metrics['Accuracy'], formula: '(TP + TN) / Total', interp: 'Exactitud general del modelo en la clasificación.' },
-      { name: 'Precision', val: metrics['Precision'], formula: 'TP / (TP + FP)', interp: 'Fiabilidad de las alertas de impago generadas.' },
-      { name: 'Recall', val: metrics['Recall'], formula: 'TP / (TP + FN)', interp: 'Capacidad para detectar casos reales de impago.' },
-      { name: 'F1-Score', val: metrics['F1-Score'], formula: '2 · P · R / (P + R)', interp: 'Balance armónico entre Precisión y Recall.' }
-    ];
-
-    tbody.innerHTML = summaryMetrics.map(m => {
-      if (m.val == null) return '';
-      const cls = colorClass(m.val, { success: 0.75, warning: 0.50 });
-      return `<tr>
-        <td><strong>${m.name}</strong></td>
-        <td><span class="stat-value ${cls}" style="font-size:1rem;">${fmt.pct(m.val)}</span></td>
-        <td><code>${m.formula}</code></td>
-        <td style="font-size:0.85rem;">${m.interp}</td>
-      </tr>`;
-    }).join('');
-  }
 }
 
 /* =========================================================
@@ -658,4 +725,3 @@ function copyCode(codeId) {
 
 // Iniciar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', init);
-

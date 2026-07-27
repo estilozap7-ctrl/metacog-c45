@@ -1,11 +1,11 @@
-# PyC45: Framework de Clasificación C4.5 en Python
+﻿# MetaCog-C45: Framework de Clasificación C4.5 en Python
 ### Funcionamiento, Características y Aportes a la Analítica de Datos
 
 ---
 
-# 🤖 Introducción a PyC45
+# 🤖 Introducción a MetaCog-C45
 
-### ¿Qué es PyC45?
+### \u00bfQu\u00e9 es MetaCog-C45?
 **PyC45** es una implementación limpia, modular y orientada a objetos en Python puro del algoritmo de árboles de decisión **C4.5** (diseñado originalmente por Ross Quinlan en 1993).
 
 ### Objetivo Principal
@@ -36,7 +36,7 @@ El proyecto está diseñado bajo principios de modularidad y responsabilidad ún
 
 # ⚙️ Funcionamiento Paso a Paso (El Pipeline)
 
-El ciclo de entrenamiento y evaluación en **PyC45** consta de 7 etapas:
+El ciclo de entrenamiento y evaluación en **MetaCog-C45** consta de 7 etapas:
 
 ```text
 [ Carga de Datos ] ──► [ Preprocesamiento ] ──► [ División Train/Val ] ──► [ Entrenamiento C4.5 ]
@@ -89,7 +89,7 @@ La poda evita el **sobreajuste (overfitting)** simplificando el árbol posterior
 
 # ⚖️ PyC45 vs. Algoritmo C4.5 Clásico
 
-| Dimensión | C4.5 Clásico (Quinlan, 1993) | Implementación PyC45 |
+| Dimensión | C4.5 Clásico (Quinlan, 1993) | Implementaci\u00f3n MetaCog-C45 |
 | :--- | :--- | :--- |
 | **Lenguaje** | Código en C monolítico y de difícil lectura | Python 3 orientado a objetos, limpio y modular |
 | **Integración** | Archivos planos propietarios | Ecosistema moderno de datos (Pandas, NumPy) |
@@ -102,7 +102,7 @@ La poda evita el **sobreajuste (overfitting)** simplificando el árbol posterior
 
 # 🚀 Aporte a la Analítica de Datos
 
-La implementación de **PyC45** proporciona tres aportes fundamentales al análisis moderno de datos:
+La implementación de **MetaCog-C45** proporciona tres aportes fundamentales al análisis moderno de datos:
 
 ### 1. Explicabilidad Transparente (XAI)
 En sectores regulados (como finanzas para scoring crediticio o medicina para diagnóstico), los modelos de "caja negra" (redes neuronales, XGBoost) son difíciles de auditar. PyC45 genera árboles legibles cuyas reglas de negocio son 100% explícitas y visualizables.

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Presentación PyC45 — Funcionamiento, Características y Aportes</title>
-  <meta name="description" content="Presentación interactiva sobre el funcionamiento paso a paso, características y aportes a la analítica del framework PyC45."/>
+  <title>Defensa Científica MetaCog-C45 — Arquitectura Metacognitiva de Árboles de Decisión</title>
+  <meta name="description" content="Presentación de defensa científica y tecnológica del framework MetaCog-C45: Sistema 1 + Sistema 2, evaluación de estabilidad (SCS, NS, TS, CI) y auditoría XAI."/>
   <link rel="stylesheet" href="presentacion.css"/>
 </head>
 <body>
@@ -14,7 +14,7 @@
   <div class="bg-glow-2"></div>
 
   <!-- Close/Home Button -->
-  <a href="index.html" class="home-btn" title="Volver al Informe Técnico">
+  <a href="index.html" class="home-btn" title="Volver al Dashboard Técnico">
     <span>✖</span>
   </a>
 
@@ -25,339 +25,469 @@
       <!-- ==================== SLIDE 1: PORTADA ==================== -->
       <section class="slide slide-cover">
         <div class="hero-badge">
-          <span class="icon">📊</span> Framework PyC45
+          <span class="icon">🎓</span> Tesis de Maestría — IA e Ingeniería del Conocimiento
         </div>
-        <h1>PyC45: Clasificación C4.5 en Python</h1>
-        <h2>Funcionamiento paso a paso, arquitectura modular y aportes clave a la analítica de datos explicable.</h2>
+        <h1>MetaCog-C45: Framework Metacognitivo C4.5 en Python</h1>
+        <h2>Arquitectura Dual (Sistema 1 + Sistema 2), Evaluación de Estabilidad Estructural y Explicabilidad Autónoma (XAI).</h2>
         
         <div class="meta-info" style="margin-top:2rem;">
           <div class="hero-meta-item">
-            <span class="icon">🤖</span>
-            <span>Implementación OOP Limpia</span>
+            <span class="icon">🔬</span>
+            <span>Framework Científico de Investigación</span>
           </div>
           <div class="hero-meta-item">
-            <span class="icon">🌳</span>
-            <span>Árbol de Decisión Supervisado</span>
+            <span class="icon">⚡</span>
+            <span>Dual-System (Classic vs MetaCog)</span>
           </div>
           <div class="hero-meta-item">
-            <span class="icon">💼</span>
-            <span>Caso de Scoring Crediticio</span>
+            <span class="icon">📊</span>
+            <span id="hero-dataset-badge">Dataset: Cargando experiment...</span>
           </div>
         </div>
         
-        <p style="margin-top: 4rem; font-size: 0.85rem; color: var(--text-muted);">
-          Usa las teclas <span class="key-tag">→</span> / <span class="key-tag">Espacio</span> para avanzar, y <span class="key-tag">←</span> para retroceder.
+        <p style="margin-top: 3.5rem; font-size: 0.85rem; color: var(--text-muted);">
+          Navegación: <span class="key-tag">→</span> / <span class="key-tag">Espacio</span> avanzar | <span class="key-tag">←</span> retroceder | <span class="key-tag">M</span> / <span class="key-tag">I</span> índice
         </p>
       </section>
 
-      <!-- ==================== SLIDE 2: ¿QUÉ ES PYC45? ==================== -->
+      <!-- ==================== SLIDE 2: VISIÓN GENERAL Y PARADIGMA ==================== -->
       <section class="slide">
         <div class="slide-header">
-          <div class="slide-number-indicator">Diapositiva 02</div>
-          <h2 class="slide-title">¿Qué es el Proyecto PyC45?</h2>
+          <div class="slide-number-indicator">Diapositiva 02 — Fundamentación</div>
+          <h2 class="slide-title">¿Qué es MetaCog-C45? El Paradigma Dual</h2>
         </div>
         <div class="slide-body">
           <div class="split-layout">
             <div>
-              <p style="font-size:1.15rem; line-height:1.7; margin-bottom:1.5rem;">
-                <strong>PyC45</strong> es una implementación limpia, modular y orientada a objetos en Python puro del algoritmo clásico <strong>C4.5</strong> (creado por Ross Quinlan en 1993) para tareas de clasificación binaria supervisada.
+              <p style="font-size:1.1rem; line-height:1.7; margin-bottom:1.2rem;">
+                <strong>MetaCog-C45</strong> es el artefacto tecnológico de investigación que extiende el algoritmo de clasificación <strong>C4.5</strong> (Ross Quinlan, 1993) integrando un <strong>Sistema 2 metacognitivo</strong> de inspección y autorregulación en tiempo de ejecución.
               </p>
               
               <div class="info-box method">
-                <strong>Objetivo del Framework:</strong><br/>
-                Ofrecer una alternativa transparente e interpretable (caja blanca) frente a los complejos estimadores de librerías monolíticas, ideal tanto para la enseñanza académica como para la auditoría de reglas de negocio en entornos productivos.
+                <strong>Propósito de la Investigación:</strong><br/>
+                Superar las rigideces de estimación puntual del C4.5 clásico dotando al modelo de la capacidad de evaluar su propia incertidumbre, monitorear la estabilidad de los nodos y tomar decisiones adaptativas de intervención o colapso.
               </div>
             </div>
             
             <div class="slide-grid-3" style="grid-template-columns: 1fr; gap:1rem;">
               <div class="card-slide">
-                <h3><span>🧠</span> Propósito Educativo</h3>
-                <p style="font-size:0.85rem;">Código en español estructurado sin optimizaciones oscuras (Cython) para facilitar el debug paso a paso.</p>
+                <h3><span>🧠</span> Sistema 1 (Reconocimiento Rápido)</h3>
+                <p style="font-size:0.85rem;">Construcción recursiva C4.5 mediante Entropía de Shannon, Gain Ratio y Poda por Error Reducido (REP) en árbol de decisión de caja blanca.</p>
               </div>
-              <div class="card-slide">
-                <h3><span>⚡</span> Enfoque Práctico</h3>
-                <p style="font-size:0.85rem;">Preparado para datasets de la vida real con soporte integrado para variables continuas y poda REP.</p>
+              <div class="card-slide" style="border-color:var(--success);">
+                <h3><span>🔍</span> Sistema 2 (Monitoreo Metacognitivo)</h3>
+                <p style="font-size:0.85rem;">Evaluación local con Decision Core, Reflection Engine, simulación bootstrap adaptativa, MetaMemory y trazabilidad auditada via DecisionTrace.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ==================== SLIDE 3: ARQUITECTURA MODULAR ==================== -->
+      <!-- ==================== SLIDE 3: ARQUITECTURA MODULAR DE 2 NIVELES ==================== -->
       <section class="slide">
         <div class="slide-header">
-          <div class="slide-number-indicator">Diapositiva 03</div>
-          <h2 class="slide-title">Arquitectura y Estructura Modular</h2>
+          <div class="slide-number-indicator">Diapositiva 03 — Arquitectura</div>
+          <h2 class="slide-title">Arquitectura Modular de 2 Niveles</h2>
         </div>
         <div class="slide-body">
           <div class="split-layout" style="align-items: stretch;">
             <div>
-              <p style="margin-bottom:1.5rem;">
-                El framework está desarrollado siguiendo principios de **responsabilidad única** y cohesión interna, dividiendo sus componentes principales en carpetas independientes y auto-contenidas:
+              <p style="margin-bottom:1rem; font-size:0.95rem;">
+                El framework desacopla estrictamente la lógica de construcción del árbol (Sistema 1) de los módulos de introspección metacognitiva (Sistema 2):
               </p>
-              <div class="tree-display" style="margin:0; font-size:0.75rem; line-height:1.6;">
-PyC45/
-├── core/                  # Núcleo Algorítmico
-│   ├── classifier.py      # Interfaz de alto nivel (fit/predict)
-│   ├── tree_builder.py    # Construcción recursiva del árbol
-│   ├── best_split.py      # Selector de corte numérico óptimo
-│   ├── entropy.py         # Calculadora de entropía de Shannon
-│   ├── pruning.py         # Algoritmo de Poda por Error Reducido (REP)
-│   └── decision_node.py   # Estructura del nodo interno o hoja
-├── metrics/               # Suite de Evaluación
-│   ├── confusion_matrix.py
-│   ├── classification_metrics.py (Exactitud, F1, MCC, etc.)
-│   └── roc_auc.py         # Cálculo de curva ROC y AUC
-└── visualization/         # Visualización y explicabilidad
-    ├── tree_plot.py       # Gráfico del árbol con Matplotlib
-    └── feature_importance.py # Ranking por Gain Ratio acumulado</div>
+              <div class="tree-display" style="margin:0; font-size:0.72rem; line-height:1.55;">
+metacog-c45/
+├── core/                           # SISTEMA 1: Núcleo Algorítmico Base
+│   ├── classifier.py               # C45Classifier (mode='classic' | 'metacog')
+│   ├── tree_builder.py             # Inducción recursiva C4.5
+│   ├── best_split.py               # Selector de cortes continuos
+│   ├── entropy.py                  # Entropía de Shannon & Gain Ratio
+│   ├── pruning.py                  # Poda por Error Reducido (REP)
+│   └── decision_node.py            # Nodos instrumentados con trace_id
+└── core/metacognition/             # SISTEMA 2: Capa Metacognitiva
+    ├── decision_core.py            # DecisionCore (Cobb-Douglas & Veredictos)
+    ├── reflection_engine.py        # ReflectionEngine (Bootstrap B-replicas)
+    ├── meta_memory.py              # MetaMemory (Almacén de trazas execution)
+    ├── decision_trace.py           # DecisionTrace (Trazas estructuradas XAI)
+    └── experience_statistics.py    # ExperienceStatistics & MetaMemory Fit Index</div>
             </div>
             
             <div style="display:flex; flex-direction:column; justify-content:center; gap:1rem;">
               <div class="card-slide">
-                <h4 style="color:var(--accent-light); margin-bottom:0.5rem;">⚙️ Core Algorítmico</h4>
-                <p style="font-size:0.85rem;">Separación clara de la lógica del clasificador y el builder del árbol, aislando los cálculos matemáticos (entropía y ganancia).</p>
+                <h4 style="color:var(--accent-light); margin-bottom:0.4rem;">⚙️ Sistema 1: Algoritmo Inductivo</h4>
+                <p style="font-size:0.83rem;">Garantiza compatibilidad total con C4.5 clásico, permitiendo evaluar baselines deterministas y reproducibles.</p>
               </div>
-              <div class="card-slide">
-                <h4 style="color:var(--success); margin-bottom:0.5rem;">📊 Evaluación Rigurosa</h4>
-                <p style="font-size:0.85rem;">Contiene módulos de evaluación nativos (sin scikit-learn) para graficar curvas ROC y matrices de confusión detalladas.</p>
+              <div class="card-slide" style="border-color:var(--success);">
+                <h4 style="color:var(--success); margin-bottom:0.4rem;">🔬 Sistema 2: Motor Metacognitivo</h4>
+                <p style="font-size:0.83rem;">Monitorea $SCS, NS, TS, CI$, ejecuta remuestreo bootstrap local $B$ y registra trazas en `MetaMemory` para auditoría XAI.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ==================== SLIDE 4: PIPELINE DE FUNCIONAMIENTO ==================== -->
+      <!-- ==================== SLIDE 4: PIPELINE DE FUNCIONAMIENTO DUAL ==================== -->
       <section class="slide">
         <div class="slide-header">
-          <div class="slide-number-indicator">Diapositiva 04</div>
-          <h2 class="slide-title">Funcionamiento Paso a Paso</h2>
+          <div class="slide-number-indicator">Diapositiva 04 — Flujo Metacognitivo</div>
+          <h2 class="slide-title">Pipeline Dual: Sistema 1 + Sistema 2</h2>
         </div>
         <div class="slide-body">
-          <p style="margin-bottom:1.5rem;">El flujo completo de procesamiento de datos y modelado en PyC45 se organiza en 7 etapas consecutivas:</p>
-          
-          <div class="pipeline-diagram">
-            <div class="pipeline-node">1. Carga de Datos</div>
-            <div class="pipeline-arrow">➔</div>
-            <div class="pipeline-node">2. Limpieza</div>
-            <div class="pipeline-arrow">➔</div>
-            <div class="pipeline-node">3. Partición (70/30)</div>
-            <div class="pipeline-arrow">➔</div>
-            <div class="pipeline-node">4. Entrenamiento</div>
-          </div>
-          
-          <div class="pipeline-diagram" style="justify-content: flex-end; flex-direction: row-reverse;">
-            <div class="pipeline-node" style="border-color:var(--success)">7. Visualización</div>
-            <div class="pipeline-arrow">➔</div>
-            <div class="pipeline-node">6. Evaluación</div>
-            <div class="pipeline-arrow">➔</div>
-            <div class="pipeline-node">5. Poda (REP)</div>
-            <div class="pipeline-arrow" style="transform: rotate(180deg)">➔</div>
+          <div class="dual-pipeline-container">
+            <div class="pipeline-level-card level-1">
+              <div class="pipeline-level-header">
+                <span class="level-badge">Nivel 1: Sistema 1</span>
+                <h4>Inducción Estructural C4.5 + Poda REP</h4>
+              </div>
+              <div class="pipeline-diagram" style="margin:0;">
+                <div class="pipeline-node">Carga & Clean</div>
+                <div class="pipeline-arrow">➔</div>
+                <div class="pipeline-node">División Train/Val</div>
+                <div class="pipeline-arrow">➔</div>
+                <div class="pipeline-node">Cálculo GR Opt.</div>
+                <div class="pipeline-arrow">➔</div>
+                <div class="pipeline-node">Poda REP (Bottom-Up)</div>
+              </div>
+            </div>
+
+            <div class="pipeline-level-card level-2">
+              <div class="pipeline-level-header">
+                <span class="level-badge">Nivel 2: Sistema 2</span>
+                <h4>Monitoreo, Evaluación de Confianza y Regulación</h4>
+              </div>
+              <div class="pipeline-diagram" style="margin:0;">
+                <div class="pipeline-node">Instrumentación Metanodos</div>
+                <div class="pipeline-arrow">➔</div>
+                <div class="pipeline-node">Simulación Bootstrap (B)</div>
+                <div class="pipeline-arrow">➔</div>
+                <div class="pipeline-node">Cálculo SCS, NS, TS, CI</div>
+                <div class="pipeline-arrow">➔</div>
+                <div class="pipeline-node" style="border-color:var(--success)">Veredicto DecisionCore</div>
+              </div>
+            </div>
           </div>
 
-          <div style="margin-top:2rem;" class="slide-grid-3">
+          <div style="margin-top:1.2rem;" class="slide-grid-3">
             <div class="card-slide">
-              <h4 style="color:var(--accent-light);">Paso 1–3: Preparación</h4>
-              <p style="font-size:0.82rem; margin-top:0.4rem;">Lectura desde Pandas, eliminación de IDs, y división de datos. Un conjunto de validación (30%) es aislado para el proceso de poda.</p>
+              <h4 style="color:var(--accent-light);">1. Instrumentación</h4>
+              <p style="font-size:0.8rem; margin-top:0.3rem;">Cada nodo del árbol es envuelto en un metanodo que captura contexto de profundidad $d$ y densidad de muestras $\rho$.</p>
             </div>
             <div class="card-slide">
-              <h4 style="color:var(--warning);">Paso 4–5: Modelado</h4>
-              <p style="font-size:0.82rem; margin-top:0.4rem;">El árbol crece recursivamente seleccionando cortes óptimos. Después, la poda REP recorre el árbol de abajo a arriba colapsando ramas innecesarias.</p>
+              <h4 style="color:var(--warning);">2. Introspección (B)</h4>
+              <p style="font-size:0.8rem; margin-top:0.3rem;">`ReflectionEngine` ejecuta $B$ réplicas de perturbación bootstrap para medir la estabilidad de la variable ($NS$) y del umbral ($TS$).</p>
             </div>
             <div class="card-slide">
-              <h4 style="color:var(--success);">Paso 6–7: Interpretación</h4>
-              <p style="font-size:0.82rem; margin-top:0.4rem;">Cálculo de ROC-AUC y ranking de variables. Generación del gráfico visual con Matplotlib y exportación interactiva web.</p>
+              <h4 style="color:var(--success);">3. Veredicto & Traza</h4>
+              <p style="font-size:0.8rem; margin-top:0.3rem;">`DecisionCore` evalúa el $SCS$ mediante Cobb-Douglas y emite veredictos (`ACCEPT`, `OVERRIDE`, `FALLBACK`) guardados en `DecisionTrace`.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ==================== SLIDE 5: EL NÚCLEO MATEMÁTICO ==================== -->
+      <!-- ==================== SLIDE 5: EL NÚCLEO MATEMÁTICO SISTEMA 1 ==================== -->
       <section class="slide">
         <div class="slide-header">
-          <div class="slide-number-indicator">Diapositiva 05</div>
-          <h2 class="slide-title">El Núcleo Matemático: Criterio C4.5</h2>
+          <div class="slide-number-indicator">Diapositiva 05 — Fundamento Matemático</div>
+          <h2 class="slide-title">Núcleo Matemático del Sistema 1: Criterio C4.5</h2>
         </div>
         <div class="slide-body">
           <div class="split-layout">
             <div class="math-slide">
               <div class="math-item">
-                <h4>1. Entropía de Shannon (Pureza)</h4>
-                <p style="font-size:0.85rem; color:var(--text-secondary)">Mide el grado de impureza de las clases en un nodo:</p>
-                <div class="formula">H(S) = - \sum p_i \log_2(p_i)</div>
+                <h4>1. Entropía de Shannon (Impureza Local)</h4>
+                <p style="font-size:0.83rem; color:var(--text-secondary)">Mide el desorden informativo de la distribución de clases en el conjunto $S$:</p>
+                <div class="formula">H(S) = - \sum_{i=1}^{k} p_i \log_2(p_i)</div>
               </div>
               <div class="math-item">
-                <h4>2. Ganancia de Información (Reduction)</h4>
-                <p style="font-size:0.85rem; color:var(--text-secondary)">Reducción neta de entropía al dividir por el atributo A:</p>
-                <div class="formula">IG(S, A) = H(S) - \sum \frac{|S_v|}{|S|} H(S_v)</div>
+                <h4>2. Ganancia de Información (Information Gain)</h4>
+                <p style="font-size:0.83rem; color:var(--text-secondary)">Reducción de entropía tras la partición por el atributo $A$:</p>
+                <div class="formula">IG(S, A) = H(S) - \sum_{v \in Val(A)} \frac{|S_v|}{|S|} H(S_v)</div>
               </div>
             </div>
             
             <div class="math-slide">
               <div class="math-item" style="border-color:var(--success); background:var(--success-dim)">
-                <h4 style="color:var(--success)">3. Normalización con Gain Ratio (C4.5)</h4>
-                <p style="font-size:0.85rem; color:var(--text-secondary)">Evita el sesgo de IG hacia atributos con muchos valores dividiendo entre el Split Information:</p>
+                <h4 style="color:var(--success)">3. Normalización con Gain Ratio (Quinlan, 1993)</h4>
+                <p style="font-size:0.83rem; color:var(--text-secondary)">Penaliza atributos con excesivas particiones dividiendo entre el Split Information:</p>
                 <div class="formula" style="color:var(--success); background:rgba(0, 212, 170, 0.08)">
-                  GR(S, A) = \frac{IG(S, A)}{SplitInfo(S, A)}
+                  GR(S, A) = \frac{IG(S, A)}{SplitInfo(S, A)}, \quad SplitInfo(S, A) = - \sum \frac{|S_v|}{|S|} \log_2 \frac{|S_v|}{|S|}
                 </div>
-                <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem; text-align:center;">
-                  Donde SplitInfo mide la entropía de la propia partición.
-                </p>
               </div>
               
               <div class="info-box insight" style="margin:0; padding: 0.8rem 1.2rem;">
-                <strong>Manejo Numérico:</strong> C4.5 evalúa dinámicamente todos los puntos de corte medios consecutivos para variables continuas, seleccionando el umbral que maximiza el Gain Ratio.
+                <strong>Evaluación Continua:</strong> Para variables numéricas, el módulo `BestSplitFinder` ordena las observaciones y evalúa el $GR$ en cada punto medio consecutivo, eligiendo la partición óptima.
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ==================== SLIDE 6: PODA POR ERROR REDUCIDO ==================== -->
+      <!-- ==================== SLIDE 6: MÉTRICAS MATEMÁTICAS DEL SISTEMA 2 ==================== -->
       <section class="slide">
         <div class="slide-header">
-          <div class="slide-number-indicator">Diapositiva 06</div>
-          <h2 class="slide-title">Simplificación y Control: Poda REP</h2>
+          <div class="slide-number-indicator">Diapositiva 06 — Métricas Metacognitivas</div>
+          <h2 class="slide-title">Métricas Metacognitivas del Sistema 2</h2>
+        </div>
+        <div class="slide-body">
+          <div class="math-grid-2x2">
+            <!-- SCS Card -->
+            <div class="math-metric-card">
+              <div class="card-header-badge">
+                <span class="metric-name">Split Confidence Score (SCS)</span>
+                <span class="metric-range">Rango: [0, 1]</span>
+              </div>
+              <div class="formula-box">
+                SCS = GR_{norm} \cdot NS^{\alpha} \cdot TS^{\beta} \cdot (1 - CI)^{\gamma}
+              </div>
+              <div class="concept-desc">
+                Función de utilidad multiplicativa (Cobb-Douglas) con elasticidades adaptativas $\alpha, \beta$ escaladas por profundidad $d$ y densidad $\rho$.
+              </div>
+              <div class="decision-effect">
+                <strong>Efecto DecisionCore:</strong> $SCS \ge \theta_{accept} \implies$ `ACCEPT`; $\theta_{reject} \le SCS < \theta_{accept} \implies$ `OVERRIDE`; $SCS < \theta_{reject} \implies$ `FALLBACK`.
+              </div>
+            </div>
+
+            <!-- NS Card -->
+            <div class="math-metric-card">
+              <div class="card-header-badge">
+                <span class="metric-name">Node Stability (NS)</span>
+                <span class="metric-range">Rango: [0, 1]</span>
+              </div>
+              <div class="formula-box">
+                NS = p^* \cdot \left(1 - \frac{H(p_B)}{\log_2(d_{eff})}\right)
+              </div>
+              <div class="concept-desc">
+                Estabilidad estructural de la característica seleccionada bajo $B$ réplicas bootstrap, corregida por la entropía de selección $H(p_B)$ sobre variables activas $d_{eff}$.
+              </div>
+              <div class="decision-effect">
+                <strong>Efecto ReflectionEngine:</strong> Mide firmeza estructural. $NS$ bajo detecta alta fragilidad de límites y activa la reevaluación de atributos competidores.
+              </div>
+            </div>
+
+            <!-- TS Card -->
+            <div class="math-metric-card">
+              <div class="card-header-badge">
+                <span class="metric-name">Threshold Survival (TS)</span>
+                <span class="metric-range">Rango: (0, 1]</span>
+              </div>
+              <div class="formula-box">
+                TS = \exp\left(-\frac{\sigma_{\theta}^2}{\sigma_{local}^2 (1 + \epsilon) + \epsilon}\right)
+              </div>
+              <div class="concept-desc">
+                Supervivencia y viabilidad del umbral numérico continuo frente a la varianza de cortes bootstrap $\sigma_{\theta}^2$ relativa a la varianza local $\sigma_{local}^2$.
+              </div>
+              <div class="decision-effect">
+                <strong>Efecto ReflectionEngine:</strong> Mide volatilidad del umbral. $TS$ bajo penaliza cortes numéricos inestables previniendo sobreajuste local.
+              </div>
+            </div>
+
+            <!-- CI Card -->
+            <div class="math-metric-card">
+              <div class="card-header-badge">
+                <span class="metric-name">Competitiveness Index (CI)</span>
+                <span class="metric-range">Rango: [0, 1]</span>
+              </div>
+              <div class="formula-box">
+                CI = 1 - \frac{\Delta GR}{GR_1 + \epsilon} = \frac{GR_2}{GR_1 + \epsilon}
+              </div>
+              <div class="concept-desc">
+                Índice de colisión y brecha de competencia entre el primer atributo óptimo ($GR_1$) y el segundo mejor competidor ($GR_2$).
+              </div>
+              <div class="decision-effect">
+                <strong>Efecto DecisionCore:</strong> $CI \to 1$ indica empate crítico; activa la penalización $(1 - CI)^\gamma$ forzando regulación metacognitiva.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 7: PODA POR ERROR REDUCIDO ==================== -->
+      <section class="slide">
+        <div class="slide-header">
+          <div class="slide-number-indicator">Diapositiva 07 — Control Estructural</div>
+          <h2 class="slide-title">Simplificación Estructural: Poda REP</h2>
         </div>
         <div class="slide-body">
           <div class="split-layout">
             <div>
               <p style="margin-bottom:1.2rem; font-size:1.05rem;">
-                La Poda por Error Reducido (**Reduced Error Pruning - REP**) es una técnica clave para evitar el sobreajuste y reducir la complejidad estructural del árbol de decisión.
+                La Poda por Error Reducido (<strong>Reduced Error Pruning - REP</strong>) actúa como el mecanismo primario del Sistema 1 para controlar la complejidad del árbol.
               </p>
               <div class="info-box warning">
-                <strong>¿Cómo funciona?</strong> OPERACIÓN BOTTOM-UP<br/>
-                Para cada nodo interno con hijos hoja, se evalúa si convertirlo en una sola hoja (prediciendo la clase mayoritaria local) mantiene o mejora la exactitud (accuracy) en el conjunto de validación independiente.
+                <strong>Mecanismo Bottom-Up:</strong><br/>
+                Para cada subárbol con hijos hoja, se evalúa el impacto en la exactitud (accuracy) sobre el conjunto de validación independiente si el subárbol se colapsa a una única hoja.
               </div>
               <p style="font-size:0.9rem; color:var(--text-secondary);">
-                Si no hay pérdida de exactitud, el subárbol se elimina (colapsa). El proceso se repite recursivamente hacia arriba.
+                Si el colapso no incrementa el error en validación, las ramas redundantes son eliminadas.
               </p>
             </div>
             
             <div style="display:flex; flex-direction:column; gap:1.2rem;">
               <div class="card-slide">
-                <h4 style="color:var(--warning);">Antes de Poda (Sobreajuste)</h4>
-                <p style="font-size:0.85rem;">El árbol crece libremente y memoriza detalles de los datos de entrenamiento (incluyendo ruido). Gran tamaño y profundidad, pero menor exactitud en validación.</p>
+                <h4 style="color:var(--warning);">Árbol Sin Podar (Sobreajustado)</h4>
+                <p style="font-size:0.85rem;">Memorización de ruido del conjunto de entrenamiento. Elevada profundidad y ramas frágiles con baja estabilidad.</p>
               </div>
               <div class="card-slide" style="border-color:var(--success)">
-                <h4 style="color:var(--success);">Después de Poda (Generalización)</h4>
-                <p style="font-size:0.85rem;">Las ramas que no aportan poder predictivo general sobre el conjunto de validación son colapsadas. Árbol compacto, rápido y fácil de interpretar.</p>
+                <h4 style="color:var(--success);">Árbol Podado con REP (Generalizado)</h4>
+                <p style="font-size:0.85rem;">Estructura compacta optimizada contra el conjunto de validación. Mayor velocidad de inferencia y reglas de mayor generalización.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ==================== SLIDE 7: PYC45 VS C4.5 CLÁSICO ==================== -->
+      <!-- ==================== SLIDE 8: C4.5 CLÁSICO VS METACOG-C45 ==================== -->
       <section class="slide">
         <div class="slide-header">
-          <div class="slide-number-indicator">Diapositiva 07</div>
-          <h2 class="slide-title">PyC45 vs. Algoritmo C4.5 Clásico</h2>
+          <div class="slide-number-indicator">Diapositiva 08 — Comparativa Científica</div>
+          <h2 class="slide-title">Classic C4.5 vs. MetaCog-C45</h2>
         </div>
         <div class="slide-body">
-          <div class="diff-list">
-            <div class="diff-item">
-              <div class="diff-title">Lenguaje y Diseño</div>
-              <div class="diff-details">
-                <strong>C4.5 Clásico:</strong> Código estructurado en C monolítico, difícil de integrar con flujos modernos de datos.<br/>
-                <strong>PyC45:</strong> Diseñado en Python 3 orientado a objetos. Legible, modular y documentado en español.
-              </div>
+          <table class="comparison-table-scientific">
+            <thead>
+              <tr>
+                <th>Dimensión Científica</th>
+                <th>C4.5 Clásico (Quinlan, 1993)</th>
+                <th>MetaCog-C45 Framework</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Paradigma de Ejecución</strong></td>
+                <td><span class="mode-badge classic">Deterministic Single-Pass</span> Inducción monolítica sin autorreflexión.</td>
+                <td><span class="mode-badge metacog">Adaptive Dual-System</span> Sistema 1 + Sistema 2 con metacognición autónoma.</td>
+              </tr>
+              <tr>
+                <td><strong>Evaluación de Nodos</strong></td>
+                <td>Puntual basada únicamente en Gain Ratio ($GR$).</td>
+                <td>Multidimensional ($SCS$) con elasticidades adaptativas Cobb-Douglas ($\alpha, \beta$).</td>
+              </tr>
+              <tr>
+                <td><strong>Estabilidad y Resiliencia</strong></td>
+                <td>Asume estática de datos; susceptible a ruido y pequeñas variaciones.</td>
+                <td>Cuantifica estabilidad estructural de nodo ($NS$) y supervivencia de umbral ($TS$).</td>
+              </tr>
+              <tr>
+                <td><strong>Resolución de Ambigüedad</strong></td>
+                <td>Selección arbitraria en empates o brechas estrechas.</td>
+                <td>Índice de Competitividad ($CI$) y reevaluación bootstrap por `ReflectionEngine`.</td>
+              </tr>
+              <tr>
+                <td><strong>Trazabilidad y Auditoría XAI</strong></td>
+                <td>Sin memoria de ejecución; reglas estáticas.</td>
+                <td>Registro completo de trazas `DecisionTrace` en `MetaMemory` con MetaMemory Fit Index (MFI).</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Dynamic Experiment Banner -->
+          <div class="info-box insight" style="margin-top:1.2rem; margin-bottom:0;" id="presentation-experiment-summary">
+            <strong>Experimento Activo:</strong> Cargando métricas en vivo desde <code>report_data.js</code>...
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SLIDE 9: CONTRIBUCIÓN CIENTÍFICA ==================== -->
+      <section class="slide">
+        <div class="slide-header">
+          <div class="slide-number-indicator">Diapositiva 09 — Aportes de la Tesis</div>
+          <h2 class="slide-title">Contribución Científica de MetaCog-C45</h2>
+        </div>
+        <div class="slide-body">
+          <div class="contribution-grid">
+            <div class="contribution-card limitations">
+              <h3 style="color:var(--danger)"><span>⚠️</span> Limitaciones Resueltas del C4.5 Clásico</h3>
+              <ul>
+                <li><strong>Estimación Puntual Rígida:</strong> Elimina la dependencia ciega del $GR$ local mediante la evaluación de confianza $SCS$.</li>
+                <li><strong>Fragilidad de Limites Numéricos:</strong> Resuelve el sobreajuste de cortes continuos analizando la supervivencia de umbral ($TS$).</li>
+                <li><strong>Ausencia de Autoconocimiento:</strong> Elimina la incapacidad del modelo para detectar sus propias regiones de incertidumbre.</li>
+                <li><strong>Cero Memoria de Ejecución:</strong> Supera la opacidad operativa almacenando la trayectoria metacognitiva de cada muestra.</li>
+              </ul>
             </div>
-            <div class="diff-item">
-              <div class="diff-title">Entorno de Datos</div>
-              <div class="diff-details">
-                <strong>C4.5 Clásico:</strong> Archivos planos propietarios (.names, .data).<br/>
-                <strong>PyC45:</strong> Carga nativa de dataframes de Pandas y matrices de NumPy. Total compatibilidad en pipelines de ciencia de datos.
-              </div>
-            </div>
-            <div class="diff-item">
-              <div class="diff-title">Estrategia de Poda</div>
-              <div class="diff-details">
-                <strong>C4.5 Clásico:</strong> Poda Pesimista basada en intervalos de confianza estadísticos estimados sobre train.<br/>
-                <strong>PyC45:</strong> Poda por Error Reducido (REP) utilizando un conjunto de validación externo e independiente.
-              </div>
-            </div>
-            <div class="diff-item">
-              <div class="diff-title">Métricas y Visualización</div>
-              <div class="diff-details">
-                <strong>C4.5 Clásico:</strong> Reportes básicos en consola con tasas de error generales.<br/>
-                <strong>PyC45:</strong> Curva ROC-AUC, coeficientes MCC/F1, importancia de variables y visualización interactiva.
-              </div>
+
+            <div class="contribution-card advances">
+              <h3 style="color:var(--success)"><span>🔬</span> Aportes Originales de la Investigación</h3>
+              <ul>
+                <li><strong>Arquitectura Metacognitiva Dual:</strong> Formalización de la desacoplada interacción entre Sistema 1 e Inspección Sistema 2.</li>
+                <li><strong>Métricas Formuladas Fielmente:</strong> Definición e implementación exacta de $SCS$, $NS$, $TS$ y $CI$.</li>
+                <li><strong>Explicabilidad Dirigida por Memoria (XAI):</strong> Introducción de `MetaMemory` y el MetaMemory Fit Index (MFI) para trazabilidad.</li>
+                <li><strong>Framework Abierto e Interoperable:</strong> Implementación orientada a objetos en Python puro con despliegue nativo en CLI y Web.</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ==================== SLIDE 8: APORTE A ANALÍTICA ==================== -->
+      <!-- ==================== SLIDE 10: EXPLICABILIDAD METANODOS & XAI ==================== -->
       <section class="slide">
         <div class="slide-header">
-          <div class="slide-number-indicator">Diapositiva 08</div>
-          <h2 class="slide-title">Aporte a la Analítica de Datos</h2>
+          <div class="slide-number-indicator">Diapositiva 10 — Auditoría y Explicabilidad</div>
+          <h2 class="slide-title">Explicabilidad Metacognitiva y Auditoría XAI</h2>
         </div>
         <div class="slide-body">
           <div class="slide-grid-3">
             <div class="card-slide">
-              <div style="font-size:2rem; margin-bottom:0.5rem;">🔍</div>
-              <h3>Explicabilidad (XAI)</h3>
-              <p style="font-size:0.85rem; line-height:1.6; margin-top:0.5rem;">
-                A diferencia de los modelos de "caja negra" (como Gradient Boosting o Redes Neuronales), PyC45 genera reglas de decisión explícitas y auditables, esenciales en finanzas, seguros y medicina legal.
+              <div style="font-size:2rem; margin-bottom:0.5rem;">📜</div>
+              <h3>DecisionTrace ESTRUCTURADO</h3>
+              <p style="font-size:0.83rem; line-height:1.6; margin-top:0.4rem;">
+                Cada predicción genera un objeto auditables con los valores de $SCS$, veredicto emitido, justificación textual y camino de decisiones (Decision Path).
               </p>
             </div>
             <div class="card-slide">
-              <div style="font-size:2rem; margin-bottom:0.5rem;">🎓</div>
-              <h3>Pedagogía Activa</h3>
-              <p style="font-size:0.85rem; line-height:1.6; margin-top:0.5rem;">
-                Al ser código transparente en Python, permite a analistas y estudiantes desarmar y depurar el algoritmo paso a paso, comprendiendo a fondo el cálculo de la entropía, selección de umbrales y la poda recursiva.
+              <div style="font-size:2rem; margin-bottom:0.5rem;">💾</div>
+              <h3>SUBSISTEMA MetaMemory</h3>
+              <p style="font-size:0.83rem; line-height:1.6; margin-top:0.4rem;">
+                Almacena el historial de trazas de inferencia. Permite calcular el <strong>MetaMemory Fit Index (MFI)</strong> para medir el ajuste metacognitivo global.
               </p>
             </div>
             <div class="card-slide">
-              <div style="font-size:2rem; margin-bottom:0.5rem;">📈</div>
-              <h3>Métricas Robustas</h3>
-              <p style="font-size:0.85rem; line-height:1.6; margin-top:0.5rem;">
-                Incorpora el Coeficiente de Correlación de Matthews (MCC) y curva ROC-AUC para evitar sesgos ante clases desbalanceadas (como en el caso del impago de tarjetas de crédito).
+              <div style="font-size:2rem; margin-bottom:0.5rem;">🌐</div>
+              <h3>DASHBOARD CIENTÍFICO WEB</h3>
+              <p style="font-size:0.83rem; line-height:1.6; margin-top:0.4rem;">
+                La plataforma interactiva (`web_verification/index.html`) permite explorar dinámicamente árboles, matrices de confusión y trazas por muestra.
               </p>
             </div>
           </div>
           
-          <div class="info-box insight" style="margin-top:1.5rem; margin-bottom:0;">
-            <strong>Explicabilidad Interactiva:</strong> La plataforma web de PyC45 cuenta con un trazador interactivo de caminos de decisión (Decision Path) para explicar individualmente la predicción de cualquier muestra.
+          <div class="info-box insight" style="margin-top:1.5rem; margin-bottom:0;" id="presentation-xai-status">
+            <strong>Auditoría Metacognitiva:</strong> Traza de ejecución registrada para cada muestra evaluada en el dataset activo.
           </div>
         </div>
       </section>
 
-      <!-- ==================== SLIDE 9: CONCLUSIONES ==================== -->
+      <!-- ==================== SLIDE 11: CONCLUSIONES Y COMANDOS ==================== -->
       <section class="slide">
         <div class="slide-header">
-          <div class="slide-number-indicator">Diapositiva 09</div>
-          <h2 class="slide-title">Conclusiones del Proyecto</h2>
+          <div class="slide-number-indicator">Diapositiva 11 — Conclusiones</div>
+          <h2 class="slide-title">Conclusiones y Ejecución del Framework</h2>
         </div>
         <div class="slide-body">
           <div class="split-layout">
             <div>
-              <p style="font-size:1.1rem; margin-bottom:1.5rem;">
-                El framework PyC45 consolida la aplicación de un algoritmo clásico a los estándares de desarrollo de software modernos.
+              <p style="font-size:1.05rem; margin-bottom:1.2rem;">
+                MetaCog-C45 demuestra que es posible elevar algoritmos de árboles de decisión clásicos a los más altos estándares de rigor científico, resiliencia y explicabilidad.
               </p>
               
-              <ul style="padding-left:1.2rem; display:flex; flex-direction:column; gap:0.8rem; font-size:0.95rem; color:var(--text-secondary);">
-                <li><strong>Control absoluto:</strong> Permite modificar la lógica de partición y poda sin depender de librerías externas complejas.</li>
-                <li><strong>Capacidad predictiva visible:</strong> El árbol identifica variables clave como <code>PAY_0</code> (historial de morosidad reciente) de manera inmediata.</li>
-                <li><strong>Punto de partida sólido:</strong> Establece una línea base (baseline) explicable antes de pasar a modelos más complejos.</li>
+              <ul style="padding-left:1.2rem; display:flex; flex-direction:column; gap:0.8rem; font-size:0.92rem; color:var(--text-secondary);">
+                <li><strong>Rigor Académico:</strong> Artefacto tecnológico 100% reproducible orientado a publicaciones de investigación y soporte de tesis.</li>
+                <li><strong>Flexibilidad Experimental:</strong> Alternancia inmediata entre ejecuciones deterministas (Classic) y autorreguladas (MetaCog).</li>
+                <li><strong>Trazabilidad Garantizada:</strong> Acceso completo a código fuente, pruebas unitarias automatizadas y reportes JSON.</li>
               </ul>
             </div>
             
             <div class="card-slide" style="border-color:var(--accent);">
-              <h3 style="color:var(--accent-light);">🛠️ Comandos de Ejecución</h3>
+              <h3 style="color:var(--accent-light);">🛠️ Comandos de Ejecución del Framework</h3>
               <div class="tree-display" style="font-size:0.75rem; line-height:1.5; margin:0.5rem 0; padding:1rem;">
-# 1. Ejecutar simulación básica
-python main.py
+# 1. Ejecutor principal con Sistema 2 (metacog)
+python ejecutar_con_dataset.py --mode metacog
 
-# 2. Selector interactivo de datasets
-python ejecutar_con_dataset.py
+# 2. Invocación como módulo de paquete Python
+python -m metacog_c45 --dataset datasets/customer_churn.csv --mode metacog
 
-# 3. Generar informe de métricas JSON
+# 3. Generación del informe JSON/JS para el Dashboard
 python web_verification/generate_report.py</div>
               <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.8rem;">
-                Consulta la documentación completa en el archivo <a href="../README.md">README.md</a> o abre el archivo <a href="index.html">index.html</a> para ver el informe técnico interactivo.
+                Documentación completa disponible en <a href="../README.md">README.md</a> o explora la interfaz interactiva en <a href="index.html">index.html</a>.
               </p>
             </div>
           </div>
@@ -378,7 +508,7 @@ python web_verification/generate_report.py</div>
       </div>
       
       <div class="slide-progress-container">
-        <span id="slide-num">1 / 9</span>
+        <span id="slide-num">1 / 11</span>
         <div class="progress-track">
           <div class="progress-bar" id="progress-bar"></div>
         </div>
@@ -409,6 +539,8 @@ python web_verification/generate_report.py</div>
     </div>
   </div>
 
+  <!-- Optional report data JS link -->
+  <script src="report_data.js"></script>
   <!-- JavaScript logic link -->
   <script src="presentacion.js"></script>
 </body>

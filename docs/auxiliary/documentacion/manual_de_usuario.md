@@ -1,4 +1,4 @@
-# Manual de Usuario: Implementación de PyC45 con Nuevos Datasets
+﻿# Manual de Usuario: Implementación de PyC45 con Nuevos Datasets
 
 Este manual práctico proporciona una guía paso a paso para aplicar el framework **PyC45** a cualquier conjunto de datos nuevo de clasificación binaria (por ejemplo, predicción de abandono de clientes, aprobación de créditos, detección de fraudes o diagnósticos médicos).
 
@@ -178,7 +178,7 @@ Puedes copiar este bloque de código y guardarlo como un script (ej. `prediccion
 
 ```python
 # =====================================================================
-# SCRIPT DE IMPLEMENTACIÓN PyC45 PARA NUEVOS DATASETS
+# SCRIPT DE IMPLEMENTACI\u00d3N MetaCog-C45 PARA NUEVOS DATASETS
 # =====================================================================
 
 import sys
@@ -187,7 +187,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Asegurar importación de PyC45 (si el script se ejecuta en la raíz)
+# Asegurar importaci\u00f3n de MetaCog-C45 (si el script se ejecuta en la raíz)
 sys.path.append(os.path.abspath('.'))
 
 from core.classifier import C45Classifier
@@ -209,7 +209,7 @@ MAX_SAMPLES = 1500                             # Tamaño máximo de muestra (par
 
 def main():
     print("=" * 70)
-    print("               EJECUCIÓN DE PIPELINE PyC45")
+    print("               EJECUCI\u00d3N DE PIPELINE MetaCog-C45")
     print("=" * 70)
 
     # 1. Cargar archivo según su extensión

@@ -1,13 +1,13 @@
-"""
+﻿"""
 =========================================================
-PyC45 Framework — Generador de Presentaciones (PPTX & PDF)
+MetaCog-C45 Framework — Generador de Presentaciones (PPTX & PDF)
 =========================================================
 Este script genera automáticamente dos formatos de presentación:
 1. PowerPoint (.pptx) usando python-pptx.
 2. PDF Paisaje (.pdf) usando fpdf2.
 
 Ambas presentaciones tienen un diseño oscuro premium coherente
-con el sistema de diseño visual de PyC45.
+con el sistema de dise\u00f1o visual de MetaCog-C45.
 =========================================================
 """
 
@@ -22,7 +22,7 @@ from pptx.enum.shapes import MSO_SHAPE
 from fpdf import FPDF
 
 # =========================================================
-# CONFIGURACIÓN DE COLORES DEL TEMA (PyC45 Dark Theme)
+# CONFIGURACI\u00d3N DE COLORES DEL TEMA (MetaCog-C45 Dark Theme)
 # =========================================================
 COLOR_BG = (10, 11, 16)         # #0a0b10 (Fondo Principal)
 COLOR_CARD = (21, 24, 34)       # #151822 (Fondo de Tarjetas)
@@ -192,7 +192,7 @@ class LandscapePDF(FPDF):
         self.set_xy(15, 198)
         self.set_font("Arial", "I", 8)
         self.set_text_color(*COLOR_TEXT_MUTED)
-        self.cell(100, 5, clean_pdf_text("PyC45: Framework de Clasificación C4.5"), border=0)
+        self.cell(100, 5, clean_pdf_text("MetaCog-C45: Framework de Clasificaci\u00f3n C4.5"), border=0)
         self.set_x(260)
         self.cell(0, 5, clean_pdf_text(f"Pág. {slide_num} / 9"), border=0, align="R")
 
@@ -249,7 +249,7 @@ def generate_presentations():
     tf.word_wrap = True
     
     p_badge = tf.paragraphs[0]
-    p_badge.text = "📊 FRAMEWORK PyC45"
+    p_badge.text = "📊 Framework MetaCog-C45"
     p_badge.font.name = "Arial"
     p_badge.font.size = Pt(13)
     p_badge.font.bold = True
@@ -257,7 +257,7 @@ def generate_presentations():
     p_badge.space_after = Pt(20)
     
     p_title = tf.add_paragraph()
-    p_title.text = "PyC45: Clasificación C4.5 en Python"
+    p_title.text = "MetaCog-C45: Clasificaci\u00f3n C4.5 en Python"
     p_title.font.name = "Arial"
     p_title.font.size = Pt(40)
     p_title.font.bold = True
@@ -272,7 +272,7 @@ def generate_presentations():
     p_sub.space_after = Pt(50)
     
     p_meta = tf.add_paragraph()
-    p_meta.text = "Autor: Luis Alberto Buelvas Cogollo   |   Caso Práctico: Scoring Crediticio (UCI)   |   PyC45 v1.0.0"
+    p_meta.text = "Autor: Luis Alberto Buelvas Cogollo   |   Caso Práctico: Scoring Crediticio (UCI)   |   MetaCog-C45 v1.0.0"
     p_meta.font.name = "Arial"
     p_meta.font.size = Pt(12)
     p_meta.font.color.rgb = RGBColor(*COLOR_ACCENT_LT)
@@ -283,24 +283,24 @@ def generate_presentations():
     pdf.set_xy(20, 50)
     pdf.set_font("Arial", "B", 12)
     pdf.set_text_color(*COLOR_ACCENT)
-    pdf.cell(0, 5, clean_pdf_text("FRAMEWORK PyC45"), border=0, new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 5, clean_pdf_text("Framework MetaCog-C45"), border=0, new_x="LMARGIN", new_y="NEXT")
     pdf.ln(4)
     pdf.set_font("Arial", "B", 32)
     pdf.set_text_color(255, 255, 255)
-    pdf.cell(0, 15, clean_pdf_text("PyC45: Clasificación C4.5 en Python"), border=0, new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 15, clean_pdf_text("MetaCog-C45: Clasificaci\u00f3n C4.5 en Python"), border=0, new_x="LMARGIN", new_y="NEXT")
     pdf.set_font("Arial", "", 16)
     pdf.set_text_color(*COLOR_TEXT_MUTED)
     pdf.cell(0, 10, clean_pdf_text("Funcionamiento paso a paso, características y aportes a la analítica de datos explicable"), border=0, new_x="LMARGIN", new_y="NEXT")
     pdf.ln(35)
     pdf.set_font("Arial", "B", 10)
     pdf.set_text_color(*COLOR_ACCENT_LT)
-    pdf.cell(0, 5, clean_pdf_text("Autor: Luis Alberto Buelvas Cogollo    |    Caso Práctico: Scoring Crediticio (UCI)    |    PyC45 v1.0.0"), border=0, align="L")
+    pdf.cell(0, 5, clean_pdf_text("Autor: Luis Alberto Buelvas Cogollo    |    Caso Práctico: Scoring Crediticio (UCI)    |    MetaCog-C45 v1.0.0"), border=0, align="L")
 
     # =========================================================
     # DIAPOSITIVA 2: ¿QUÉ ES PYC45? (OBJETIVO Y FUNCIONALIDAD)
     # =========================================================
     # PPTX
-    s2 = create_pptx_base_slide(prs, "¿Qué es el Proyecto PyC45?", 2)
+    s2 = create_pptx_base_slide(prs, "\u00bfQu\u00e9 es el Proyecto MetaCog-C45?", 2)
     
     # Columna Izquierda: Descripción
     left_box = s2.shapes.add_textbox(Inches(0.8), Inches(1.8), Inches(5.8), Inches(4.5))
@@ -308,7 +308,7 @@ def generate_presentations():
     tf2.word_wrap = True
     
     p = tf2.paragraphs[0]
-    p.text = "PyC45 es una implementación limpia, modular y orientada a objetos en Python puro del algoritmo clásico C4.5 diseñado por Ross Quinlan en 1993."
+    p.text = "MetaCog-C45 es una implementaci\u00f3n limpia, modular y orientada a objetos en Python puro del algoritmo clásico C4.5 diseñado por Ross Quinlan en 1993."
     p.font.name = "Arial"
     p.font.size = Pt(16)
     p.font.color.rgb = RGBColor(*COLOR_TEXT_MAIN)
@@ -341,12 +341,12 @@ def generate_presentations():
                   "Preparado para aplicarse a conjuntos de datos comerciales del mundo real. Cuenta con soporte nativo de variables numéricas y el algoritmo de Poda por Error Reducido (REP) para maximizar la generalización.")
 
     # PDF Slide 2
-    pdf.create_base_slide("¿Qué es el Proyecto PyC45?", 2)
+    pdf.create_base_slide("\u00bfQu\u00e9 es el Proyecto MetaCog-C45?", 2)
     # Columna Izquierda
     pdf.set_xy(15, 35)
     pdf.set_font("Arial", "", 12)
     pdf.set_text_color(*COLOR_TEXT_MAIN)
-    pdf.multi_cell(125, 6, clean_pdf_text("PyC45 es una implementación limpia, modular y orientada a objetos en Python puro del algoritmo clásico C4.5 diseñado por Ross Quinlan en 1993."), border=0)
+    pdf.multi_cell(125, 6, clean_pdf_text("MetaCog-C45 es una implementaci\u00f3n limpia, modular y orientada a objetos en Python puro del algoritmo clásico C4.5 diseñado por Ross Quinlan en 1993."), border=0)
     pdf.ln(5)
     pdf.set_font("Arial", "B", 11)
     pdf.set_text_color(*COLOR_ACCENT_LT)
@@ -376,8 +376,8 @@ def generate_presentations():
     tf_code.margin_left = Inches(0.3)
     tf_code.margin_top = Inches(0.3)
     p_c = tf_code.paragraphs[0]
-    p_c.text = "Estructura del Proyecto PyC45:\n\n" \
-               "PyC45/\n" \
+    p_c.text = "Estructura del Proyecto MetaCog-C45:\n\n" \
+               "metacog-c45/\n" \
                "├── core/                    # Núcleo Algorítmico\n" \
                "│   ├── classifier.py        # fit / predict / score\n" \
                "│   ├── tree_builder.py      # Construcción recursiva\n" \
@@ -416,8 +416,8 @@ def generate_presentations():
     pdf.set_text_color(*COLOR_TEXT_MAIN)
     
     # Generar el árbol limpio para PDF
-    pdf_code_tree = "Estructura del Proyecto PyC45:\n\n" \
-                    "PyC45/\n" \
+    pdf_code_tree = "Estructura del Proyecto MetaCog-C45:\n\n" \
+                    "metacog-c45/\n" \
                     "|-- core/                    # Nucleo Algoritmico\n" \
                     "|   |-- classifier.py        # fit / predict / score\n" \
                     "|   |-- tree_builder.py      # Construccion recursiva\n" \
@@ -643,7 +643,7 @@ def generate_presentations():
     # DIAPOSITIVA 7: PYC45 VS ALGORITMO C4.5 CLÁSICO
     # =========================================================
     # PPTX
-    s7 = create_pptx_base_slide(prs, "PyC45 vs. Algoritmo C4.5 Clásico", 7)
+    s7 = create_pptx_base_slide(prs, "MetaCog-C45 vs. Algoritmo C4.5 Clásico", 7)
     
     # Crear Tabla comparativa nativa
     rows, cols = 6, 3
@@ -652,7 +652,7 @@ def generate_presentations():
     table = table_shape.table
     
     # Encabezados
-    headers = ["Característica", "C4.5 Clásico (Quinlan, 1993)", "Framework PyC45"]
+    headers = ["Característica", "C4.5 Clásico (Quinlan, 1993)", "Framework MetaCog-C45"]
     for i, h_text in enumerate(headers):
         cell = table.cell(0, i)
         cell.text = h_text
@@ -687,7 +687,7 @@ def generate_presentations():
             p.font.color.rgb = RGBColor(*COLOR_TEXT_MAIN)
             
     # PDF Slide 7
-    pdf.create_base_slide("PyC45 vs. Algoritmo C4.5 Clásico", 7)
+    pdf.create_base_slide("MetaCog-C45 vs. Algoritmo C4.5 Clásico", 7)
     # Dibujar tabla
     col_widths = [45, 110, 110]
     row_height = 20
@@ -702,7 +702,7 @@ def generate_presentations():
     pdf.set_xy(start_x, start_y)
     pdf.cell(col_widths[0], 10, clean_pdf_text("Caracteristica"), border=1, fill=True, align="L")
     pdf.cell(col_widths[1], 10, clean_pdf_text("C4.5 Clasico (Quinlan, 1993)"), border=1, fill=True, align="C")
-    pdf.cell(col_widths[2], 10, clean_pdf_text("Framework PyC45"), border=1, fill=True, align="C")
+    pdf.cell(col_widths[2], 10, clean_pdf_text("Framework MetaCog-C45"), border=1, fill=True, align="C")
     
     # Filas PDF
     pdf.set_font("Arial", "", 9)
@@ -728,24 +728,24 @@ def generate_presentations():
     # Tres tarjetas verticales
     add_pptx_card(s8, Inches(0.8), Inches(1.8), Inches(3.7), Inches(4.5), 
                   "🔍 Explicabilidad (XAI)", 
-                  "En sectores fuertemente regulados como finanzas y salud, la explicabilidad es obligatoria.\n\nPyC45 entrega un conjunto explícito y comprensible de reglas de decisión (de tipo SI-ENTONCES) que pueden ser auditadas, validadas y explicadas directamente a las partes interesadas sin áreas grises ni dudas.",
+                  "En sectores fuertemente regulados como finanzas y salud, la explicabilidad es obligatoria.\n\nMetaCog-C45 entrega un conjunto explícito y comprensible de reglas de decisión (de tipo SI-ENTONCES) que pueden ser auditadas, validadas y explicadas directamente a las partes interesadas sin áreas grises ni dudas.",
                   border_color=COLOR_ACCENT)
                   
     add_pptx_card(s8, Inches(4.8), Inches(1.8), Inches(3.7), Inches(4.5), 
                   "🎓 Valor Pedagógico", 
-                  "La mayoría de librerías modernas de machine learning ocultan sus algoritmos en complejos bindings de C/C++.\n\nPyC45 expone cada línea de código en Python limpio. Permite descomponer la ganancia de información, la selección de umbrales numéricos y el proceso recursivo de poda REP paso a paso.",
+                  "La mayoría de librerías modernas de machine learning ocultan sus algoritmos en complejos bindings de C/C++.\n\nMetaCog-C45 expone cada línea de código en Python limpio. Permite descomponer la ganancia de información, la selección de umbrales numéricos y el proceso recursivo de poda REP paso a paso.",
                   border_color=COLOR_ACCENT)
                   
     add_pptx_card(s8, Inches(8.8), Inches(1.8), Inches(3.7), Inches(4.5), 
                   "📈 Métricas Realistas", 
-                  "Evita el autoengaño frente a datasets desbalanceados de la vida real.\n\nAl integrar el Coeficiente de Matthews (MCC) y la Curva ROC-AUC de forma nativa, PyC45 provee al analista una perspectiva del rendimiento de clasificación mucho más rigurosa que la simple Exactitud global.",
+                  "Evita el autoengaño frente a datasets desbalanceados de la vida real.\n\nAl integrar el Coeficiente de Matthews (MCC) y la Curva ROC-AUC de forma nativa, MetaCog-C45 provee al analista una perspectiva del rendimiento de clasificación mucho más rigurosa que la simple Exactitud global.",
                   border_color=COLOR_ACCENT)
 
     # PDF Slide 8
     pdf.create_base_slide("Aporte a la Analítica de Datos", 8)
-    pdf.draw_card(15, 35, 84, 140, "🔍 Explicabilidad (XAI)", "En sectores fuertemente regulados como finanzas y salud, la explicabilidad es obligatoria.\n\nPyC45 entrega un conjunto explícito y comprensible de reglas de decisión (de tipo SI-ENTONCES) que pueden ser auditadas, validadas y explicadas directamente a las partes interesadas sin áreas grises ni dudas.", border_color=COLOR_ACCENT)
-    pdf.draw_card(106.5, 35, 84, 140, "🎓 Valor Pedagógico", "La mayoría de librerías modernas de machine learning ocultan sus algoritmos en complejos bindings de C/C++.\n\nPyC45 expone cada línea de código en Python limpio. Permite descomponer la ganancia de información, la selección de umbrales numéricos y el proceso recursivo de poda REP paso a paso.", border_color=COLOR_ACCENT)
-    pdf.draw_card(198, 35, 84, 140, "📈 Métricas Realistas", "Evita el autoengaño frente a datasets desbalanceados de la vida real.\n\nAl integrar el Coeficiente de Matthews (MCC) y la Curva ROC-AUC de forma nativa, PyC45 provee al analista una perspectiva del rendimiento de clasificación mucho más rigurosa que la simple Exactitud global.", border_color=COLOR_ACCENT)
+    pdf.draw_card(15, 35, 84, 140, "🔍 Explicabilidad (XAI)", "En sectores fuertemente regulados como finanzas y salud, la explicabilidad es obligatoria.\n\nMetaCog-C45 entrega un conjunto explícito y comprensible de reglas de decisión (de tipo SI-ENTONCES) que pueden ser auditadas, validadas y explicadas directamente a las partes interesadas sin áreas grises ni dudas.", border_color=COLOR_ACCENT)
+    pdf.draw_card(106.5, 35, 84, 140, "🎓 Valor Pedagógico", "La mayoría de librerías modernas de machine learning ocultan sus algoritmos en complejos bindings de C/C++.\n\nMetaCog-C45 expone cada línea de código en Python limpio. Permite descomponer la ganancia de información, la selección de umbrales numéricos y el proceso recursivo de poda REP paso a paso.", border_color=COLOR_ACCENT)
+    pdf.draw_card(198, 35, 84, 140, "📈 Métricas Realistas", "Evita el autoengaño frente a datasets desbalanceados de la vida real.\n\nAl integrar el Coeficiente de Matthews (MCC) y la Curva ROC-AUC de forma nativa, MetaCog-C45 provee al analista una perspectiva del rendimiento de clasificación mucho más rigurosa que la simple Exactitud global.", border_color=COLOR_ACCENT)
 
     # =========================================================
     # DIAPOSITIVA 9: CONCLUSIONES Y DEMOSTRACIÓN
@@ -759,7 +759,7 @@ def generate_presentations():
     tf9.word_wrap = True
     
     p = tf9.paragraphs[0]
-    p.text = "• Control y Autonomía: PyC45 demuestra que es posible implementar un pipeline de clasificación riguroso y transparente en pocas líneas de código, sin dependencias complejas."
+    p.text = "• Control y Autonomía: MetaCog-C45 demuestra que es posible implementar un pipeline de clasificación riguroso y transparente en pocas líneas de código, sin dependencias complejas."
     p.font.name = "Arial"
     p.font.size = Pt(14)
     p.font.color.rgb = RGBColor(*COLOR_TEXT_MAIN)
@@ -812,7 +812,7 @@ def generate_presentations():
     pdf.set_xy(15, 35)
     pdf.set_font("Arial", "", 11)
     pdf.set_text_color(*COLOR_TEXT_MAIN)
-    pdf.multi_cell(125, 7, clean_pdf_text("• Control y Autonomía: PyC45 demuestra que es posible implementar un pipeline de clasificación riguroso y transparente en pocas líneas de código, sin dependencias complejas.\n\n• Revelaciones de Negocio: En la prueba de default de crédito, el modelo descubrió inmediatamente que el estado de pagos más reciente (PAY_0) concentra más del 80% de la importancia predictiva.\n\n• Sólida Línea Base: Funciona como un modelo explicable inicial excelente (baseline) antes de implementar algoritmos más opacos de ensamble."), border=0)
+    pdf.multi_cell(125, 7, clean_pdf_text("• Control y Autonomía: MetaCog-C45 demuestra que es posible implementar un pipeline de clasificación riguroso y transparente en pocas líneas de código, sin dependencias complejas.\n\n• Revelaciones de Negocio: En la prueba de default de crédito, el modelo descubrió inmediatamente que el estado de pagos más reciente (PAY_0) concentra más del 80% de la importancia predictiva.\n\n• Sólida Línea Base: Funciona como un modelo explicable inicial excelente (baseline) antes de implementar algoritmos más opacos de ensamble."), border=0)
     # Derecha: Consola
     pdf.set_fill_color(15, 16, 23)
     pdf.set_draw_color(*COLOR_ACCENT)

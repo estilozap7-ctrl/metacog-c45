@@ -1,11 +1,11 @@
-"""
+﻿"""
 =========================================================
-PyC45 Examples
+MetaCog-C45 Examples
 Demonstration of the Metacognitive Decision Core
 =========================================================
 
 Autor      : Luis Alberto Buelvas Cogollo / Antigravity
-Proyecto   : PyC45
+Proyecto   : MetaCog-C45
 Descripción:
 Este script ilustra de forma didáctica la ejecución integrada del
 Decision Core de MetaCog-C45.
@@ -35,7 +35,7 @@ from core.metacognition import (
 
 def run_decision_core_demo():
     print("=" * 80)
-    print("PyC45 - DEMOSTRACIÓN DEL DECISION CORE (NÚCLEO DE DECISIÓN)")
+    print("MetaCog-C45 - DEMOSTRACIÓN DEL DECISION CORE (NÚCLEO DE DECISIÓN)")
     print("=" * 80)
 
     # 1. Simulación de datos
