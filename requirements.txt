@@ -1,4 +1,27 @@
-pandas>=2.0.0
-numpy>=1.24.0
-matplotlib>=3.7.0
-xlrd>=2.0.1
+# ===========================================================
+# MetaCog-C45 — requirements.txt
+# Protocolo Experimental v2.0
+# Framework v1.1.0
+# ===========================================================
+
+# Core scientific stack
+numpy>=1.23
+pandas>=1.5
+scipy>=1.9
+scikit-learn>=1.2
+
+# Visualización
+matplotlib>=3.6
+seaborn>=0.12
+
+# Datasets
+openml>=0.14
+
+# Informes y exportaciones
+tabulate>=0.9
+fpdf2>=2.7
+python-pptx>=0.6
+
+# Utilidades
+joblib>=1.2
+tqdm>=4.64

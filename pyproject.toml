@@ -1,0 +1,138 @@
+# =========================================================
+# MetaCog-C45 — pyproject.toml
+# Empaquetado PEP 517/518 — Release 1.0.0
+# =========================================================
+
+[build-system]
+# ⚠ build-backend corregido: la sintaxis legacy "setuptools.backends.legacy:build"
+#   fue eliminada en setuptools>=68. Se usa la entrada estándar PEP 517.
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# ─────────────────────────────────────────────────────────
+# Metadatos del proyecto (PEP 621)
+# ─────────────────────────────────────────────────────────
+[project]
+name = "metacog-c45"
+version = "1.0.0"
+description = "MetaCog-C45: A metacognitive decision tree framework built on C4.5"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Luis Alberto Buelvas Cogollo"},
+]
+keywords = [
+    "machine-learning",
+    "decision-tree",
+    "c4.5",
+    "metacognition",
+    "metacog-c45",
+    "artificial-intelligence",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+]
+
+# ─────────────────────────────────────────────────────────
+# Dependencias de producción
+# ─────────────────────────────────────────────────────────
+dependencies = [
+    "numpy>=1.23",
+    "pandas>=1.5",
+    "scipy>=1.9",
+    "scikit-learn>=1.2",
+    "matplotlib>=3.6",
+    "seaborn>=0.12",
+    "joblib>=1.2",
+    "tqdm>=4.64",
+    "tabulate>=0.9",
+]
+
+# ─────────────────────────────────────────────────────────
+# Dependencias opcionales
+# ─────────────────────────────────────────────────────────
+[project.optional-dependencies]
+# Instalación experimental (para reproducir resultados de la tesis)
+experiments = [
+    "openml>=0.14",
+    "psutil>=5.9",
+]
+# Generación de documentos de presentación (usada en Otros/)
+docs-extra = [
+    "fpdf2>=2.7",
+    "python-pptx>=0.6",
+]
+# Herramientas de desarrollo y calidad de código
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "black>=23.0",
+    "isort>=5.0",
+    "flake8>=6.0",
+]
+
+# ─────────────────────────────────────────────────────────
+# CLI oficial del framework
+# Tras `pip install metacog-c45`, el usuario puede ejecutar:
+#   metacog --dataset datos.csv
+# ─────────────────────────────────────────────────────────
+[project.scripts]
+metacog = "metacog_c45.cli:main"
+
+# ─────────────────────────────────────────────────────────
+# URL del proyecto
+# ─────────────────────────────────────────────────────────
+[project.urls]
+Homepage = "https://github.com/estilozap7-ctrl/metacog-c45"
+Repository = "https://github.com/estilozap7-ctrl/metacog-c45"
+"Bug Tracker" = "https://github.com/estilozap7-ctrl/metacog-c45/issues"
+
+# ─────────────────────────────────────────────────────────
+# Descubrimiento de paquetes
+# Incluye: la capa pública (metacog_c45) + paquetes internos del framework
+# Excluye: carpetas que no forman parte del paquete distribuible
+# ─────────────────────────────────────────────────────────
+[tool.setuptools.packages.find]
+where = ["."]
+include = [
+    "metacog_c45*",   # Capa pública (API + CLI)
+    "core*",          # Motor algorítmico C4.5 + Metacognición
+    "metrics*",       # Módulos de evaluación
+    "visualization*", # Módulos de visualización
+]
+exclude = [
+    "tests*",
+    "experiments*",
+    "examples*",
+    "datasets*",
+    "Otros*",
+    "web_verification*",
+]
+
+# ─────────────────────────────────────────────────────────
+# Datos de paquete: incluir plantillas HTML/CSS/JS del
+# motor de reportes y archivos de configuración
+# ─────────────────────────────────────────────────────────
+[tool.setuptools.package-data]
+"*" = ["*.md", "*.txt", "*.json"]
+
+# ─────────────────────────────────────────────────────────
+# Configuración de pytest
+# ─────────────────────────────────────────────────────────
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"

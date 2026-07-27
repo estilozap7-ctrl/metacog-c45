@@ -1,0 +1,4 @@
+dataset,metric,wilcoxon_p,cliffs_delta
+iris,mcc,1.0,1.0
+iris,nodes,1.0,-1.0
+iris,infer_ms,1.0,1.0

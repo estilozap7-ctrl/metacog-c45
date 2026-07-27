@@ -77,6 +77,15 @@ class DecisionNode:
 
     is_leaf: bool = False
 
+    # ==========================
+    # Referencia metacognitiva
+    # Opcional: ID del DecisionTrace
+    # asociado en MetaMemory.
+    # Solo disponible en modo 'metacog'.
+    # ==========================
+
+    trace_id: Optional[str] = None
+
     # ===================================================
 
     def is_leaf_node(self):

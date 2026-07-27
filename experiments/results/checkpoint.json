@@ -1,0 +1,64 @@
+{
+  "completed_datasets": {
+    "MagicTelescope": {
+      "timestamp": "2026-07-12T17:16:00.543203",
+      "checksum": "d43a38f684c167bf90d946c8155ee93137dff80af1ef95fdff148478ba247851",
+      "lote": 1,
+      "elapsed_seconds": 2049.37
+    },
+    "adult": {
+      "timestamp": "2026-07-12T17:30:05.952754",
+      "checksum": "a774177ec685e5c6e1b3c269bfdf729ff9d884375c26036aca7d8f5e4728e6bb",
+      "lote": 1,
+      "elapsed_seconds": 845.4
+    },
+    "balance-scale": {
+      "timestamp": "2026-07-12T17:36:59.904160",
+      "checksum": "5b54d770c93f0d6030a017df075d2771eb9bacb2704d7468fb9b02b23f542874",
+      "lote": 1,
+      "elapsed_seconds": 11.84
+    },
+    "bank-marketing": {
+      "timestamp": "2026-07-12T17:43:55.531569",
+      "checksum": "37cf71389048909f60bfdf14092b7a627590cc2953f9c71278f70422f2976464",
+      "lote": 1,
+      "elapsed_seconds": 415.62
+    },
+    "blood-transfusion-service-center": {
+      "timestamp": "2026-07-12T17:44:50.537808",
+      "checksum": "cbcd098362b27b9a6b43db0db73e578c9eb8ae64c5731705eb51a25bba633817",
+      "lote": 1,
+      "elapsed_seconds": 55.0
+    },
+    "breast-w": {
+      "timestamp": "2026-07-12T17:45:19.011062",
+      "checksum": "062be351d0a6557a76ac23cec2b626e77d56bae2acf43cb91ab2659eeb20d748",
+      "lote": 1,
+      "elapsed_seconds": 28.47
+    },
+    "breast_cancer": {
+      "timestamp": "2026-07-12T18:36:14.060374",
+      "checksum": "7dc2abf1cd7acb93248aa4bbf54eb311b38d4bc953816b6b86e21c9f4d461068",
+      "lote": 1,
+      "elapsed_seconds": 3055.04
+    },
+    "car": {
+      "timestamp": "2026-07-12T18:36:42.001814",
+      "checksum": "a770da582634ba13a88627b50792e859596e045280cd86d37d8effa2b19f699a",
+      "lote": 1,
+      "elapsed_seconds": 27.94
+    },
+    "credit-g": {
+      "timestamp": "2026-07-12T18:41:18.184467",
+      "checksum": "7d77cd46f3f15fdf4a9c47d7003dc0e89ff91c0746ae5f040d36983b1de62c06",
+      "lote": 1,
+      "elapsed_seconds": 276.18
+    },
+    "diabetes": {
+      "timestamp": "2026-07-12T18:48:39.026351",
+      "checksum": "e39dbee691c29b5e2ed9ce3b53778431d66945ae0e9dd305e9b1c66e533fca85",
+      "lote": 1,
+      "elapsed_seconds": 440.84
+    }
+  }
+}

@@ -895,4 +895,34 @@ def main():
     print("=" * 80)
 
 if __name__ == "__main__":
-    main()
+    # ── CLI arguments (Release 1.0) ────────────────────────────────────────
+    # Cuando se invoca desde la CLI oficial (`metacog --dataset ...`)
+    # o directamente con argumentos, el script opera en modo no-interactivo.
+    # Sin argumentos, conserva el comportamiento interactivo original.
+    import argparse as _argparse
+
+    _cli_parser = _argparse.ArgumentParser(
+        prog="ejecutar_con_dataset",
+        description="MetaCog-C45 — Ejecutor de datasets con reporte HTML.",
+        add_help=False,   # help ya lo gestiona el parser padre (metacog_c45/cli.py)
+    )
+    _cli_parser.add_argument("--dataset",        metavar="RUTA",    default=None)
+    _cli_parser.add_argument("--target",         metavar="COLUMNA", default=None)
+    _cli_parser.add_argument("--max_depth",      metavar="N",       type=int, default=None)
+    _cli_parser.add_argument("--min_samples_split", metavar="N",    type=int, default=None)
+    _cli_parser.add_argument("--no_browser",     action="store_true", default=False)
+    _cli_parser.add_argument("--help", "-h",     action="store_true", default=False)
+
+    _cli_args, _unknown = _cli_parser.parse_known_args()
+
+    if _cli_args.help:
+        _cli_parser.print_help()
+    else:
+        # Exponer los argumentos como variables de módulo para que main()
+        # pueda leerlos en futuras versiones sin romper la interfaz actual.
+        _CLI_DATASET        = _cli_args.dataset
+        _CLI_TARGET         = _cli_args.target
+        _CLI_MAX_DEPTH      = _cli_args.max_depth
+        _CLI_MIN_SAMPLES    = _cli_args.min_samples_split
+        _CLI_NO_BROWSER     = _cli_args.no_browser
+        main()

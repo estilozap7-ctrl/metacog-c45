@@ -1,0 +1,10 @@
+{
+  "theta_accept": 0.15,
+  "theta_reject": 0.01,
+  "gamma": 0.0,
+  "utility": 0.6181873216562215,
+  "mean_mcc": 0.6676556099837351,
+  "mean_cr": 0.3051175747558747,
+  "stump_count": 0,
+  "timestamp": "2026-07-20 17:40:20"
+}

@@ -1,0 +1,21 @@
+{
+  "config": {
+    "theta_accept": 0.5,
+    "theta_reject": 0.2,
+    "alpha_0": 1.0,
+    "beta_0": 1.0,
+    "gamma": 0.5,
+    "lambda_1": 1.0,
+    "lambda_2": 1.0,
+    "B": 50
+  },
+  "total_candidates_evaluated": 42,
+  "total_nodes_evaluated": 14,
+  "scs_pct_below_reject": 97.61904761904762,
+  "scs_pct_defer_zone": 2.380952380952381,
+  "scs_pct_above_accept": 0.0,
+  "verdict_accept_pct": 0.0,
+  "verdict_review_pct": 0.0,
+  "verdict_defer_pct": 7.142857142857143,
+  "verdict_collapse_pct": 92.85714285714286
+}
