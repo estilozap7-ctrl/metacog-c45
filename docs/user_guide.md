@@ -1,5 +1,19 @@
 # User Guide — MetaCog-C45 v1.0.0
 
+---
+
+### Institutional Presentation
+
+> **MetaCog-C45 Framework (Versión 1.0)**  
+> Framework científico para árboles de decisión metacognitivos basado en C4.5, diseñado para integrar procesos de razonamiento dual (Sistema 1 + Sistema 2), Decision Core, Reflection Engine y MetaMemory.
+> 
+> **Autor:** Luis Alberto Buelvas Cogollo  
+> **Afiliación:** Universidad de Córdoba, Montería, Córdoba, Colombia  
+> **Programa:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento  
+> **Líneas de investigación:** Inteligencia Artificial · Machine Learning · Explainable Artificial Intelligence (XAI)
+
+---
+
 This guide provides comprehensive step-by-step instructions for applying MetaCog-C45 to any binary classification dataset.
 
 For installation instructions, see [INSTALL.md](../INSTALL.md).  
@@ -173,3 +187,44 @@ python -m http.server 8080 --directory web_verification
 | `lambda_2` | `0.3` | Sample scarcity amplification coefficient for $\beta(u)$ |
 
 > **Note**: Default values correspond to the recalibrated post-sensitivity-study configuration that satisfies the scientific committee acceptance criterion $0.20 \le R_{\text{nodes}} \le 0.80$.
+
+---
+
+## Scientific Contribution
+
+MetaCog-C45 introduces a novel metacognitive architecture for decision trees, proposing nine foundational scientific mechanisms:
+
+- **Reflection Engine:** Local bootstrap perturbation module estimating split stability.
+- **Decision Core:** System 2 decision-making engine evaluating node split candidates.
+- **MetaMemory:** Persistent, indexed repository storing structural decision traces.
+- **Split Confidence Score (SCS):** Multiplicative Cobb-Douglas utility metric integrating Gain Ratio, stability, survival, and competitiveness.
+- **Node Stability (NS):** Normalized metric measuring feature selection variance across bootstrap samples.
+- **Threshold Survival (TS):** Exponential decay function evaluating continuous cut-point variance.
+- **Competitiveness Index (CI):** Margin ratio between winning split attribute and top alternative candidates.
+- **DecisionTrace:** Immutable dataclass encapsulating execution context, feature distributions, SCS metrics, and XAI justifications.
+- **Metacognitive Feature Importance (MFI):** Global feature ranking metric weighted by node sample size, NS, and TS.
+
+---
+
+## About the Author
+
+- **Nombre:** Luis Alberto Buelvas Cogollo
+- **Universidad:** Universidad de Córdoba (Montería, Córdoba, Colombia)
+- **Programa de Maestría:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento
+- **Área de investigación:** Inteligencia Artificial / Machine Learning / Explainable AI (XAI) / Metacognición Computacional
+- **Líneas de trabajo:** Machine Learning · Explainable AI · Árboles de Decisión · Metacognición Computacional
+
+---
+
+## Citation & Copyright
+
+### Citation
+> Luis Alberto Buelvas Cogollo.  
+> **MetaCog-C45: A Metacognitive Decision Tree Framework.**  
+> Version 1.0.  
+> Universidad de Córdoba. 2026.
+
+### Copyright
+Copyright © 2026 **Luis Alberto Buelvas Cogollo** (Universidad de Córdoba).  
+Todos los derechos según la licencia seleccionada (**MIT License**).
+

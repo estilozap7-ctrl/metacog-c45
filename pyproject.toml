@@ -20,7 +20,10 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
-    {name = "Luis Alberto Buelvas Cogollo"},
+    {name = "Luis Alberto Buelvas Cogollo", email = "autor@unicordoba.edu.co"},
+]
+maintainers = [
+    {name = "Luis Alberto Buelvas Cogollo (Universidad de Córdoba - Montería, Colombia)"},
 ]
 keywords = [
     "machine-learning",

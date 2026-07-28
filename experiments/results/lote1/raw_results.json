@@ -7014,7 +7014,7 @@
     "nodes":1,
     "leaves":1,
     "depth":1,
-    "train_ms":64016.91365242,
+    "train_ms":64016.9136524201,
     "infer_ms":2.0985603333,
     "dataset":"bank-marketing",
     "fold":44
@@ -12216,7 +12216,7 @@
     "nodes":47,
     "leaves":24,
     "depth":15,
-    "train_ms":52708.7762355804,
+    "train_ms":52708.7762355805,
     "infer_ms":5.4533481598,
     "dataset":"breast_cancer",
     "fold":39
@@ -16410,7 +16410,7 @@
     "nodes":1,
     "leaves":1,
     "depth":1,
-    "train_ms":64370.4874515533,
+    "train_ms":64370.4874515534,
     "infer_ms":3.2787322998,
     "dataset":"diabetes",
     "fold":5

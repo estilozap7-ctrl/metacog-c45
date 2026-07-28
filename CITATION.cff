@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use MetaCog-C45 in your research or software, please cite it using the following metadata."
+title: "MetaCog-C45: A Metacognitive Decision Tree Framework"
+abstract: "Scientific machine learning framework extending the C4.5 decision tree algorithm with a dual-process metacognitive layer (System 1 + System 2), integrating Reflection Engine, Decision Core, MetaMemory, and Explainable AI."
+version: 1.0.0
+date-released: 2026-07-12
+license: MIT
+repository-code: "https://github.com/estilozap7-ctrl/metacog-c45"
+authors:
+  - family-names: "Buelvas Cogollo"
+    given-names: "Luis Alberto"
+    affiliation: "Universidad de Córdoba"
+    city: "Montería"
+    country: "CO"
+keywords:
+  - "machine-learning"
+  - "decision-trees"
+  - "c4.5"
+  - "metacognition"
+  - "explainable-ai"
+  - "xai"
+  - "metacog-c45"
+preferred-citation:
+  type: software
+  authors:
+    - family-names: "Buelvas Cogollo"
+      given-names: "Luis Alberto"
+      affiliation: "Universidad de Córdoba"
+  title: "MetaCog-C45: A Metacognitive Decision Tree Framework"
+  version: "1.0"
+  year: 2026
+  institution:
+    name: "Universidad de Córdoba"
+    city: "Montería"
+    country: "Colombia"

@@ -59,6 +59,126 @@
       "checksum": "e39dbee691c29b5e2ed9ce3b53778431d66945ae0e9dd305e9b1c66e533fca85",
       "lote": 1,
       "elapsed_seconds": 440.84
+    },
+    "ecoli": {
+      "timestamp": "2026-07-27T18:15:55.481933",
+      "checksum": "6c90ba645a582b0f920545c5d83eef4d7c7b4e1c5ee7f648141f06122f47fc65",
+      "lote": 2,
+      "elapsed_seconds": 11.66
+    },
+    "glass": {
+      "timestamp": "2026-07-27T18:16:12.954068",
+      "checksum": "d675ca42c9ed3d0ea58bc15960339589209aed56384ba98bfb143e4597065b3b",
+      "lote": 2,
+      "elapsed_seconds": 17.46
+    },
+    "haberman": {
+      "timestamp": "2026-07-27T18:16:16.598582",
+      "checksum": "acdd142865959f9048871fcc03567ee9f79c0414636ebf90f564a995e2905729",
+      "lote": 2,
+      "elapsed_seconds": 3.63
+    },
+    "hypothyroid": {
+      "timestamp": "2026-07-27T18:16:33.949784",
+      "checksum": "d1316299a1559ef1fc05daa05c35aa933f3176448f92ab5fe8a8cb95d647e9ba",
+      "lote": 2,
+      "elapsed_seconds": 17.34
+    },
+    "ionosphere": {
+      "timestamp": "2026-07-27T18:18:35.091678",
+      "checksum": "ba4c5aeb595a39a5909f78b8e36f2199cd83044ad7f8312c2d741cc1835f7884",
+      "lote": 2,
+      "elapsed_seconds": 121.13
+    },
+    "iris": {
+      "timestamp": "2026-07-27T18:18:37.633148",
+      "checksum": "4dc75942e1427a7b256aebbd27531ba56d9834092bda155b71b962bce33d1a63",
+      "lote": 2,
+      "elapsed_seconds": 2.54
+    },
+    "kc1": {
+      "timestamp": "2026-07-27T18:19:44.408683",
+      "checksum": "4dc34c0c04217b6413f6984d22988ed31cf9be6a113d4752c42220ff45b551f9",
+      "lote": 2,
+      "elapsed_seconds": 66.77
+    },
+    "kr-vs-kp": {
+      "timestamp": "2026-07-27T18:19:53.536322",
+      "checksum": "01b2539069814e154b244ba9b80c04e53d3594d74a3c1eb80d3661fc2f19a082",
+      "lote": 2,
+      "elapsed_seconds": 9.12
+    },
+    "letter": {
+      "timestamp": "2026-07-27T18:20:05.667353",
+      "checksum": "ec667c14ebee32246578c105a357f27825d0b5c28726ca9aab58ea6c34ee43f3",
+      "lote": 2,
+      "elapsed_seconds": 12.12
+    },
+    "mushroom": {
+      "timestamp": "2026-07-27T18:20:25.765264",
+      "checksum": "53bf11293d6c7f1ce9328122a691a7b5739f970451eea692b3f8c6bca63a972d",
+      "lote": 2,
+      "elapsed_seconds": 20.08
+    },
+    "nursery": {
+      "timestamp": "2026-07-27T18:20:32.899261",
+      "checksum": "7c3a4d091f008c03aab7cacaa0b2ebef6a952d78f5a909bd1f7cebd5d11d4bf4",
+      "lote": 3,
+      "elapsed_seconds": 5.13
+    },
+    "pc1": {
+      "timestamp": "2026-07-27T18:22:07.377111",
+      "checksum": "21f088df4e800d54bc3f1fcdfeea3753bdd9166a54d328ee23357b2e23dc58c2",
+      "lote": 3,
+      "elapsed_seconds": 94.47
+    },
+    "pendigits": {
+      "timestamp": "2026-07-27T18:22:58.080241",
+      "checksum": "48d42ca15bd9be2469d2d217fc19bae2ae9dcea93100f975a0cd7c93c5994f40",
+      "lote": 3,
+      "elapsed_seconds": 50.7
+    },
+    "segment": {
+      "timestamp": "2026-07-27T18:25:23.533551",
+      "checksum": "39f7d566be0755772dca512e1b2be2f13c4d6d9cb50f942f34307740fb9d61c8",
+      "lote": 3,
+      "elapsed_seconds": 145.45
+    },
+    "sick": {
+      "timestamp": "2026-07-27T18:25:55.807027",
+      "checksum": "4f80e600ed312eca630f1d9176d357ccf7385a5dad7256f40ae9170856e1f8fd",
+      "lote": 3,
+      "elapsed_seconds": 32.27
+    },
+    "sonar": {
+      "timestamp": "2026-07-27T18:58:18.804406",
+      "checksum": "fb6854b8d85f711a9c5ff24a028193b145144e93f03d02982e4f63b7c47cc6b3",
+      "lote": 3,
+      "elapsed_seconds": 155.7
+    },
+    "spambase": {
+      "timestamp": "2026-07-27T19:00:26.375420",
+      "checksum": "4f9135af146eae8c96dd9a42c6341f2f40ad37a52a7806f0388b694a7d5b91a7",
+      "lote": 3,
+      "elapsed_seconds": 127.56
+    },
+    "synthetic_imbalanced": {
+      "timestamp": "2026-07-27T19:01:51.408793",
+      "checksum": "4633b2c9a68cc7ef8b53187dd6305d30f664eec2f8b17327a37a537e14a50c2a",
+      "lote": 3,
+      "elapsed_seconds": 85.02
+    },
+    "synthetic_noise_20": {
+      "timestamp": "2026-07-27T19:03:00.241791",
+      "checksum": "02488e558dc801df4858fa6d5c18a1161788ffef6c18edb2acc9ac5696a782e7",
+      "lote": 3,
+      "elapsed_seconds": 68.83
+    },
+    "tic-tac-toe": {
+      "timestamp": "2026-07-27T19:03:04.086055",
+      "checksum": "c60c298716cec75b7e3d098d9ee6a666843f04222fa19f17d632ad91f1b56245",
+      "lote": 3,
+      "elapsed_seconds": 3.84
     }
   }
 }

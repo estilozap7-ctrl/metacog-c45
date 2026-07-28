@@ -1,6 +1,20 @@
-﻿# Manual de Usuario: Implementación de PyC45 con Nuevos Datasets
+# Manual de Usuario: Implementación de MetaCog-C45 con Nuevos Datasets
 
-Este manual práctico proporciona una guía paso a paso para aplicar el framework **PyC45** a cualquier conjunto de datos nuevo de clasificación binaria (por ejemplo, predicción de abandono de clientes, aprobación de créditos, detección de fraudes o diagnósticos médicos).
+---
+
+### Institutional Presentation
+
+> **MetaCog-C45 Framework (Versión 1.0)**  
+> Framework científico para árboles de decisión metacognitivos basado en C4.5, diseñado para integrar procesos de razonamiento dual (Sistema 1 + Sistema 2), Decision Core, Reflection Engine y MetaMemory.
+> 
+> **Autor:** Luis Alberto Buelvas Cogollo  
+> **Afiliación:** Universidad de Córdoba, Montería, Córdoba, Colombia  
+> **Programa:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento  
+> **Líneas de investigación:** Inteligencia Artificial · Machine Learning · Explainable Artificial Intelligence (XAI)
+
+---
+
+Este manual práctico proporciona una guía paso a paso para aplicar el framework **MetaCog-C45** a cualquier conjunto de datos nuevo de clasificación binaria (por ejemplo, predicción de abandono de clientes, aprobación de créditos, detección de fraudes o diagnósticos médicos).
 
 ---
 
@@ -310,3 +324,18 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+---
+
+## Citation & Copyright
+
+### Citation
+> Luis Alberto Buelvas Cogollo.  
+> **MetaCog-C45: A Metacognitive Decision Tree Framework.**  
+> Version 1.0.  
+> Universidad de Córdoba. 2026.
+
+### Copyright
+Copyright © 2026 **Luis Alberto Buelvas Cogollo** (Universidad de Córdoba).  
+Todos los derechos según la licencia seleccionada (**MIT License**).
+

@@ -1,4 +1,18 @@
-# Release Notes - MetaCog-C45 v1.0.0
+# Release Notes — MetaCog-C45 v1.0.0
+
+---
+
+### Institutional Presentation
+
+> **MetaCog-C45 Framework (Versión 1.0)**  
+> Framework científico para árboles de decisión metacognitivos basado en C4.5, diseñado para integrar procesos de razonamiento dual (Sistema 1 + Sistema 2), Decision Core, Reflection Engine y MetaMemory.
+> 
+> **Autor:** Luis Alberto Buelvas Cogollo  
+> **Afiliación:** Universidad de Córdoba, Montería, Córdoba, Colombia  
+> **Programa:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento  
+> **Líneas de investigación:** Inteligencia Artificial · Machine Learning · Explainable Artificial Intelligence (XAI)
+
+---
 
 We are proud to release the official production-ready core of **MetaCog-C45** (v1.0.0), a self-reflective, metacognitive decision tree framework.
 
@@ -73,4 +87,18 @@ print(f"XAI: {outcome.justification}")
 
 ## ⚡ Infrastructure Notice (Phase III)
 The parallelization implemented in the execution pipeline (`run_experiment.py` via `joblib.Parallel`) is strictly an infrastructure optimization designed to accelerate experimental execution on multi-core CPUs. **It does not modify the mathematical equations, algorithms, metacognitive weights, or decision-making behavior of the MetaCog-C45 algorithm.**
+
+---
+
+## Citation & Copyright
+
+### Citation
+> Luis Alberto Buelvas Cogollo.  
+> **MetaCog-C45: A Metacognitive Decision Tree Framework.**  
+> Version 1.0.  
+> Universidad de Córdoba. 2026.
+
+### Copyright
+Copyright © 2026 **Luis Alberto Buelvas Cogollo** (Universidad de Córdoba).  
+Todos los derechos según la licencia seleccionada (**MIT License**).
 

@@ -7,13 +7,27 @@
 [![Reproducible](https://img.shields.io/badge/reproducible-5×10--CV-orange.svg)](experiments/)
 [![Status](https://img.shields.io/badge/status-Release%201.0-brightgreen.svg)](RELEASE_NOTES.md)
 
+---
+
+### Institutional Presentation
+
+> **MetaCog-C45 Framework (Versión 1.0)**  
+> Framework científico para árboles de decisión metacognitivos basado en C4.5, diseñado para integrar procesos de razonamiento dual (Sistema 1 + Sistema 2), Decision Core, Reflection Engine y MetaMemory.
+> 
+> **Autor:** Luis Alberto Buelvas Cogollo  
+> **Afiliación:** Universidad de Córdoba, Montería, Córdoba, Colombia  
+> **Programa:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento  
+> **Líneas de investigación:** Inteligencia Artificial · Machine Learning · Explainable Artificial Intelligence (XAI)
+
+---
+
 **MetaCog-C45** is a scientific machine learning framework that extends the classical **C4.5 decision tree algorithm** with a **dual-process metacognitive layer (System 2)** inspired by cognitive science. It provides statistically validated split decisions, decision traceability, explainability, and reproducible experimental evaluation protocols.
 
 ---
 
 ## Academic Context
 
-MetaCog-C45 is the technological artifact developed as part of a **Master's thesis in Artificial Intelligence and Knowledge Engineering**. The framework constitutes the experimental platform for validating the research hypotheses, generating reproducible empirical evidence, and supporting the scientific publications derived from the investigation.
+MetaCog-C45 is the technological artifact developed as part of a **Master's thesis in Artificial Intelligence and Knowledge Engineering** at **Universidad de Córdoba** (Montería, Colombia). The framework constitutes the experimental platform for validating research hypotheses, generating reproducible empirical evidence, and supporting scientific publications derived from the investigation.
 
 The framework is designed to fulfill three complementary roles:
 
@@ -235,21 +249,49 @@ python experiments/run_experiment.py --batch all
 
 ---
 
-## Publications
+## Scientific Contribution
 
-This section will be updated as research outputs become available.
+MetaCog-C45 introduces a novel metacognitive architecture for decision trees, proposing nine foundational scientific mechanisms:
 
-| Type | Reference |
-|---|---|
-| Master's Thesis | *(in preparation)* |
-| Journal Article | *(in preparation)* |
-| DOI | *(to be assigned upon publication)* |
+- **Reflection Engine:** Local bootstrap perturbation module that computes statistical stability metrics for proposed splits under local data perturbations.
+- **Decision Core:** System 2 decision-making engine evaluating node splits using statistical criteria before structural insertion.
+- **MetaMemory:** Persistent, indexed repository storing structural decision traces to enable experience retrieval and post-hoc auditing.
+- **Split Confidence Score (SCS):** Multiplicative Cobb-Douglas utility metric integrating Gain Ratio, stability, survival, and competitiveness into a unified confidence index.
+- **Node Stability (NS):** Normalized metric measuring the variance and entropy of selected features across local bootstrap samples.
+- **Threshold Survival (TS):** Exponential decay function evaluating the variance of continuous cut-points relative to feature variance.
+- **Competitiveness Index (CI):** Margin ratio between the winning split attribute and top alternative candidates.
+- **DecisionTrace:** Immutable dataclass encapsulating execution context, feature selection distributions, SCS metrics, and XAI justifications.
+- **Metacognitive Feature Importance (MFI):** Global feature ranking metric weighted by node sample size, node stability, and threshold survival.
+
+---
+
+## About the Author
+
+- **Nombre:** Luis Alberto Buelvas Cogollo
+- **Universidad:** Universidad de Córdoba (Montería, Córdoba, Colombia)
+- **Programa de Maestría:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento
+- **Área de investigación:** Inteligencia Artificial / Machine Learning / Explainable AI (XAI) / Metacognición Computacional
+- **Líneas de trabajo:**
+  - Machine Learning & Statistical Learning
+  - Explainable AI (XAI)
+  - Árboles de Decisión
+  - Metacognición Computacional
 
 ---
 
 ## How to Cite
 
-If you use MetaCog-C45 in your research, please use the following reference:
+If you use MetaCog-C45 in your research or software, please cite it as follows:
+
+### Plain Text / Standard Reference
+
+> Luis Alberto Buelvas Cogollo.  
+> **MetaCog-C45: A Metacognitive Decision Tree Framework.**  
+> Version 1.0.  
+> Universidad de Córdoba.  
+> 2026.
+
+### BibTeX
 
 ```bibtex
 @software{metacog_c45_2026,
@@ -257,6 +299,8 @@ If you use MetaCog-C45 in your research, please use the following reference:
   author       = {Buelvas Cogollo, Luis Alberto},
   year         = {2026},
   version      = {1.0.0},
+  institution  = {Universidad de Córdoba},
+  address      = {Montería, Colombia},
   url          = {https://github.com/estilozap7-ctrl/metacog-c45},
   note         = {Developed as part of a Master's thesis in Artificial Intelligence
                   and Knowledge Engineering. Software artifact supporting
@@ -267,16 +311,19 @@ If you use MetaCog-C45 in your research, please use the following reference:
 
 ---
 
-## License
+## Copyright & License
 
-This project is distributed under the **MIT License**. See the [LICENSE](LICENSE) file for full terms.
+Copyright © 2026 **Luis Alberto Buelvas Cogollo**
+
+Todos los derechos según la licencia seleccionada (**MIT License**). Consúltese el archivo [LICENSE](LICENSE) para ver los términos completos.
 
 ---
 
 <div align="center">
 
-**MetaCog-C45** · Release 1.0.0 · Master's Research in Artificial Intelligence and Knowledge Engineering
+**MetaCog-C45** · Release 1.0.0 · Universidad de Córdoba  
+*Master's Research in Artificial Intelligence and Knowledge Engineering*
 
-[GitHub](https://github.com/estilozap7-ctrl/metacog-c45) · [INSTALL.md](INSTALL.md) · [QUICKSTART.md](QUICKSTART.md) · [CHANGELOG.md](CHANGELOG.md)
+[GitHub](https://github.com/estilozap7-ctrl/metacog-c45) · [AUTHORS.md](AUTHORS.md) · [CITATION.cff](CITATION.cff) · [INSTALL.md](INSTALL.md) · [QUICKSTART.md](QUICKSTART.md) · [CHANGELOG.md](CHANGELOG.md)
 
 </div>

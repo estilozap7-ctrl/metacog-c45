@@ -1,6 +1,20 @@
 # Informe de Análisis de Sensibilidad Independiente — Decision Core
 ## MetaCog-C45 (v1.1.2) | Fecha: 2026-07-13
 
+---
+
+### Institutional Presentation
+
+> **MetaCog-C45 Framework (Versión 1.0)**  
+> Framework científico para árboles de decisión metacognitivos basado en C4.5, diseñado para integrar procesos de razonamiento dual (Sistema 1 + Sistema 2), Decision Core, Reflection Engine y MetaMemory.
+> 
+> **Autor:** Luis Alberto Buelvas Cogollo  
+> **Afiliación:** Universidad de Córdoba, Montería, Córdoba, Colombia  
+> **Programa:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento  
+> **Líneas de investigación:** Inteligencia Artificial · Machine Learning · Explainable Artificial Intelligence (XAI)
+
+---
+
 Este informe presenta los resultados del estudio experimental de variación independiente de los 7 hiperparámetros del Split Confidence Score (SCS) y Decision Core. El estudio fue realizado sobre 4 datasets de control (iris, breast-w, balance-scale, diabetes) utilizando validación cruzada de 5 folds (semillas reproducibles).
 
 > [!IMPORTANT]
@@ -206,3 +220,18 @@ Valores evaluados mientras los demás se mantienen en la línea base:
 
 ### 4. Coeficientes de Amplificación por Profundidad y Escasez (`lambda_1` y `lambda_2`)
 - `lambda_1=1.0` y `lambda_2=1.0` provocan que la penalización crezca muy rápido. Valores cercanos a 0.1 o 0.3 amortiguan esta amplificación, protegiendo las ramas medias del árbol contra el colapso.
+
+---
+
+## Citation & Copyright
+
+### Citation
+> Luis Alberto Buelvas Cogollo.  
+> **MetaCog-C45: A Metacognitive Decision Tree Framework.**  
+> Version 1.0.  
+> Universidad de Córdoba. 2026.
+
+### Copyright
+Copyright © 2026 **Luis Alberto Buelvas Cogollo** (Universidad de Córdoba).  
+Todos los derechos según la licencia seleccionada (**MIT License**).
+

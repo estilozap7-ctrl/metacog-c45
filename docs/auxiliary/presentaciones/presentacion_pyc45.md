@@ -1,5 +1,17 @@
-﻿# MetaCog-C45: Framework de Clasificación C4.5 en Python
+# MetaCog-C45: Framework de Árboles de Decisión Metacognitivos
 ### Funcionamiento, Características y Aportes a la Analítica de Datos
+
+---
+
+### Institutional Presentation
+
+> **MetaCog-C45 Framework (Versión 1.0)**  
+> Framework científico para árboles de decisión metacognitivos basado en C4.5, diseñado para integrar procesos de razonamiento dual (Sistema 1 + Sistema 2), Decision Core, Reflection Engine y MetaMemory.
+> 
+> **Autor:** Luis Alberto Buelvas Cogollo  
+> **Afiliación:** Universidad de Córdoba, Montería, Córdoba, Colombia  
+> **Programa:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento  
+> **Líneas de investigación:** Inteligencia Artificial · Machine Learning · Explainable Artificial Intelligence (XAI)
 
 ---
 
@@ -120,3 +132,18 @@ Facilita el estudio detallado del algoritmo al separar claramente cada cálculo 
 - **Efectividad y Control:** PyC45 demuestra que se puede construir un clasificador robusto y preciso sin depender de grandes librerías monolíticas, dando control total al analista sobre las decisiones del algoritmo.
 - **Interpretabilidad:** El árbol final y la importancia de variables calculada por Gain Ratio acumulado permiten entender de inmediato qué atributos (como el historial de pagos `PAY_0`) lideran la toma de decisiones.
 - **Próximos Pasos en Producción:** Para maximizar su rendimiento comercial, se recomienda acoplarlo con técnicas de sobremuestreo (SMOTE) para mitigar el desbalance de clases y optimizar la búsqueda de umbrales numéricos.
+
+---
+
+# 📚 Citación y Derechos de Autor
+
+### Cómo Citar
+> Luis Alberto Buelvas Cogollo.  
+> **MetaCog-C45: A Metacognitive Decision Tree Framework.**  
+> Version 1.0.  
+> Universidad de Córdoba. 2026.
+
+### Copyright
+Copyright © 2026 **Luis Alberto Buelvas Cogollo** (Universidad de Córdoba).  
+Todos los derechos según la licencia seleccionada (**MIT License**).
+
