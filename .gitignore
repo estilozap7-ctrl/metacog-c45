@@ -15,3 +15,7 @@ htmlcov/
 .git/
 .idea/
 .vscode/
+
+# Artículo científico — mantenido fuera del repositorio
+paper_metacog_c45/
+MetaCog.docx
