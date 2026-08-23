@@ -16,7 +16,7 @@
 > 
 > **Autor:** Luis Alberto Buelvas Cogollo  
 > **Cocente Catedra:** Universidad de Córdoba, Montería, Córdoba, Colombia  
-> **Programa:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento  
+> **Estudiante:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento  
 > **Líneas de investigación:** Inteligencia Artificial · Machine Learning · Explainable Artificial Intelligence (XAI)
 
 ---
