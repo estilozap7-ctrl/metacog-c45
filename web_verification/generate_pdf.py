@@ -131,9 +131,10 @@ def generate_pdf():
     pdf.ln(60)
     pdf.set_font("Arial", "B", 10)
     pdf.set_text_color(16, 18, 26)
-    pdf.cell(0, 6, "Autor: Luis Alberto Buelvas Cogollo", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(0, 6, "Autor: Luis Alberto Buelvas Cogollo (Docente Catedrático - Universidad de Córdoba)", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.set_font("Arial", "", 9)
     pdf.set_text_color(113, 113, 122)
+    pdf.cell(0, 6, "Tesis de Maestría en IA e Ingeniería del Conocimiento - Universidad TECH", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.cell(0, 6, "Framework: MetaCog-C45 (v1.0.0)", align="C", new_x="LMARGIN", new_y="NEXT")
     pdf.cell(0, 6, "Fecha: Julio 2026", align="C", new_x="LMARGIN", new_y="NEXT")
 

@@ -9,7 +9,7 @@ repository-code: "https://github.com/estilozap7-ctrl/metacog-c45"
 authors:
   - family-names: "Buelvas Cogollo"
     given-names: "Luis Alberto"
-    affiliation: "Universidad de Córdoba"
+    affiliation: "Docente Catedrático, Universidad de Córdoba"
     city: "Montería"
     country: "CO"
 keywords:
@@ -25,11 +25,10 @@ preferred-citation:
   authors:
     - family-names: "Buelvas Cogollo"
       given-names: "Luis Alberto"
-      affiliation: "Universidad de Córdoba"
+      affiliation: "Docente Catedrático, Universidad de Córdoba"
   title: "MetaCog-C45: A Metacognitive Decision Tree Framework"
   version: "1.0"
   year: 2026
   institution:
-    name: "Universidad de Córdoba"
-    city: "Montería"
-    country: "Colombia"
+    name: "Universidad TECH"
+  notes: "Desarrollado para optar al título de Magíster en Inteligencia Artificial e Ingeniería del Conocimiento de la Universidad TECH. Autor: Docente Catedrático en la Universidad de Córdoba (Montería, Colombia)."

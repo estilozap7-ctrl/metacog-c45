@@ -1,6 +1,6 @@
 # Contributing Guidelines — MetaCog-C45
 
-Thank you for your interest in contributing to **MetaCog-C45**, a scientific machine learning framework designed for metacognitive decision tree research developed at **Universidad de Córdoba** (Montería, Colombia) by **Luis Alberto Buelvas Cogollo**.
+Thank you for your interest in contributing to **MetaCog-C45**, a scientific machine learning framework designed for metacognitive decision tree research developed by **Luis Alberto Buelvas Cogollo** (Docente Catedrático en la **Universidad de Córdoba**, Montería, Colombia) with the objective of acquiring the Master's degree in Artificial Intelligence and Knowledge Engineering at **Universidad TECH**.
 
 ---
 
@@ -8,8 +8,8 @@ Thank you for your interest in contributing to **MetaCog-C45**, a scientific mac
 
 - **Framework:** MetaCog-C45 Framework (Version 1.0)
 - **Author:** Luis Alberto Buelvas Cogollo
-- **Affiliation:** Universidad de Córdoba, Montería, Colombia
-- **Academic Program:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento
+- **Affiliation:** Docente Catedrático, Universidad de Córdoba (Montería, Colombia)
+- **Academic Degree Objective:** Magíster en Inteligencia Artificial e Ingeniería del Conocimiento, Universidad TECH
 - **Research Domain:** Machine Learning, Decision Trees, Metacognition, Explainable AI (XAI)
 
 ---

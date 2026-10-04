@@ -9,8 +9,8 @@
 > Framework científico para árboles de decisión metacognitivos basado en C4.5, diseñado para integrar procesos de razonamiento dual (Sistema 1 + Sistema 2), Decision Core, Reflection Engine y MetaMemory.
 > 
 > **Autor:** Luis Alberto Buelvas Cogollo  
-> **Afiliación:** Universidad de Córdoba, Montería, Córdoba, Colombia  
-> **Programa:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento  
+> **Afiliación laboral (Dónde labora):** Docente Catedrático, Universidad de Córdoba, Montería, Córdoba, Colombia  
+> **Objetivo académico:** Proyecto para optar al título de Magíster en Inteligencia Artificial e Ingeniería del Conocimiento — Universidad TECH  
 > **Líneas de investigación:** Inteligencia Artificial · Machine Learning · Explainable Artificial Intelligence (XAI)
 
 ---
@@ -141,9 +141,9 @@ Facilita el estudio detallado del algoritmo al separar claramente cada cálculo 
 > Luis Alberto Buelvas Cogollo.  
 > **MetaCog-C45: A Metacognitive Decision Tree Framework.**  
 > Version 1.0.  
-> Universidad de Córdoba. 2026.
+> Universidad TECH / Universidad de Córdoba. 2026.
 
 ### Copyright
-Copyright © 2026 **Luis Alberto Buelvas Cogollo** (Universidad de Córdoba).  
+Copyright © 2026 **Luis Alberto Buelvas Cogollo** (Docente Catedrático, Universidad de Córdoba).  
 Todos los derechos según la licencia seleccionada (**MIT License**).
 

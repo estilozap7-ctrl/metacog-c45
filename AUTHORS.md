@@ -3,9 +3,9 @@
 ## Primary Author & Lead Architect
 
 **Luis Alberto Buelvas Cogollo**  
-- **Affiliation:** Tech - Universidad de Córdoba  
+- **Cargo / Afiliación laboral:** Docente Catedrático, Universidad de Córdoba  
 - **Location:** Montería, Córdoba, Colombia  
-- **Academic Program:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento  
+- **Academic Degree Objective:** Magíster en Inteligencia Artificial e Ingeniería del Conocimiento — Universidad TECH  
 - **Role:** Framework Creator, Lead Architect, Scientific Researcher  
 - **Repository:** [estilozap7-ctrl/metacog-c45](https://github.com/estilozap7-ctrl/metacog-c45)
 
@@ -25,7 +25,7 @@
 
 ## Academic Context
 
-The **MetaCog-C45 Framework** was developed as the primary scientific software artifact of the Master's Thesis titled *MetaCog-C45: Un Framework de Árboles de Decisión Metacognitivos* at **Universidad de Córdoba** (Montería, Colombia).
+The **MetaCog-C45 Framework** was developed as the primary scientific software artifact with the objective of acquiring the Master's degree in Artificial Intelligence and Knowledge Engineering (*Magíster en Inteligencia Artificial e Ingeniería del Conocimiento*) at **Universidad TECH**. The author is a professor (*Docente Catedrático*) at **Universidad de Córdoba** (Montería, Colombia).
 
 ---
 

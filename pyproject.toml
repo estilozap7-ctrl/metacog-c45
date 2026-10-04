@@ -23,7 +23,7 @@ authors = [
     {name = "Luis Alberto Buelvas Cogollo", email = "autor@unicordoba.edu.co"},
 ]
 maintainers = [
-    {name = "Luis Alberto Buelvas Cogollo (Universidad de Córdoba - Montería, Colombia)"},
+    {name = "Luis Alberto Buelvas Cogollo (Docente Catedrático, Universidad de Córdoba - Montería, Colombia)"},
 ]
 keywords = [
     "machine-learning",

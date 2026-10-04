@@ -15,9 +15,8 @@
 > Framework científico para árboles de decisión metacognitivos basado en C4.5, diseñado para integrar procesos de razonamiento dual (Sistema 1 + Sistema 2), Decision Core, Reflection Engine y MetaMemory.
 > 
 > **Autor:** Luis Alberto Buelvas Cogollo  
-> **Docente Catedra:** Universidad de Córdoba, Montería, Córdoba, Colombia  
-> **Universidad**: Tech uniersiti
-> **Estudiante:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento  
+> **Afiliación laboral (Dónde labora):** Docente Catedrático, Universidad de Córdoba, Montería, Córdoba, Colombia  
+> **Objetivo académico:** Proyecto para optar al título de Magíster en Inteligencia Artificial e Ingeniería del Conocimiento — Universidad TECH  
 > **Líneas de investigación:** Inteligencia Artificial · Machine Learning · Explainable Artificial Intelligence (XAI)
 
 ---
@@ -28,7 +27,7 @@
 
 ## Academic Context
 
-MetaCog-C45 is the technological artifact developed as part of a **Master's thesis in Artificial Intelligence and Knowledge Engineering** at **Universidad de Córdoba** (Montería, Colombia). The framework constitutes the experimental platform for validating research hypotheses, generating reproducible empirical evidence, and supporting scientific publications derived from the investigation.
+MetaCog-C45 is the technological artifact developed with the objective of acquiring the Master's degree in Artificial Intelligence and Knowledge Engineering (*Magíster en Inteligencia Artificial e Ingeniería del Conocimiento*) at **Universidad TECH**. The author is a professor (*Docente Catedrático*) at **Universidad de Córdoba** (Montería, Colombia). The framework constitutes the experimental platform for validating research hypotheses, generating reproducible empirical evidence, and supporting scientific publications derived from the investigation.
 
 The framework is designed to fulfill three complementary roles:
 
@@ -269,8 +268,8 @@ MetaCog-C45 introduces a novel metacognitive architecture for decision trees, pr
 ## About the Author
 
 - **Nombre:** Luis Alberto Buelvas Cogollo
-- **Universidad:** Universidad de Córdoba (Montería, Córdoba, Colombia)
-- **Programa de Maestría:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento
+- **Afiliación laboral:** Docente Catedrático, Universidad de Córdoba (Montería, Córdoba, Colombia)
+- **Objetivo académico:** Desarrollado para optar al título de Magíster en Inteligencia Artificial e Ingeniería del Conocimiento — Universidad TECH
 - **Área de investigación:** Inteligencia Artificial / Machine Learning / Explainable AI (XAI) / Metacognición Computacional
 - **Líneas de trabajo:**
   - Machine Learning & Statistical Learning
@@ -289,7 +288,7 @@ If you use MetaCog-C45 in your research or software, please cite it as follows:
 > Luis Alberto Buelvas Cogollo.  
 > **MetaCog-C45: A Metacognitive Decision Tree Framework.**  
 > Version 1.0.  
-> Universidad de Córdoba.  
+> Universidad TECH / Universidad de Córdoba.  
 > 2026.
 
 ### BibTeX
@@ -300,12 +299,9 @@ If you use MetaCog-C45 in your research or software, please cite it as follows:
   author       = {Buelvas Cogollo, Luis Alberto},
   year         = {2026},
   version      = {1.0.0},
-  institution  = {Universidad de Córdoba},
-  address      = {Montería, Colombia},
+  institution  = {Universidad TECH},
   url          = {https://github.com/estilozap7-ctrl/metacog-c45},
-  note         = {Developed as part of a Master's thesis in Artificial Intelligence
-                  and Knowledge Engineering. Software artifact supporting
-                  experimental validation and scientific publications.},
+  note         = {Proyecto desarrollado para optar al título de Magíster en Inteligencia Artificial e Ingeniería del Conocimiento en la Universidad TECH. Autor: Docente Catedrático en la Universidad de Córdoba (Montería, Colombia).},
   license      = {MIT}
 }
 ```
@@ -322,8 +318,8 @@ Todos los derechos según la licencia seleccionada (**MIT License**). Consúltes
 
 <div align="center">
 
-**MetaCog-C45** · Release 1.0.0 · Universidad de Córdoba  
-*Master's Research in Artificial Intelligence and Knowledge Engineering*
+**MetaCog-C45** · Release 1.0.0 · Universidad TECH · Universidad de Córdoba  
+*Master's Research in Artificial Intelligence and Knowledge Engineering (Universidad TECH) · Autor: Docente Catedrático (Universidad de Córdoba)*
 
 [GitHub](https://github.com/estilozap7-ctrl/metacog-c45) · [AUTHORS.md](AUTHORS.md) · [CITATION.cff](CITATION.cff) · [INSTALL.md](INSTALL.md) · [QUICKSTART.md](QUICKSTART.md) · [CHANGELOG.md](CHANGELOG.md)
 
