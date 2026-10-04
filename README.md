@@ -15,7 +15,8 @@
 > Framework científico para árboles de decisión metacognitivos basado en C4.5, diseñado para integrar procesos de razonamiento dual (Sistema 1 + Sistema 2), Decision Core, Reflection Engine y MetaMemory.
 > 
 > **Autor:** Luis Alberto Buelvas Cogollo  
-> **Cocente Catedra:** Universidad de Córdoba, Montería, Córdoba, Colombia  
+> **Docente Catedra:** Universidad de Córdoba, Montería, Córdoba, Colombia  
+> **Universidad**: Tech uniersiti
 > **Estudiante:** Maestría en Inteligencia Artificial e Ingeniería del Conocimiento  
 > **Líneas de investigación:** Inteligencia Artificial · Machine Learning · Explainable Artificial Intelligence (XAI)
 
